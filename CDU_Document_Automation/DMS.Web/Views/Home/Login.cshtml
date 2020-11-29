@@ -1,0 +1,62 @@
+﻿@model DMS.Web.ViewModel.UserViewModel
+
+@{
+    ViewData["Title"] = "LOG IN";
+}
+
+<h1 style="text-align:center">@ViewData["Title"]</h1>
+    <div class="row d-flex justify-content-center col-12">
+        <div class="col-4 border border-primary rounded m-20">
+            <form id="account" method="post" class="py-5">
+                <div class="d-flex justify-content-center">
+                    <i class="icon-map-marker icon-4x text-success"></i>
+                </div>
+                @*<div class="d-flex justify-content-center">
+            <div asp-validation-summary="All" class="text-danger"></div>
+        </div>*@
+                <div class="form-group ">
+                    <input asp-for="Email" class="form-control" placeholder="Email address" required autofocus />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Password" class="form-control" placeholder="Password" required />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                @*<div class="form-group">
+            <div class="checkbox">
+                <label asp-for="Input.RememberMe">
+                    <input asp-for="Input.RememberMe" />
+                    @Html.DisplayNameFor(m => m.Input.RememberMe)
+                </label>
+            </div>
+        </div>*@
+                <div class="form-group">
+                    <button type="submit" class="btn btn-lg btn-success btn-block">Sign in</button>
+                </div>
+                <div class="form-group">
+                    <p class="col-8">
+                        @*<a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>*@
+                        <a id="forgot-password">Forgot your password?</a>
+                    </p>
+                    <p class="col-8">
+                        @*<a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>*@
+                        <a asp-controller="Home" asp-action="Registration">Register as a new user</a>
+                    </p>
+                </div>
+                @if (@ViewBag.IncorrectUserNamePassword != null)
+                {
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong> @ViewBag.IncorrectUserNamePassword</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                }
+            </form>
+        </div>
+    </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

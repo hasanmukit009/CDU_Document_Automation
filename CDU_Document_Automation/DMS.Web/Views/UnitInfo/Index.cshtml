@@ -1,0 +1,47 @@
+﻿@model DMS.Web.ViewModel.UnitInformationViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Unit Information</h1>
+<div class="col-lg-6">
+    <a asp-controller="UnitInfo" asp-action="AddNewUnitInfo" class="btn btn-primary btn-icon-split btn-lg">
+        <span class="text">Add New Unit Information</span>
+    </a>
+</div>
+    <div class="container-fluid">
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Remarks</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>UC submitted UI - HIT137</td>
+                                <td>
+                                    <a href="#" class="btn btn-primary btn-icon-split">
+                                        <span class="text">View</span>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>UC submitted UI - PRT455</td>
+                                <td>
+                                    <a href="#" class="btn btn-primary btn-icon-split">
+                                        <span class="text">View</span>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>

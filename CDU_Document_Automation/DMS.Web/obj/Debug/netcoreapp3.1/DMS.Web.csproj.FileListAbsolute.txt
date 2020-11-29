@@ -1,0 +1,2 @@
+E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll

@@ -1,0 +1,33 @@
+﻿@model DMS.Web.ViewModel.UserViewModel
+@{
+    ViewData["Title"] = "Verify Registration";
+}
+
+
+<h1 style="text-align:center">@ViewData["Title"]</h1>
+<div class="row d-flex justify-content-center col-12">
+    <div class="col-4 border border-primary rounded m-20">
+        <form id="account" method="post" class="py-5">
+            <div class="d-flex justify-content-center">
+                <i class="icon-map-marker icon-4x text-success"></i>
+            </div>
+            <div class="alert alert-success col-md-12" role="alert" id="notes">
+                <h4>NOTES</h4>
+                <ul>
+                    <li>You will recieve a verification code on your mail after you registered. Enter that code below.</li>
+                    <li>If somehow, you did not recieve the verification email then <a href="#">resend the verification email</a></li>
+                </ul>
+            </div>
+            <div class="form-group">
+                <input asp-for="VerficationCode" class="form-control" placeholder="Verfication Code" required autofocus />
+                <span asp-validation-for="VerficationCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-lg btn-success btn-block">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

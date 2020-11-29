@@ -1,0 +1,24 @@
+﻿@model DMS.Web.Models.UserModel
+@{
+    ViewData["Title"] = "Failed Registration";
+}
+
+<h1 style="text-align:center">@ViewData["Title"]</h1>
+<div class="row d-flex justify-content-center col-12">
+    <div class="col-4 border border-primary rounded m-20">
+        <form id="account" method="post" class="py-5">
+            <div class="d-flex justify-content-center">
+                <i class="icon-map-marker icon-4x text-success"></i>
+            </div>
+            <div class="form-group">
+                <ul>
+                    <li>Your verification code didnot match. Please check your mail.</li>
+                    <li>Go back to <a href='@Url.Action("VerifyRegistration", "Home", new { id = @Model.Id})'>verification page</a></li>
+                </ul>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
