@@ -26,16 +26,88 @@ namespace DMS.Web.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AssessmentOverview")
+                    b.Property<string>("Admin")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Approver")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Assessment_Overview_Description_1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Assessment_Overview_Description_2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Assessment_Overview_Description_3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Assessment_Overview_Description_4")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Assessment_Overview_Item_1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Assessment_Overview_Item_2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Assessment_Overview_Item_3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Assessment_Overview_Item_4")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Assessment_Overview_Learning_Outcome_1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Assessment_Overview_Learning_Outcome_2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Assessment_Overview_Learning_Outcome_3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Assessment_Overview_Learning_Outcome_4")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Assessment_Overview_Value_1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Assessment_Overview_Value_2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Assessment_Overview_Value_3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Assessment_Overview_Value_4")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AssignedAdmin")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AssignedApprover")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("AssignedBy")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("AssignedCourseCoordinator")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("AssignedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("AssignedReviewer1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AssignedReviewer2")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("AssignedTo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ChangeRequest")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CourseCoordinator")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreatedBy")
@@ -47,10 +119,10 @@ namespace DMS.Web.Data.Migrations
                     b.Property<string>("CreditPoints")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Email")
+                    b.Property<string>("CurrentPosition")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FeedbackByAdmin")
+                    b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FeedbackByApprover")
@@ -59,11 +131,17 @@ namespace DMS.Web.Data.Migrations
                     b.Property<string>("FeedbackByCC")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FeedbackByReviewer")
+                    b.Property<string>("FeedbackByReviewer1")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FeedbackByUC")
+                    b.Property<string>("FeedbackByReviewer2")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsReviewedByReviewer1")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsReviewedByReviewer2")
+                        .HasColumnType("bit");
 
                     b.Property<string>("LearningMethod")
                         .HasColumnType("nvarchar(max)");
@@ -71,7 +149,184 @@ namespace DMS.Web.Data.Migrations
                     b.Property<string>("LearningOutComes")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("LearningSchedule")
+                    b.Property<string>("LearningSchedule_Assessments_1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Assessments_10")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Assessments_11")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Assessments_12")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Assessments_13")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Assessments_14")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Assessments_15")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Assessments_2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Assessments_3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Assessments_4")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Assessments_5")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Assessments_6")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Assessments_7")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Assessments_8")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Assessments_9")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Topic_1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Topic_10")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Topic_11")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Topic_12")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Topic_13")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Topic_14")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Topic_15")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Topic_2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Topic_3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Topic_4")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Topic_5")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Topic_6")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Topic_7")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Topic_8")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Topic_9")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Tutorial_1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Tutorial_10")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Tutorial_11")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Tutorial_12")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Tutorial_13")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Tutorial_14")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Tutorial_15")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Tutorial_2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Tutorial_3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Tutorial_4")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Tutorial_5")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Tutorial_6")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Tutorial_7")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Tutorial_8")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Tutorial_9")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Week_1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Week_10")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Week_11")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Week_12")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Week_13")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Week_14")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Week_15")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Week_2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Week_3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Week_4")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Week_5")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Week_6")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Week_7")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Week_8")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LearningSchedule_Week_9")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Location")
@@ -101,10 +356,19 @@ namespace DMS.Web.Data.Migrations
                     b.Property<string>("Resources_eReserveCourseReadings")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Reviewer1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Reviewer2")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Semester")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TeachingAndLearningApproach")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TeachingAndLearningApproach_HowUnitRun")

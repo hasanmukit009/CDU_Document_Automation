@@ -7,6 +7,7 @@ namespace DMS.Web.ViewModel
 {
     public class UnitInformationViewModel
     {
+       
         public string UnitCode { get; set; }
         public string UnitTitle { get; set; }
         public string CreditPoints { get; set; }
@@ -21,15 +22,115 @@ namespace DMS.Web.ViewModel
         public string Email { get; set; }
         public string UnitDescription { get; set; }
         public string LearningOutComes { get; set; }
-        public string AssessmentOverview { get; set; }
+
+        public string Assessment_Overview_Item_1 { get; set; }
+        public string Assessment_Overview_Description_1 { get; set; }
+        public string Assessment_Overview_Value_1 { get; set; }
+        public string Assessment_Overview_Learning_Outcome_1 { get; set; }
+        public string Assessment_Overview_Item_2 { get; set; }
+        public string Assessment_Overview_Description_2 { get; set; }
+        public string Assessment_Overview_Value_2 { get; set; }
+        public string Assessment_Overview_Learning_Outcome_2 { get; set; }
+        public string Assessment_Overview_Item_3 { get; set; }
+        public string Assessment_Overview_Description_3 { get; set; }
+        public string Assessment_Overview_Value_3 { get; set; }
+        public string Assessment_Overview_Learning_Outcome_3 { get; set; }
+        public string Assessment_Overview_Item_4 { get; set; }
+        public string Assessment_Overview_Description_4 { get; set; }
+        public string Assessment_Overview_Value_4 { get; set; }
+        public string Assessment_Overview_Learning_Outcome_4 { get; set; }
+
+
+        public string TeachingAndLearningApproach { get; set; }
         public string TeachingAndLearningApproach_HowUnitRun { get; set; }
         public string TeachingAndLearningApproach_LecturerRole { get; set; }
         public string TeachingAndLearningApproach_StudentParticipation { get; set; }
+
         public string Resources_RequiredTextbooks { get; set; }
         public string Resources_Learnline { get; set; }
         public string Resources_eReserveCourseReadings { get; set; }
         public string Resources_AdditionalResources { get; set; }
-        public string LearningSchedule { get; set; }
+
+        public string LearningSchedule_Week_1 { get; set; }
+        public string LearningSchedule_Topic_1 { get; set; }
+        public string LearningSchedule_Tutorial_1 { get; set; }
+        public string LearningSchedule_Assessments_1 { get; set; }
+
+        public string LearningSchedule_Week_2 { get; set; }
+        public string LearningSchedule_Topic_2 { get; set; }
+        public string LearningSchedule_Tutorial_2 { get; set; }
+        public string LearningSchedule_Assessments_2 { get; set; }
+
+        public string LearningSchedule_Week_3 { get; set; }
+        public string LearningSchedule_Topic_3 { get; set; }
+        public string LearningSchedule_Tutorial_3 { get; set; }
+        public string LearningSchedule_Assessments_3 { get; set; }
+
+        public string LearningSchedule_Week_4 { get; set; }
+        public string LearningSchedule_Topic_4 { get; set; }
+        public string LearningSchedule_Tutorial_4 { get; set; }
+        public string LearningSchedule_Assessments_4 { get; set; }
+
+        public string LearningSchedule_Week_5 { get; set; }
+        public string LearningSchedule_Topic_5 { get; set; }
+        public string LearningSchedule_Tutorial_5 { get; set; }
+        public string LearningSchedule_Assessments_5 { get; set; }
+
+        public string LearningSchedule_Week_6 { get; set; }
+        public string LearningSchedule_Topic_6 { get; set; }
+        public string LearningSchedule_Tutorial_6 { get; set; }
+        public string LearningSchedule_Assessments_6 { get; set; }
+
+        public string LearningSchedule_Week_7 { get; set; }
+        public string LearningSchedule_Topic_7 { get; set; }
+        public string LearningSchedule_Tutorial_7 { get; set; }
+        public string LearningSchedule_Assessments_7 { get; set; }
+
+        public string LearningSchedule_Week_8 { get; set; }
+        public string LearningSchedule_Topic_8 { get; set; }
+        public string LearningSchedule_Tutorial_8 { get; set; }
+        public string LearningSchedule_Assessments_8 { get; set; }
+
+        public string LearningSchedule_Week_9 { get; set; }
+        public string LearningSchedule_Topic_9 { get; set; }
+        public string LearningSchedule_Tutorial_9 { get; set; }
+        public string LearningSchedule_Assessments_9 { get; set; }
+
+        public string LearningSchedule_Week_10 { get; set; }
+        public string LearningSchedule_Topic_10 { get; set; }
+        public string LearningSchedule_Tutorial_10 { get; set; }
+        public string LearningSchedule_Assessments_10 { get; set; }
+
+        public string LearningSchedule_Week_11 { get; set; }
+        public string LearningSchedule_Topic_11 { get; set; }
+        public string LearningSchedule_Tutorial_11 { get; set; }
+        public string LearningSchedule_Assessments_11 { get; set; }
+
+        public string LearningSchedule_Week_12 { get; set; }
+        public string LearningSchedule_Topic_12 { get; set; }
+        public string LearningSchedule_Tutorial_12 { get; set; }
+        public string LearningSchedule_Assessments_12 { get; set; }
+
+        public string LearningSchedule_Week_13 { get; set; }
+        public string LearningSchedule_Topic_13 { get; set; }
+        public string LearningSchedule_Tutorial_13 { get; set; }
+        public string LearningSchedule_Assessments_13 { get; set; }
+
+        public string LearningSchedule_Week_14 { get; set; }
+        public string LearningSchedule_Topic_14 { get; set; }
+        public string LearningSchedule_Tutorial_14 { get; set; }
+        public string LearningSchedule_Assessments_14 { get; set; }
+
+        public string LearningSchedule_Week_15 { get; set; }
+        public string LearningSchedule_Topic_15 { get; set; }
+        public string LearningSchedule_Tutorial_15 { get; set; }
+        public string LearningSchedule_Assessments_15 { get; set; }
+
+
+        public string CourseCoordinator { get; set; }
+        public string AssignedCourseCoordinator { get; set; }
+
+
         public string CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
@@ -44,5 +145,9 @@ namespace DMS.Web.ViewModel
         public string FeedbackByAdmin { get; set; }
         public string FeedbackByReviewer { get; set; }
         public string FeedbackByApprover { get; set; }
+        public string CurrentPosition { get; set; }
+        public string ChangeReuqest { get; set; }
+
+
     }
 }
