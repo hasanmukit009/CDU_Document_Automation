@@ -7,7 +7,7 @@
 <div class="col-lg-12">
     <div class="p-5">
         <div class="text-center">
-            <h1 class="h4 text-gray-900 mb-4">View Unit Information</h1>
+            <h4>View Unit Information</h4>
         </div>
         <form class="user" method="post">
             <input type="hidden" asp-for="ChangeRequest" />
@@ -23,11 +23,15 @@
             <input type="hidden" asp-for="CreatedBy" />
 
 
+
+            <input type="hidden" asp-for="UnitCoordinator" />
+
             <input type="hidden" asp-for="CourseCoordinator" />
             <input type="hidden" asp-for="AssignedCourseCoordinator" />
 
-            @*<input type="hidden" asp-for="Admin" />*@
+            <input type="hidden" asp-for="Admin" />
             <input type="hidden" asp-for="AssignedAdmin" />
+
 
             <input type="hidden" asp-for="Reviewer1" />
             <input type="hidden" asp-for="AssignedReviewer1" />
@@ -84,19 +88,9 @@
                     <input asp-for="Location" type="text" class="form-control" id="txtLocation">
                 </div>
             </div>
-            <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                    <label class="col-sm-5 col-form-label" for="Learning method">Learning method</label>
-                    <input asp-for="LearningMethod" type="text" class="form-control" id="txtLearningmethod">
-                </div>
-                <div class="col-sm-6">
-                    <label class="col-sm-5 col-form-label" for="Unit Coordinator">Unit Coordinator</label>
-                    <select asp-for="UnitCoordinator" class="custom-select">
-                        <option value="">Choose Unit-Coordinator</option>
-                        <option value="sami@gmail.com">Dr. Sami Azam</option>
-                        <option value="bharani@gmail.com">Dr. Bharanidharan Shanmugam</option>
-                    </select>
-                </div>
+            <div class="form-group">
+                <label class="col-sm-5 col-form-label" for="Learning method">Learning method</label>
+                <input asp-for="LearningMethod" type="text" class="form-control" id="txtLearningmethod">
             </div>
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
@@ -117,7 +111,7 @@
                 <textarea asp-for="LearningOutComes" class="form-control" id="txtLearningOutcomes"></textarea>
             </div>
             <div class="form-group">
-                <label class="col-sm-5 col-form-label" for="FeedbackByCC">Assessment Overview</label>
+                <h4>Assessment Overview</h4>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
@@ -208,7 +202,7 @@
                 <textarea asp-for="TeachingAndLearningApproach_StudentParticipation" class="form-control" id="txtTeachingAndLearningApproach_StudentParticipation"></textarea>
             </div>
             <div class="form-group">
-                <label class="col-sm-6 mb-3 mb-sm-0" for="Resources">Resources</label>
+                <h4>Resources</h4>
             </div>
             <hr />
             <div class="form-group">
@@ -228,7 +222,7 @@
                 <textarea asp-for="Resources_AdditionalResources" class="form-control" id="txtResources_AdditionalResources"></textarea>
             </div>
             <div class="form-group">
-                <label class="col-sm-5 col-form-label" for="LearningSchedule">Learning Schedule</label>
+                <h4>Learning Schedule</h4>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
@@ -322,11 +316,6 @@
                                 </td>
                                 <td>
                                     <input asp-for="LearningSchedule_Assessments_6" type="text" class="form-control" id="txtLearningSchedule_Assessments_6">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="4">
-                                    <label class="col-lg-12" style="text-align:center" for="FeedbackByCC">Mid-semester break</label>
                                 </td>
                             </tr>
                             <tr>
@@ -466,14 +455,14 @@
                 </label>
             </div>
 
-            <h3>Course Coordinator</h3>
+            <h4>Course Coordinator</h4>
             <hr />
             <div class="form-group">
                 <label asp-for="CourseCoordinator" class="col-sm-5 col-form-label">Course Coordinator</label>
                 <select disabled asp-for="CourseCoordinator" class="custom-select">
                     <option value="">Choose Course-Coordinator</option>
-                    <option value="sami@gmail.com">Dr. Sami Azam</option>
-                    <option value="bharani@gmail.com">Dr. Bharanidharan Shanmugam</option>
+                    <option value="sami@gmail.com">Sami Azam</option>
+                    <option value="bharani@gmail.com">Bharanidharan Shanmugam</option>
                 </select>
             </div>
             <div class="form-group">
@@ -481,44 +470,30 @@
                 <textarea asp-for="FeedbackByCC" name="FeedbackByCC" class="form-control form-control-lg" id="txtFeedbackByCC"></textarea>
             </div>
 
-            <h3>Admin</h3>
+            <h4>Reviewer</h4>
             <hr />
-            <div class="form-group">
-                <label class="col-sm-5" for="Admin">Admin</label>
-                <select asp-for="Admin" class="custom-select">
-                    <option value="">Choose Admin</option>
-                    <option value="asma@gmail.com">Dr. Asma Khan</option>
-                </select>
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label class="col-sm-6" for="Reviewer1">Reviewer1</label>
+                    <input readonly asp-for="Reviewer1" type="text" class="form-control" id="txtReviewer1">
+                </div>
+                <div class="col-sm-6">
+                    <label class="col-sm-6" for="Reviewer2">Reviewer2</label>
+                    <input readonly asp-for="Reviewer2" type="text" class="form-control" id="txtReviewer2">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label class="col-sm-6" for="FeedbackByReviewer1">Reviewer1's Feedback</label>
+                    <textarea asp-for="FeedbackByReviewer1" readonly name="FeedbackByReviewer1" class="form-control form-control-lg" id="txtFeedbackByReviewer1"></textarea>
+                </div>
+                <div class="col-sm-6">
+                    <label class="col-sm-6" for="FeedbackByReviewer2">Reviewer2's Feedback</label>
+                    <textarea asp-for="FeedbackByReviewer2" readonly name="FeedbackByReviewer2" class="form-control form-control-lg" id="txtFeedbackByReviewer2"></textarea>
+                </div>
             </div>
 
-            <h3>Reviewer</h3>
-            <hr />
-            <div class="form-group">
-                <label class="col-sm-5" for="Admin">Reviewer1</label>
-                <select disabled asp-for="Reviewer1" class="custom-select">
-                    <option value="">Choose Reviewer1</option>
-                    <option value="freso@gmail.com">Dr. Freso De Boer</option>
-                    <option value="luis@gmail.com">Dr. Luis De Silva</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-5" for="FeedbackByReviewer1">Reviewer1's Feedback</label>
-                <textarea asp-for="FeedbackByReviewer1" readonly name="FeedbackByReviewer1" class="form-control form-control-lg" id="txtFeedbackByReviewer1"></textarea>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-5" for="Reviewer2">Reviewer2</label>
-                <select disabled asp-for="Reviewer2" class="custom-select">
-                    <option value="">Choose Reviewer2</option>
-                    <option value="freso@gmail.com">Dr. Freso De Boer</option>
-                    <option value="luis@gmail.com">Dr. Luis De Silva</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-5" for="FeedbackByReviewer2">Reviewer2's Feedback</label>
-                <textarea asp-for="FeedbackByReviewer2" readonly name="FeedbackByReviewer2" class="form-control form-control-lg" id="txtFeedbackByReviewer2"></textarea>
-            </div>
-
-            <h3>Approver</h3>
+            <h4>Approver</h4>
             <hr />
             <div class="form-group">
                 <label class="col-sm-5" for="Admin">Approver</label>

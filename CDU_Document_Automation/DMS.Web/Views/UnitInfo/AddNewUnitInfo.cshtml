@@ -53,19 +53,9 @@
                     <input asp-for="Location" type="text" class="form-control" id="txtLocation">
                 </div>
             </div>
-            <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                    <label class="col-sm-5 col-form-label" for="Learning method">Learning method</label>
-                    <input asp-for="LearningMethod" type="text" class="form-control" id="txtLearningmethod">
-                </div>
-                <div class="col-sm-6">
-                    <label class="col-sm-5 col-form-label" for="Unit Coordinator">Unit Coordinator</label>
-                    <select asp-for="UnitCoordinator" class="custom-select">
-                        <option value="">Choose Unit-Coordinator</option>
-                        <option value="sami@gmail.com">Dr. Sami Azam</option>
-                        <option value="bharani@gmail.com">Dr. Bharanidharan Shanmugam</option>
-                    </select>
-                </div>
+            <div class="form-group">
+                <label class="col-sm-5 col-form-label" for="Learning method">Learning method</label>
+                <input asp-for="LearningMethod" type="text" class="form-control" id="txtLearningmethod">
             </div>
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
@@ -86,14 +76,15 @@
                 <textarea asp-for="LearningOutComes" class="form-control" id="txtLearningOutcomes"></textarea>
             </div>
             <div class="form-group">
-                <label class="col-sm-5 col-form-label" for="FeedbackByCC">Assessment Overview</label>
+                <h4>Assessment Overview</h4>
+                <hr />
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>Item</th>
                                 <th>Description/Focus</th>
-                                <th>Value</th>
+                                <th>Value (%)</th>
                                 <th>Relates to learning outcomes</th>
                             </tr>
                         </thead>
@@ -177,9 +168,9 @@
                 <textarea asp-for="TeachingAndLearningApproach_StudentParticipation" class="form-control" id="txtTeachingAndLearningApproach_StudentParticipation"></textarea>
             </div>
             <div class="form-group">
-                <label class="col-sm-6 mb-3 mb-sm-0" for="Resources">Resources</label>
+                <h4>Resources</h4>
+                <hr />
             </div>
-            <hr />
             <div class="form-group">
                 <label class="col-sm-6 mb-3 mb-sm-0" for="Resources_RequiredTextbooks">Required textbook(s)</label>
                 <textarea asp-for="Resources_RequiredTextbooks" class="form-control" id="txtResources_RequiredTextbooks"></textarea>
@@ -197,7 +188,8 @@
                 <textarea asp-for="Resources_AdditionalResources" class="form-control" id="txtResources_AdditionalResources"></textarea>
             </div>
             <div class="form-group">
-                <label class="col-sm-5 col-form-label" for="LearningSchedule">Learning Schedule</label>
+                <h4>Learning Schedule</h4>
+                <hr />
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
@@ -291,11 +283,6 @@
                                 </td>
                                 <td>
                                     <input asp-for="LearningSchedule_Assessments_6" type="text" class="form-control" id="txtLearningSchedule_Assessments_6">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="4">
-                                    <label class="col-sm-5 col-form-label" style="text-align:center" for="FeedbackByCC">Mid-semester break</label>
                                 </td>
                             </tr>
                             <tr>
@@ -412,7 +399,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <input asp-for="LearningSchedule_Week_15" type="text"  value="15" class="form-control" id="txtLearningSchedule_Week_15" placeholder="15">
+                                    <input asp-for="LearningSchedule_Week_15" type="text" value="15" class="form-control" id="txtLearningSchedule_Week_15" placeholder="15">
                                 </td>
                                 <td>
                                     <input asp-for="LearningSchedule_Topic_15" type="text" class="form-control" id="txtLearningSchedule_Topic_15">
@@ -428,7 +415,7 @@
                     </table>
                 </div>
                 <label class="col-lg-12 col-form-label-sm">
-                    Note this proposed class schedule may change during the semester
+                    **Note this proposed class schedule may change during the semester
                     and it is the responsibility of the student to check the accuracy
                     of important information (e.g. quizzes, submission dates, etc).
                     Any changes will be announced on Learnline and during lectures.
@@ -437,16 +424,15 @@
                     <label asp-for="CourseCoordinator" class="col-sm-5 col-form-label">Course Coordinator</label>
                     <select asp-for="CourseCoordinator" class="custom-select">
                         <option value="">Choose Course-Coordinator</option>
-                        <option value="sami@gmail.com">Dr. Sami Azam</option>
-                        <option value="bharani@gmail.com">Dr. Bharanidharan Shanmugam</option>
+                        <option value="sami@gmail.com">Sami Azam</option>
+                        <option value="bharani@gmail.com">Bharanidharan Shanmugam</option>
                     </select>
                 </div>
             </div>
-
+            <hr />
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-block">Save</button>
             </div>
-            <hr>
         </form>
     </div>
 </div>

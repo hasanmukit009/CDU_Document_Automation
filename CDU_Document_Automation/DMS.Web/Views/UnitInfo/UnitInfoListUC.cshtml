@@ -17,11 +17,11 @@
                     <span class="text">Add New Unit</span>
                 </a>
                 <br /><br />
-                <table class="table" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>Remarks</th>
-                            <th></th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,6 +37,9 @@
                                     @if (item.Status == "Approved")
                                     {
                                         <td>
+                                            <a asp-action="ViewUnitInfo" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
+                                                <span class="text">View</span>
+                                            </a>
                                             <a asp-action="DownloadUnitInfo" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
                                                 <span class="text">Download</span>
                                             </a>
@@ -68,14 +71,11 @@
                                 else
                                 {
                                     <td>
-                                        <a asp-action="DownloadUnitInfo" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split disabled">
+                                        <a asp-action="ViewUnitInfo" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
+                                            <span class="text">View</span>
+                                        </a>
+                                        <a asp-action="DownloadUnitInfo" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
                                             <span class="text">Download</span>
-                                        </a>
-                                        <a asp-action="EditUnitInfoByUC" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split disabled">
-                                            <span class="text">Edit</span>
-                                        </a>
-                                        <a asp-action="AssignToCourseCoordinator" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split disabled">
-                                            <span class="text">Assign To CC</span>
                                         </a>
                                     </td>
                                 }

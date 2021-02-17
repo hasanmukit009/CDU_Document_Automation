@@ -210,7 +210,7 @@ namespace DMS.Web.Controllers
                 Mode = model.Mode,
                 Location = model.Location,
                 LearningMethod = model.LearningMethod,
-                UnitCoordinator = model.UnitCoordinator,
+                UnitCoordinator = User.Identity.Name,
                 Phone = model.Phone,
                 Email = model.Email,
                 UnitDescription = model.UnitDescription,
@@ -323,7 +323,7 @@ namespace DMS.Web.Controllers
 
                 CreatedBy = User.Identity.Name,
                 CreatedDate = DateTime.Now,
-                Remarks = model.UnitCode + model.UnitTitle + " has been created by UC- " + GetNameByEmail(model.UnitCoordinator),
+                Remarks = model.UnitCode + " " + model.UnitTitle + " has been created by UC- " + GetNameByEmail(User.Identity.Name),
                 CurrentPosition = "UC",
                 ChangeRequest = "Unit Assessment",
                 Status = "Created"
@@ -344,7 +344,7 @@ namespace DMS.Web.Controllers
             {
                 model.UpdatedBy = User.Identity.Name;
                 model.UpdatedDate = DateTime.Now;
-                model.Remarks = model.UnitCode + model.UnitTitle + " has been created by UC- " + GetNameByEmail(model.UnitCoordinator);
+                model.Remarks = model.UnitCode + " " + model.UnitTitle + " has been updated by UC- " + GetNameByEmail(model.UnitCoordinator);
                 _context.Update(model);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("UnitInfoListUC");
@@ -393,7 +393,12 @@ namespace DMS.Web.Controllers
             return RedirectToAction("UnitInfoListUC");
         }
 
-
+        public async Task<IActionResult> ViewUnitInfo(int id)
+        {
+            var objUnitInformation = await _context.UnitInformationList.FindAsync(id);
+            return View(objUnitInformation);
+        }
+        
 
         /// <summary>
         /// Course Coordinator
@@ -416,9 +421,10 @@ namespace DMS.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                model.Admin = "asma@gmail.com";
                 model.UpdatedBy = User.Identity.Name;
                 model.UpdatedDate = DateTime.Now;
-                model.Remarks = "CC- " + GetNameByEmail(model.AssignedCourseCoordinator) + " has given his feedback for Unit- " + model.UnitCode + model.UnitTitle;
+                model.Remarks = model.UnitCode + " " + model.UnitTitle + " has been updated by CC- " + GetNameByEmail(model.AssignedCourseCoordinator);
                 _context.Update(model);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("UnitInfoListCC");
@@ -433,7 +439,8 @@ namespace DMS.Web.Controllers
             objUnitInformation.AssignedBy = User.Identity.Name;
             objUnitInformation.AssignedDate = DateTime.Now;
             objUnitInformation.CurrentPosition = "UC";
-            objUnitInformation.Remarks = "CC- " + GetNameByEmail(objUnitInformation.AssignedCourseCoordinator) + " has returned the Unit- " + objUnitInformation.UnitCode + objUnitInformation.UnitTitle + "to " + GetNameByEmail(objUnitInformation.UnitCoordinator);
+            objUnitInformation.Remarks = "CC- " + GetNameByEmail(objUnitInformation.AssignedCourseCoordinator) + " has returned the Unit- " + objUnitInformation.UnitCode + " " + objUnitInformation.UnitTitle + " to " + GetNameByEmail(objUnitInformation.UnitCoordinator);
+            objUnitInformation.AssignedCourseCoordinator = "";
             _context.Update(objUnitInformation);
             await _context.SaveChangesAsync();
             return RedirectToAction("UnitInfoListCC");
@@ -529,6 +536,7 @@ namespace DMS.Web.Controllers
             {
                 if (User.Identity.Name == model.AssignedReviewer1)
                 {
+                    model.Approver = "stefanija@gmail.com";
                     model.UpdatedBy = User.Identity.Name;
                     model.UpdatedDate = DateTime.Now;
                     model.Remarks = "Riviewer1 - " + GetNameByEmail(model.AssignedReviewer1) + " reviewed unit- " + model.UnitCode + " " + model.UnitTitle;
@@ -537,6 +545,7 @@ namespace DMS.Web.Controllers
                 }
                 if (User.Identity.Name == model.AssignedReviewer2)
                 {
+                    model.Approver = "stefanija@gmail.com";
                     model.UpdatedBy = User.Identity.Name;
                     model.UpdatedDate = DateTime.Now;
                     model.Remarks = "Riviewer2 - " + GetNameByEmail(model.AssignedReviewer2) + " reviewed unit- " + model.UnitCode + " " + model.UnitTitle;
@@ -553,18 +562,6 @@ namespace DMS.Web.Controllers
                 return RedirectToAction("UnitInfoListReviewer");
             }
             return View(model);
-        }
-
-        public async Task<IActionResult> ReturnToCCbyReviewer(int id)
-        {
-            var objUnitInformation = await _context.UnitInformationList.FindAsync(id);
-            objUnitInformation.AssignedTo = "CC";
-            objUnitInformation.AssignedBy = "Reviewer";
-            objUnitInformation.AssignedDate = DateTime.Now;
-            objUnitInformation.CurrentPosition = "CC";
-            _context.Update(objUnitInformation);
-            await _context.SaveChangesAsync();
-            return RedirectToAction("UnitInfoListReviewer");
         }
 
         public async Task<IActionResult> AssignToApprover(int id)
@@ -608,6 +605,7 @@ namespace DMS.Web.Controllers
 
             return RedirectToAction("UnitInfoListApprover");
         }
+
         public async Task<IActionResult> RejectWithMajorChangeFromApprover(int id)
         {
             var objUnitInformation = await _context.UnitInformationList.FindAsync(id);
@@ -617,14 +615,19 @@ namespace DMS.Web.Controllers
             objUnitInformation.UpdatedBy = objUnitInformation.AssignedApprover;
             objUnitInformation.UpdatedDate = DateTime.Now;
             objUnitInformation.CurrentPosition = "UC";
-            objUnitInformation.Remarks = "Approver- " + GetNameByEmail(objUnitInformation.AssignedApprover) + " rejected the unit -" + objUnitInformation.UnitCode + objUnitInformation.UnitTitle + " with major changes.";
+            objUnitInformation.Remarks = "Approver- " + GetNameByEmail(objUnitInformation.AssignedApprover) + " rejected the unit -" + objUnitInformation.UnitCode + " " + objUnitInformation.UnitTitle + " with major changes.";
+            objUnitInformation.AssignedApprover = null;
+            objUnitInformation.AssignedReviewer1 = null;
+            objUnitInformation.AssignedReviewer2 = null;
+            objUnitInformation.AssignedAdmin = null;
+            objUnitInformation.AssignedCourseCoordinator = null;
             objUnitInformation.Status = "Reject(Major)";
-
             _context.Update(objUnitInformation);
             await _context.SaveChangesAsync();
 
             return RedirectToAction("UnitInfoListApprover");
         }
+
         public async Task<IActionResult> Approve(int id)
         {
             var objUnitInformation = await _context.UnitInformationList.FindAsync(id);

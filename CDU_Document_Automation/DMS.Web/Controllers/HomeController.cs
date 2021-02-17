@@ -284,10 +284,10 @@ namespace DMS.Web.Controllers
                 objnew.AssignedCourseCoordinator = GetNameByEmail(obj.AssignedCourseCoordinator);
 
 
-                objnew.AssignedAdmin= GetNameByEmail(obj.AssignedAdmin);
+                objnew.AssignedAdmin = GetNameByEmail(obj.AssignedAdmin);
                 objnew.AssignedReviewer1 = GetNameByEmail(obj.AssignedReviewer1);
                 objnew.AssignedReviewer2 = GetNameByEmail(obj.AssignedReviewer2);
-                objnew.AssignedApprover= GetNameByEmail(obj.AssignedApprover);
+                objnew.AssignedApprover = GetNameByEmail(obj.AssignedApprover);
 
 
                 lstUnitInfoList.Add(objnew);
@@ -297,9 +297,9 @@ namespace DMS.Web.Controllers
 
         private string GetNameByEmail(string unitCoordinator)
         {
-            if (unitCoordinator!=null)
+            if (!string.IsNullOrEmpty(unitCoordinator))
             {
-                unitCoordinator = _context.UserList.Where(a=>a.Email==unitCoordinator).FirstOrDefault().FirstName + " " + _context.UserList.Where(a => a.Email == unitCoordinator).FirstOrDefault().LastName;
+                unitCoordinator = _context.UserList.Where(a => a.Email == unitCoordinator).FirstOrDefault().FirstName + " " + _context.UserList.Where(a => a.Email == unitCoordinator).FirstOrDefault().LastName;
             }
             return unitCoordinator;
         }

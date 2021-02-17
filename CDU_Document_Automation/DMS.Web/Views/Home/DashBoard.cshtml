@@ -8,60 +8,58 @@
         <h4>DashBoard</h4>
     </div>
 </div>
-<div class="container-fluid">
-    <div class="card shadow mb-4">
-        <div class="card-body" >
-            <div class="table-responsive" >
-                <table class="table table-bordered table-hover table-responsive-xl" id="dataTable" width="100%" cellspacing="550">
-                    <thead>
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover" id="dataTable">
+                <thead>
+                    <tr>
+                        <th style="width:100px">C. Request</th>
+                        <th style="width:100px">U. Code</th>
+                        <th style="width:100px">UC</th>
+                        <th style="width:100px">CC</th>
+                        <th style="width:100px">Admin</th>
+                        <th style="width:100px">Reviewer1</th>
+                        <th style="width:100px">Reviewer2</th>
+                        <th style="width:100px">Approver</th>
+                        <th style="width:100px">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
                         <tr>
-                            <th>Change Request</th>
-                            <th>Unit Code</th>
-                            <th>Unit Coordinator</th>
-                            <th>Course Coordinator</th>
-                            <th>Admin</th>
-                            <th>Reviewer1</th>
-                            <th>Reviewer2</th>
-                            <th>Approver</th>
-                            <th>Status</th>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ChangeRequest)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UnitCode)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UnitCoordinator)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AssignedCourseCoordinator)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AssignedAdmin)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AssignedReviewer1)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AssignedReviewer2)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AssignedApprover)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.ChangeRequest)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.UnitCode)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.UnitCoordinator)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.AssignedCourseCoordinator)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.AssignedAdmin)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.AssignedReviewer1)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.AssignedReviewer2)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.AssignedApprover)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Status)
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
+                    }
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

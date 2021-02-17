@@ -4,45 +4,92 @@
     ViewData["Title"] = "LOG IN";
 }
 
-<h1 style="text-align:center;font-family:sans-serif">@ViewData["Title"]</h1>
-<div class="row d-flex justify-content-center col-12">
-    <div class="col-4 border border-primary rounded m-20">
-        <form id="account" method="post" class="py-5">
-            <div class="d-flex justify-content-center">
-                <i class="icon-map-marker icon-4x text-success"></i>
-            </div>
-            <div class="form-group ">
-                <input asp-for="Email" class="form-control" placeholder="Email address" required autofocus />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input asp-for="Password" class="form-control" placeholder="Password" required />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-lg btn-success btn-block">Sign in</button>
-            </div>
-            <div class="form-group">
-                <p class="col-8">
-                    <a id="forgot-password">Forgot your password?</a>
-                </p>
-                <p class="col-8">
-                    <a asp-controller="Home" asp-action="Registration">Register as a new user</a>
-                </p>
-            </div>
-            @if (@ViewBag.IncorrectUserNamePassword != null)
-            {
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong> @ViewBag.IncorrectUserNamePassword</strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+@*<h1 style="text-align:center;font-family:sans-serif">@ViewData["Title"]</h1>
+    <div class="row d-flex justify-content-center col-12">
+        <div class="col-4 border border-primary rounded m-20">
+            <form id="account" method="post" class="py-5">
+                <div class="d-flex justify-content-center">
+                    <i class="icon-map-marker icon-4x text-success"></i>
                 </div>
-            }
-        </form>
-    </div>
-</div>
+                <div class="form-group ">
+                    <input asp-for="Email" class="form-control" placeholder="Email address" required autofocus />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Password" class="form-control" placeholder="Password" required />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-lg btn-success btn-block">Sign in</button>
+                </div>
+                <div class="form-group">
+                    <p class="col-8">
+                        <a id="forgot-password">Forgot your password?</a>
+                    </p>
+                    <p class="col-8">
+                        <a asp-controller="Home" asp-action="Registration">Register as a new user</a>
+                    </p>
+                </div>
+                @if (@ViewBag.IncorrectUserNamePassword != null)
+                {
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong> @ViewBag.IncorrectUserNamePassword</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                }
+            </form>
+        </div>
+    </div>*@
+<div class="row justify-content-center">
 
+    <div class="col-xl-10 col-lg-12 col-md-9">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                            </div>
+                            <form id="account" method="post" class="user">
+                                <div class="form-group">
+                                    <input asp-for="Email" class="form-control" placeholder="Email address" required autofocus />
+                                </div>
+                                <div class="form-group">
+                                    <input asp-for="Password" class="form-control" placeholder="Password" required />
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox small">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck">
+                                        <label class="custom-control-label" for="customCheck">
+                                            Remember
+                                            Me
+                                        </label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-lg btn-success btn-block">Sign in</button>
+                            </form>
+                            <hr>
+                            <div class="text-center">
+                                <a asp-controller="Home" asp-action="Registration">Forgot Password?</a>
+                            </div>
+                            <div class="text-center">
+                                <a asp-controller="Home" asp-action="Registration">Create an Account!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
