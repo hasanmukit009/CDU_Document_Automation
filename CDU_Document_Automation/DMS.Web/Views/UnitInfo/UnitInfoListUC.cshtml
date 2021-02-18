@@ -4,37 +4,83 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<div class="col-lg-12">
-    <div class="text-center">
-        <h4>Unit List (UC)</h4>
+<div class="container-fluid">
+    <div class="row mb-2">
+        <div class="col-sm-6">
+            <h1>Unit Information List</h1>
+        </div>
+        <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Dashboard">Home</a></li>
+                <li class="breadcrumb-item active">Unit Coordinator</li>
+            </ol>
+        </div>
     </div>
 </div>
-<div class="container-fluid">
-    <div class="card shadow mb-4">
-        <div class="card-body">
-            <div class="table-responsive">
-                <a asp-controller="UnitInfo" asp-action="AddNewUnitInfo" class="btn btn-primary">
-                    <span class="text">Add New Unit</span>
-                </a>
-                <br /><br />
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>Remarks</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Remarks)
-                                </td>
 
-                                @if (item.UnitCoordinator == User.Identity.Name)
-                                {
-                                    @if (item.Status == "Approved")
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <a asp-controller="UnitInfo" asp-action="AddNewUnitInfo" class="btn btn-primary">
+                        <span class="text">Add New Unit</span>
+                    </a>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="tblUnitListUC" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Remarks</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Remarks)
+                                    </td>
+
+                                    @if (item.UnitCoordinator == User.Identity.Name)
+                                    {
+                                        @if (item.Status == "Approved")
+                                        {
+                                            <td>
+                                                <a asp-action="ViewUnitInfo" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
+                                                    <span class="text">View</span>
+                                                </a>
+                                                <a asp-action="DownloadUnitInfo" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
+                                                    <span class="text">Download</span>
+                                                </a>
+                                            </td>
+                                        }
+                                        else if (item.Status == "Reject(Minor)")
+                                        {
+                                            <td>
+                                                <a asp-action="EditUnitInfoByUC" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
+                                                    <span class="text">Edit</span>
+                                                </a>
+                                                <a asp-action="ApproveUnitInfoByUC" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
+                                                    <span class="text">Approve</span>
+                                                </a>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                                <a asp-action="EditUnitInfoByUC" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
+                                                    <span class="text">Edit</span>
+                                                </a>
+                                                <a asp-action="AssignToCourseCoordinator" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
+                                                    <span class="text">Assign To CC</span>
+                                                </a>
+                                            </td>
+                                        }
+                                    }
+                                    else
                                     {
                                         <td>
                                             <a asp-action="ViewUnitInfo" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
@@ -45,46 +91,16 @@
                                             </a>
                                         </td>
                                     }
-                                    else if (item.Status == "Reject(Minor)")
-                                    {
-                                        <td>
-                                            <a asp-action="EditUnitInfoByUC" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
-                                                <span class="text">Edit</span>
-                                            </a>
-                                            <a asp-action="ApproveUnitInfoByUC" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
-                                                <span class="text">Approve</span>
-                                            </a>
-                                        </td>
-                                    }
-                                    else
-                                    {
-                                        <td>
-                                            <a asp-action="EditUnitInfoByUC" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
-                                                <span class="text">Edit</span>
-                                            </a>
-                                            <a asp-action="AssignToCourseCoordinator" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
-                                                <span class="text">Assign To CC</span>
-                                            </a>
-                                        </td>
-                                    }
-                                }
-                                else
-                                {
-                                    <td>
-                                        <a asp-action="ViewUnitInfo" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
-                                            <span class="text">View</span>
-                                        </a>
-                                        <a asp-action="DownloadUnitInfo" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
-                                            <span class="text">Download</span>
-                                        </a>
-                                    </td>
-                                }
-                            </tr>
-                        }
-                    </tbody>
-                </table>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
             </div>
+            <!-- /.card -->
         </div>
+        <!-- /.col -->
     </div>
+    <!-- /.row -->
 </div>
-
