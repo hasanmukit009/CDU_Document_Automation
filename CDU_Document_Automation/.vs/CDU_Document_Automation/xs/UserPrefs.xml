@@ -1,0 +1,39 @@
+﻿<Properties StartupConfiguration="{4BCD4522-E5A4-4435-AF93-B3E040C9D426}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DMS.Web/Controllers/UnitInfoController.cs">
+    <Files>
+      <File FileName="DMS.Web/Controllers/HomeController.cs" Line="302" Column="1" />
+      <File FileName="DMS.Web/Controllers/UnitInfoController.cs" Line="44" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="CDU_Document_Automation" expanded="True">
+            <Node name="DMS.Web" expanded="True">
+              <Node name="Controllers" expanded="True">
+                <Node name="UnitInfoController.cs" selected="True" />
+              </Node>
+              <Node name="ViewModel" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Home" expanded="True" />
+                <Node name="Shared" expanded="True" />
+              </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="css" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.DMS.Web PreferredExecutionTarget="/Applications/Microsoft Edge.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
