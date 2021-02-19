@@ -1,17 +1,17 @@
 ﻿<Properties StartupConfiguration="{4BCD4522-E5A4-4435-AF93-B3E040C9D426}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="DMS.Web/Controllers/UnitInfoController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DMS.Web/appsettings.json">
     <Files>
       <File FileName="DMS.Web/Controllers/HomeController.cs" Line="302" Column="1" />
-      <File FileName="DMS.Web/Controllers/UnitInfoController.cs" Line="44" Column="1" />
+      <File FileName="DMS.Web/Controllers/UnitInfoController.cs" />
+      <File FileName="../../../../../usr/local/share/dotnet/sdk/5.0.103/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets" Line="236" Column="52" />
+      <File FileName="DMS.Web/appsettings.json" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="CDU_Document_Automation" expanded="True">
             <Node name="DMS.Web" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="UnitInfoController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="ViewModel" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="Home" expanded="True" />
@@ -20,6 +20,7 @@
               <Node name="wwwroot" expanded="True">
                 <Node name="css" expanded="True" />
               </Node>
+              <Node name="appsettings.json" selected="True" />
             </Node>
           </Node>
         </State>
