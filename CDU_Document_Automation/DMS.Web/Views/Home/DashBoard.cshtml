@@ -44,18 +44,20 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.UnitCode)
                                     </td>
-                                    <td>
-                                        @if (item.CurrentPosition == "UC")
-                                        {
-                                            <span class="badge bg-danger">
-                                                @Html.DisplayFor(modelItem => item.UnitCoordinator)
-                                            </span>
-                                        }
-                                        else
-                                        {
+
+                                    @if (item.CurrentPosition == "UC")
+                                    {
+                                        <td style="background-color:red">
                                             @Html.DisplayFor(modelItem => item.UnitCoordinator)
-                                        }
-                                    </td>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td style="background-color:yellow">
+                                            @Html.DisplayFor(modelItem => item.UnitCoordinator)
+                                        </td>
+                                    }
+
                                     <td>
                                         @if (item.CurrentPosition == "CC")
                                         {

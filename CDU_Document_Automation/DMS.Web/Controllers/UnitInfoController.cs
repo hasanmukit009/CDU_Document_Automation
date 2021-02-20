@@ -325,7 +325,7 @@ namespace DMS.Web.Controllers
                 CreatedDate = DateTime.Now,
                 Remarks = model.UnitCode + " " + model.UnitTitle + " has been created by UC- " + GetNameByEmail(User.Identity.Name),
                 CurrentPosition = "UC",
-                ChangeRequest = "Unit Assessment",
+                ChangeRequest = "Unit Info.",
                 Status = "Created"
             };
             return obj;

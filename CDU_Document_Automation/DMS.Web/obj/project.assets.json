@@ -8597,29 +8597,35 @@
     ]
   },
   "packageFolders": {
-    "/Users/uvishere/.nuget/packages/": {}
+    "C:\\Users\\hasan\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/uvishere/Projects/CDU_Document_Automation/CDU_Document_Automation/DMS.Web/DMS.Web.csproj",
+      "projectUniqueName": "E:\\Repository\\CDU Document Automation\\CDU_Document_Automation\\DMS.Web\\DMS.Web.csproj",
       "projectName": "DMS.Web",
-      "projectPath": "/Users/uvishere/Projects/CDU_Document_Automation/CDU_Document_Automation/DMS.Web/DMS.Web.csproj",
-      "packagesPath": "/Users/uvishere/.nuget/packages/",
-      "outputPath": "/Users/uvishere/Projects/CDU_Document_Automation/CDU_Document_Automation/DMS.Web/obj/",
+      "projectPath": "E:\\Repository\\CDU Document Automation\\CDU_Document_Automation\\DMS.Web\\DMS.Web.csproj",
+      "packagesPath": "C:\\Users\\hasan\\.nuget\\packages\\",
+      "outputPath": "E:\\Repository\\CDU Document Automation\\CDU_Document_Automation\\DMS.Web\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "/Users/uvishere/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\hasan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -8631,7 +8637,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
             "target": "Package",
@@ -8676,7 +8681,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.103/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

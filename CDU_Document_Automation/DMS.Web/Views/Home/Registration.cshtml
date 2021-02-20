@@ -4,15 +4,54 @@
 }
 <div class="register-box">
     <div class="register-logo">
-        <img class="profile-user-img img-responsive" style="border:none" src="./img/cdu-logo.png" />
+        <img class="profile-user-img img-responsive" style="border:none" src="~/img/cdu-logo.png" />
         <a href="#"><b>CIETE</b>-DMS</a>
     </div>
 
     <div class="card">
         <div class="card-body register-card-body">
             <p class="login-box-msg">Register a new membership</p>
+            <form role="form" method="post" id="registrationForm">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleInputFirstName">First Name</label>
+                        <input type="text" asp-for="FirstName" name="firstname" class="form-control" id="txtFirstName" placeholder="Enter first name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputLastName">Last Name</label>
+                        <input type="text" asp-for="LastName" name="lastname" class="form-control" id="txtLastName" placeholder="Enter last name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleUserType">User Type</label>
+                        <select class="form-control" asp-for="UserType">
+                            <option value="UC">Unit Coordinator</option>
+                            <option value="CC">Course Coordinator</option>
+                            <option value="AD">Admin</option>
+                            <option value="RV">Reviewer</option>
+                            <option value="AP">Approver</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputemail">Email address</label>
+                        <input type="email" asp-for="Email" name="email" class="form-control" id="txtEmail" placeholder="Enter email">
+                    </div>
 
-            <form id="account" method="post">
+                    <div class="form-group">
+                        <label for="exampleInputPassword">Password</label>
+                        <input type="password" asp-for="Password" name="password" class="form-control" id="txtPassword" placeholder="Password">
+                    </div>
+
+                    @*<div class="form-group">
+                        <label for="exampleInputConfirmPassword">Confirm Password</label>
+                        <input type="password" name="confirmpassword" class="form-control" id="txtConfirmPassword" placeholder="Confirm Password">
+                    </div>*@
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary btn-block">Register</button>
+                </div>
+            </form>
+            @*<form id="account" method="post">
                 <div class="input-group mb-3">
                     <input type="text" asp-for="FirstName" class="form-control" placeholder="First Name" required autofocus />
                     <div class="input-group-append">
@@ -71,13 +110,11 @@
                             </label>
                         </div>
                     </div>
-                    <!-- /.col -->
                     <div class="col-4">
                         <button type="submit" class="btn btn-primary btn-block">Register</button>
                     </div>
-                    <!-- /.col -->
                 </div>
-            </form>
+            </form>*@
             <a asp-controller="Home" asp-action="Login" class="text-center">I already have a membership</a>
         </div>
         <!-- /.form-box -->

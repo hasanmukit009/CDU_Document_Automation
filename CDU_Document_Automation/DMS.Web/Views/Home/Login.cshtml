@@ -1,145 +1,42 @@
 ﻿@model DMS.Web.ViewModel.UserViewModel
-
 @{
     ViewData["Title"] = "LOG IN";
 }
-
-@*<h1 style="text-align:center;font-family:sans-serif">@ViewData["Title"]</h1>
-    <div class="row d-flex justify-content-center col-12">
-        <div class="col-4 border border-primary rounded m-20">
-            <form id="account" method="post" class="py-5">
-                <div class="d-flex justify-content-center">
-                    <i class="icon-map-marker icon-4x text-success"></i>
-                </div>
-                <div class="form-group ">
-                    <input asp-for="Email" class="form-control" placeholder="Email address" required autofocus />
-                    <span asp-validation-for="Email" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input asp-for="Password" class="form-control" placeholder="Password" required />
-                    <span asp-validation-for="Password" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-lg btn-success btn-block">Sign in</button>
-                </div>
-                <div class="form-group">
-                    <p class="col-8">
-                        <a id="forgot-password">Forgot your password?</a>
-                    </p>
-                    <p class="col-8">
-                        <a asp-controller="Home" asp-action="Registration">Register as a new user</a>
-                    </p>
-                </div>
-                @if (@ViewBag.IncorrectUserNamePassword != null)
-                {
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong> @ViewBag.IncorrectUserNamePassword</strong>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                }
-            </form>
-        </div>
-    </div>*@
-@*<div class="row justify-content-center">
-
-        <div class="col-xl-10 col-lg-12 col-md-9">
-
-            <div class="card o-hidden border-0 shadow-lg my-5">
-                <div class="card-body p-0">
-
-                    <div class="row">
-                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                        <div class="col-lg-6">
-                            <div class="p-5">
-                                <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
-                                </div>
-                                <form id="account" method="post" class="user">
-                                    <div class="form-group">
-                                        <input asp-for="Email" class="form-control" placeholder="Email address" required autofocus />
-                                    </div>
-                                    <div class="form-group">
-                                        <input asp-for="Password" class="form-control" placeholder="Password" required />
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="custom-control custom-checkbox small">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck">
-                                            <label class="custom-control-label" for="customCheck">
-                                                Remember
-                                                Me
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="btn btn-lg btn-success btn-block">Sign in</button>
-                                </form>
-                                <hr>
-                                <div class="text-center">
-                                    <a asp-controller="Home" asp-action="Registration">Forgot Password?</a>
-                                </div>
-                                <div class="text-center">
-                                    <a asp-controller="Home" asp-action="Registration">Create an Account!</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-    </div>*@
-
-
-
 <div class="login-box">
     <div class="login-logo">
-        <img class="profile-user-img img-responsive" style="border:none" src="./img/cdu-logo.png" />
+        <img class="profile-user-img img-responsive" style="border:none" src="~/img/cdu-logo.png" />
         <a href="#"><b>CIETE</b>-DMS</a>
     </div>
     <!-- /.login-logo -->
     <div class="card">
         <div class="card-body login-card-body">
             <p class="login-box-msg">Sign in to start your session</p>
-
-            <form id="account" method="post">
-                <div class="input-group mb-3">
-                    <input asp-for="Email" type="email" class="form-control" placeholder="Email">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-envelope"></span>
+            <form role="form" method="post" id="loginForm">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" asp-for="Email" name="email" class="form-control" id="txtEmail" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" asp-for="Password" name="password" class="form-control" id="txtPassword" placeholder="Password">
+                    </div>
+                    <div class="form-group mb-0">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" name="terms" class="custom-control-input" id="exampleCheck1">
+                            <label class="custom-control-label" for="exampleCheck1">I agree to the <a href="#">terms of service</a>.</label>
                         </div>
                     </div>
                 </div>
-                <div class="input-group mb-3">
-                    <input asp-for="Password" type="password" class="form-control" placeholder="Password">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-8">
-                        <div class="icheck-primary">
-                            <input type="checkbox" id="remember">
-                            <label for="remember">
-                                Remember Me
-                            </label>
-                        </div>
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-                    </div>
-                    <!-- /.col -->
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary btn-block">Sign in</button>
                 </div>
             </form>
-            <p class="mb-1">
+            <p login-box-msg>
                 <a href="forgot-password.html">I forgot my password</a>
             </p>
-            <p class="mb-0">
+            <p login-box-msg>
                 <a asp-controller="Home" asp-action="Registration" class="text-center">Register a new membership</a>
             </p>
         </div>
