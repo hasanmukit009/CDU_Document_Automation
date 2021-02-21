@@ -444,7 +444,15 @@
                     Any changes will be announced on Learnline and during lectures.
                 </label>
             </div>
-            <h3>Course Coordinator</h3>
+
+            <h4>Unit Coordinator</h4>
+            <hr />
+            <div class="form-group">
+                <label asp-for="FeedbackByUC" class="col-sm-5 col-form-label">Feedback</label>
+                <textarea readonly asp-for="FeedbackByUC" name="FeedbackByUC" class="form-control form-control-lg" id="txtFeedbackByUC"></textarea>
+            </div>
+
+            <h4>Course Coordinator</h4>
             <hr />
             <div class="form-group">
                 <label asp-for="CourseCoordinator" class="col-sm-5 col-form-label">Course Coordinator</label>
@@ -459,16 +467,23 @@
                 <textarea readonly asp-for="FeedbackByCC" name="FeedbackByCC" class="form-control form-control-lg" id="txtFeedbackByCC"></textarea>
             </div>
 
+            <h4>Admin</h4>
+            <hr />
+            <div class="form-group">
+                <label asp-for="Admin" class="col-sm-5 col-form-label">Admin</label>
+                <input readonly asp-for="Admin" type="text" class="form-control" id="txtAdmin">
+            </div>
+
             <h4>Reviewer</h4>
             <hr />
             <div class="form-group row">
                 <div class="col-md-6">
                     <label class="col-sm-6" for="Reviewer1">Reviewer1</label>
-                    <input asp-for="Reviewer1" type="text" class="form-control" id="txtReviewer1">
+                    <input asp-for="Reviewer1" type="text" class="form-control" id="txtReviewer1" required>
                 </div>
                 <div class="col-sm-6">
                     <label class="col-sm-6" for="Reviewer2">Reviewer2</label>
-                    <input asp-for="Reviewer2" type="text" class="form-control" id="txtReviewer2">
+                    <input asp-for="Reviewer2" type="text" class="form-control" id="txtReviewer2" required>
                 </div>
             </div>
             <div class="form-group row">
@@ -482,7 +497,7 @@
                 </div>
             </div>
 
-            <h3>Approver</h3>
+            <h4>Approver</h4>
             <hr />
             <div class="form-group">
                 <label class="col-sm-5" for="Admin">Approver</label>

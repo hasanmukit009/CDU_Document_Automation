@@ -33,12 +33,12 @@ namespace DMS.Web.Controllers
         public IActionResult UnitInfoListUC()
         {
 
-            var unitInformationList = _context.UnitInformationList.Where(a => a.CurrentPosition == "UC");
+            var unitInformationList = _context.UnitInformationList.OrderByDescending(a => a.OrderByDate).Where(a => a.CurrentPosition == "UC").ToList();
             List<UnitInformationModel> lstUnitInfoList = UploadToNewList(unitInformationList);
             return View(lstUnitInfoList);
         }
 
-        private List<UnitInformationModel> UploadToNewList(IQueryable<UnitInformationModel> unitInformationList)
+        private List<UnitInformationModel> UploadToNewList(List<UnitInformationModel> unitInformationList)
         {
             List<UnitInformationModel> lstUnitInfoList = new List<UnitInformationModel>();
             foreach (var obj in unitInformationList)
@@ -164,6 +164,7 @@ namespace DMS.Web.Controllers
                 objnew.TeachingAndLearningApproach = obj.TeachingAndLearningApproach;
                 objnew.ChangeRequest = obj.ChangeRequest;
                 objnew.AssignedCourseCoordinator = obj.AssignedCourseCoordinator;
+                objnew.OrderByDate = obj.OrderByDate;
                 lstUnitInfoList.Add(objnew);
             }
             return lstUnitInfoList;
@@ -326,7 +327,8 @@ namespace DMS.Web.Controllers
                 Remarks = model.UnitCode + " " + model.UnitTitle + " has been created by UC- " + GetNameByEmail(User.Identity.Name),
                 CurrentPosition = "UC",
                 ChangeRequest = "Unit Info.",
-                Status = "Created"
+                Status = "Created",
+                OrderByDate = DateTime.Now
             };
             return obj;
         }
@@ -342,6 +344,7 @@ namespace DMS.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                model.OrderByDate = DateTime.Now;
                 model.UpdatedBy = User.Identity.Name;
                 model.UpdatedDate = DateTime.Now;
                 model.Remarks = model.UnitCode + " " + model.UnitTitle + " has been updated by UC- " + GetNameByEmail(model.UnitCoordinator);
@@ -369,10 +372,11 @@ namespace DMS.Web.Controllers
 
                 objUnitInformation.Remarks = objUnitInformation.UnitCode + " " + objUnitInformation.UnitTitle + " has been assigned to CC- " + GetNameByEmail(objUnitInformation.AssignedCourseCoordinator);
 
+                objUnitInformation.OrderByDate = DateTime.Now;
                 _context.Update(objUnitInformation);
                 await _context.SaveChangesAsync();
             }
-            return RedirectToAction("UnitInfoListUC");
+            return RedirectToAction("DashBoard","Home");
         }
 
         public async Task<IActionResult> ApproveUnitInfoByUC(int id)
@@ -386,7 +390,7 @@ namespace DMS.Web.Controllers
                 objUnitInformation.Status = "Approved";
 
                 objUnitInformation.Remarks = objUnitInformation.UnitCode + " " + objUnitInformation.UnitTitle + " has been approved by UC- " + GetNameByEmail(objUnitInformation.UnitCoordinator) + " with minor changes.";
-
+                objUnitInformation.OrderByDate = DateTime.Now;
                 _context.Update(objUnitInformation);
                 await _context.SaveChangesAsync();
             }
@@ -406,7 +410,7 @@ namespace DMS.Web.Controllers
         /// <returns></returns>
         public IActionResult UnitInfoListCC()
         {
-            var unitInformationList = _context.UnitInformationList.Where(a => a.Status == "Pending" && a.CurrentPosition == "CC");
+            var unitInformationList = _context.UnitInformationList.OrderByDescending(a => a.OrderByDate).Where(a => a.Status == "Pending" && a.CurrentPosition == "CC").ToList();
             return View(unitInformationList);
         }
 
@@ -421,10 +425,10 @@ namespace DMS.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                model.Admin = "asma@gmail.com";
                 model.UpdatedBy = User.Identity.Name;
                 model.UpdatedDate = DateTime.Now;
                 model.Remarks = model.UnitCode + " " + model.UnitTitle + " has been updated by CC- " + GetNameByEmail(model.AssignedCourseCoordinator);
+                model.OrderByDate = DateTime.Now;
                 _context.Update(model);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("UnitInfoListCC");
@@ -439,11 +443,12 @@ namespace DMS.Web.Controllers
             objUnitInformation.AssignedBy = User.Identity.Name;
             objUnitInformation.AssignedDate = DateTime.Now;
             objUnitInformation.CurrentPosition = "UC";
-            objUnitInformation.Remarks = "CC- " + GetNameByEmail(objUnitInformation.AssignedCourseCoordinator) + " has returned the Unit- " + objUnitInformation.UnitCode + " " + objUnitInformation.UnitTitle + " to " + GetNameByEmail(objUnitInformation.UnitCoordinator);
+            objUnitInformation.Remarks = "CC- " + GetNameByEmail(objUnitInformation.AssignedCourseCoordinator) + " has returned the Unit- " + objUnitInformation.UnitCode + " " + objUnitInformation.UnitTitle + " to UC- " + GetNameByEmail(objUnitInformation.UnitCoordinator);
             objUnitInformation.AssignedCourseCoordinator = null;
+            objUnitInformation.OrderByDate = DateTime.Now;
             _context.Update(objUnitInformation);
             await _context.SaveChangesAsync();
-            return RedirectToAction("UnitInfoListCC");
+            return RedirectToAction("DashBoard", "Home");
         }
 
         public async Task<IActionResult> AssignToAdmin(int id)
@@ -456,9 +461,10 @@ namespace DMS.Web.Controllers
             objUnitInformation.Status = "Pending";
             objUnitInformation.AssignedAdmin = objUnitInformation.Admin;
             objUnitInformation.Remarks = objUnitInformation.UnitCode + objUnitInformation.UnitTitle + " has been assigned to Admin- " + GetNameByEmail(objUnitInformation.AssignedAdmin);
+            objUnitInformation.OrderByDate = DateTime.Now;
             _context.Update(objUnitInformation);
             await _context.SaveChangesAsync();
-            return RedirectToAction("UnitInfoListCC");
+            return RedirectToAction("DashBoard", "Home");
         }
 
         /// <summary>
@@ -467,7 +473,7 @@ namespace DMS.Web.Controllers
         /// <returns></returns>
         public IActionResult UnitInfoListAdmin()
         {
-            var unitInformationList = _context.UnitInformationList.Where(a => a.Status == "Pending" && a.CurrentPosition == "Admin");
+            var unitInformationList = _context.UnitInformationList.OrderByDescending(a => a.OrderByDate).Where(a => a.Status == "Pending" && a.CurrentPosition == "Admin").ToList();
             return View(unitInformationList);
         }
 
@@ -485,10 +491,10 @@ namespace DMS.Web.Controllers
 
             objUnitInformation.CurrentPosition = "Reviewer";
             objUnitInformation.Remarks = GetNameByEmail(objUnitInformation.AssignedAdmin) + " assigned " + objUnitInformation.UnitCode + objUnitInformation.UnitTitle + " to reviewer1- " + GetNameByEmail(objUnitInformation.AssignedReviewer1) + " and reviewer2- " + GetNameByEmail(objUnitInformation.AssignedReviewer2);
-
+            objUnitInformation.OrderByDate = DateTime.Now;
             _context.Update(objUnitInformation);
             await _context.SaveChangesAsync();
-            return RedirectToAction("UnitInfoListAdmin");
+            return RedirectToAction("DashBoard", "Home");
         }
 
         public async Task<IActionResult> ViewUnitInformationByAdmin(int id)
@@ -505,6 +511,7 @@ namespace DMS.Web.Controllers
                 model.UpdatedBy = User.Identity.Name;
                 model.UpdatedDate = DateTime.Now;
                 model.Remarks = "Admin - " + GetNameByEmail(model.AssignedAdmin) + " has reviewed Unit- " + model.UnitCode + model.UnitTitle;
+                model.OrderByDate = DateTime.Now;
                 _context.Update(model);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("UnitInfoListAdmin");
@@ -519,7 +526,7 @@ namespace DMS.Web.Controllers
         /// <returns></returns>
         public IActionResult UnitInfoListReviewer()
         {
-            var unitInformationList = _context.UnitInformationList.Where(a => a.Status == "Pending" && a.CurrentPosition == "Reviewer");
+            var unitInformationList = _context.UnitInformationList.OrderByDescending(a => a.OrderByDate).Where(a => a.Status == "Pending" && a.CurrentPosition == "Reviewer").ToList();
             return View(unitInformationList);
         }
 
@@ -539,22 +546,25 @@ namespace DMS.Web.Controllers
                     model.Approver = "stefanija@gmail.com";
                     model.UpdatedBy = User.Identity.Name;
                     model.UpdatedDate = DateTime.Now;
-                    model.Remarks = "Riviewer1 - " + GetNameByEmail(model.AssignedReviewer1) + " reviewed unit- " + model.UnitCode + " " + model.UnitTitle;
+                    model.Remarks = "Reviewer1 - " + GetNameByEmail(model.AssignedReviewer1) + " reviewed unit- " + model.UnitCode + " " + model.UnitTitle;
                     model.IsReviewedByReviewer1 = true;
                     model.Status = "Pending";
+                    model.OrderByDate = DateTime.Now;
                 }
                 if (User.Identity.Name == model.AssignedReviewer2)
                 {
                     model.Approver = "stefanija@gmail.com";
                     model.UpdatedBy = User.Identity.Name;
                     model.UpdatedDate = DateTime.Now;
-                    model.Remarks = "Riviewer2 - " + GetNameByEmail(model.AssignedReviewer2) + " reviewed unit- " + model.UnitCode + " " + model.UnitTitle;
+                    model.Remarks = "Reviewer2 - " + GetNameByEmail(model.AssignedReviewer2) + " reviewed unit- " + model.UnitCode + " " + model.UnitTitle;
                     model.IsReviewedByReviewer2 = true;
                     model.Status = "Pending";
+                    model.OrderByDate = DateTime.Now;
                 }
                 if (model.IsReviewedByReviewer1 == true && model.IsReviewedByReviewer2 == true)
                 {
-                    model.Remarks = "Riviewer1 - " + GetNameByEmail(model.AssignedReviewer1) + " and " + "Riviewer2 - " + GetNameByEmail(model.AssignedReviewer2) + " reviewed unit-" + model.UnitCode + " " + model.UnitTitle;
+                    model.Remarks = "Reviewer1 - " + GetNameByEmail(model.AssignedReviewer1) + " and " + "Reviewer2 - " + GetNameByEmail(model.AssignedReviewer2) + " reviewed unit-" + model.UnitCode + " " + model.UnitTitle;
+                    model.OrderByDate = DateTime.Now;
                 }
 
                 _context.Update(model);
@@ -573,9 +583,10 @@ namespace DMS.Web.Controllers
             objUnitInformation.CurrentPosition = "Approver";
             objUnitInformation.AssignedApprover = objUnitInformation.Approver;
             objUnitInformation.Remarks = "Reviewer1  - " + GetNameByEmail(objUnitInformation.Reviewer1) + " and " + "Reviewer2 - " + GetNameByEmail(objUnitInformation.Reviewer2) + " has been reviewed and assigned " + objUnitInformation.UnitCode + objUnitInformation.UnitTitle + " to Approver -" + GetNameByEmail(objUnitInformation.AssignedApprover);
+            objUnitInformation.OrderByDate = DateTime.Now;
             _context.Update(objUnitInformation);
             await _context.SaveChangesAsync();
-            return RedirectToAction("UnitInfoListReviewer");
+            return RedirectToAction("DashBoard", "Home");
         }
 
         /// <summary>
@@ -584,7 +595,7 @@ namespace DMS.Web.Controllers
         /// <returns></returns>
         public IActionResult UnitInfoListApprover()
         {
-            var unitInformationList = _context.UnitInformationList.Where(a => a.Status == "Pending" && a.CurrentPosition == "Approver");
+            var unitInformationList = _context.UnitInformationList.OrderByDescending(a => a.OrderByDate).Where(a => a.Status == "Pending" && a.CurrentPosition == "Approver").ToList();
             return View(unitInformationList);
         }
 
@@ -599,11 +610,11 @@ namespace DMS.Web.Controllers
             objUnitInformation.CurrentPosition = "UC";
             objUnitInformation.Remarks = "Approver- " + GetNameByEmail(objUnitInformation.AssignedApprover) + " rejected the unit -" + objUnitInformation.UnitCode + objUnitInformation.UnitTitle + " with minor changes.";
             objUnitInformation.Status = "Reject(Minor)";
-
+            objUnitInformation.OrderByDate = DateTime.Now;
             _context.Update(objUnitInformation);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("UnitInfoListApprover");
+            return RedirectToAction("DashBoard", "Home");
         }
 
         public async Task<IActionResult> RejectWithMajorChangeFromApprover(int id)
@@ -615,17 +626,18 @@ namespace DMS.Web.Controllers
             objUnitInformation.UpdatedBy = objUnitInformation.AssignedApprover;
             objUnitInformation.UpdatedDate = DateTime.Now;
             objUnitInformation.CurrentPosition = "UC";
-            objUnitInformation.Remarks = "Approver- " + GetNameByEmail(objUnitInformation.AssignedApprover) + " rejected the unit -" + objUnitInformation.UnitCode + " " + objUnitInformation.UnitTitle + " with major changes.";
+            objUnitInformation.Remarks = "Approver - " + GetNameByEmail(objUnitInformation.AssignedApprover) + " rejected the unit -" + objUnitInformation.UnitCode + " " + objUnitInformation.UnitTitle + " with major changes.";
             objUnitInformation.AssignedApprover = null;
             objUnitInformation.AssignedReviewer1 = null;
             objUnitInformation.AssignedReviewer2 = null;
             objUnitInformation.AssignedAdmin = null;
             objUnitInformation.AssignedCourseCoordinator = null;
             objUnitInformation.Status = "Reject(Major)";
+            objUnitInformation.OrderByDate = DateTime.Now;
             _context.Update(objUnitInformation);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("UnitInfoListApprover");
+            return RedirectToAction("DashBoard", "Home");
         }
 
         public async Task<IActionResult> Approve(int id)
@@ -634,9 +646,10 @@ namespace DMS.Web.Controllers
             objUnitInformation.CurrentPosition = "UC";
             objUnitInformation.Status = "Approved";
             objUnitInformation.Remarks = "Approver - " + GetNameByEmail(objUnitInformation.AssignedApprover) + " approved the unit - " + objUnitInformation.UnitCode + " " + objUnitInformation.UnitTitle;
+            objUnitInformation.OrderByDate = DateTime.Now;
             _context.Update(objUnitInformation);
             await _context.SaveChangesAsync();
-            return RedirectToAction("UnitInfoListApprover");
+            return RedirectToAction("DashBoard", "Home");
         }
 
         public async Task<IActionResult> ViewUnitInformationByApprover(int id)
@@ -653,6 +666,7 @@ namespace DMS.Web.Controllers
                 model.UpdatedBy = User.Identity.Name;
                 model.UpdatedDate = DateTime.Now;
                 model.Remarks = "Approver - " + GetNameByEmail(model.AssignedApprover) + " reviewed unit- " + model.UnitCode + " " + model.UnitTitle;
+                model.OrderByDate = DateTime.Now;
                 _context.Update(model);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("UnitInfoListApprover");

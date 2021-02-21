@@ -156,7 +156,7 @@ namespace DMS.Web.Controllers
       
         public IActionResult DashBoard()
         {
-            var unitInformationList = _context.UnitInformationList.OrderByDescending(a => a.CreatedDate).ToList();
+            var unitInformationList = _context.UnitInformationList.OrderByDescending(a => a.OrderByDate).ToList();
             List<UnitInformationModel> lstUnitInfoList = UploadToNewList(unitInformationList);
             return View(lstUnitInfoList);
         }
@@ -292,6 +292,9 @@ namespace DMS.Web.Controllers
                 objnew.AssignedReviewer1 = GetNameByEmail(obj.AssignedReviewer1);
                 objnew.AssignedReviewer2 = GetNameByEmail(obj.AssignedReviewer2);
                 objnew.AssignedApprover = GetNameByEmail(obj.AssignedApprover);
+                
+                
+                objnew.OrderByDate = obj.OrderByDate;
 
 
                 lstUnitInfoList.Add(objnew);

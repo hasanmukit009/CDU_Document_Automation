@@ -74,9 +74,18 @@
                                                 <a asp-action="EditUnitInfoByUC" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
                                                     <span class="text">Edit</span>
                                                 </a>
-                                                <a asp-action="AssignToCourseCoordinator" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
-                                                    <span class="text">Assign To CC</span>
-                                                </a>
+                                                @if (!String.IsNullOrEmpty(item.CourseCoordinator))
+                                                {
+                                                    <a asp-action="AssignToCourseCoordinator" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
+                                                        <span class="text">Assign To CC</span>
+                                                    </a>
+                                                }
+                                                else
+                                                {
+                                                    <a asp-action="AssignToCourseCoordinator" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split disabled">
+                                                        <span class="text">Assign To CC</span>
+                                                    </a>
+                                                }
                                             </td>
                                         }
                                     }

@@ -466,7 +466,14 @@
                 </label>
             </div>
 
-            <h3>Course Coordinator</h3>
+            <h4>Unit Coordinator</h4>
+            <hr />
+            <div class="form-group">
+                <label asp-for="FeedbackByUC" class="col-sm-5 col-form-label">Feedback</label>
+                <textarea readonly asp-for="FeedbackByUC" name="FeedbackByUC" class="form-control form-control-lg" id="txtFeedbackByUC"></textarea>
+            </div>
+
+            <h4>Course Coordinator</h4>
             <hr />
             <div class="form-group">
                 <label asp-for="CourseCoordinator" class="col-sm-5 col-form-label">Course Coordinator</label>
@@ -480,7 +487,15 @@
                 <label class="col-sm-5" for="FeedbackByCC">Feedback</label>
                 <textarea readonly asp-for="FeedbackByCC" name="FeedbackByCC" class="form-control form-control-lg" id="txtFeedbackByCC"></textarea>
             </div>
-            <h3>Reviewer</h3>
+
+            <h4>Admin</h4>
+            <hr />
+            <div class="form-group">
+                <label asp-for="Admin" class="col-sm-5 col-form-label">Admin</label>
+                <input readonly asp-for="Admin" type="text" class="form-control" id="txtAdmin">
+            </div>
+
+            <h4>Reviewer</h4>
             <hr />
             <div class="form-group row">
                 <div class="col-md-6">
@@ -523,10 +538,11 @@
                     </div>
                 }
             </div>
-            <h3>Approver</h3>
+
+            <h4>Approver</h4>
             <hr />
             <div class="form-group">
-                <select asp-for="Approver" class="custom-select">
+                <select asp-for="Approver" class="custom-select" required>
                     <option value="">Choose Approver</option>
                     <option value="stefanija@gmail.com">Stefanija klaric</option>
                 </select>

@@ -29,7 +29,7 @@
             <input type="hidden" asp-for="CourseCoordinator" />
             <input type="hidden" asp-for="AssignedCourseCoordinator" />
 
-            <input type="hidden" asp-for="Admin" />
+            @*<input type="hidden" asp-for="Admin" />*@
             <input type="hidden" asp-for="AssignedAdmin" />
 
 
@@ -455,11 +455,18 @@
                 </label>
             </div>
 
+            <h4>Unit Coordinator</h4>
+            <hr />
+            <div class="form-group">
+                <label asp-for="FeedbackByUC" class="col-sm-5 col-form-label">Feedback</label>
+                <textarea readonly asp-for="FeedbackByUC" name="FeedbackByUC" class="form-control form-control-lg" id="txtFeedbackByUC"></textarea>
+            </div>
+
             <h4>Course Coordinator</h4>
             <hr />
             <div class="form-group">
                 <label asp-for="CourseCoordinator" class="col-sm-5 col-form-label">Course Coordinator</label>
-                <select disabled asp-for="CourseCoordinator" class="custom-select">
+                <select disabled asp-for="CourseCoordinator" class="custom-select" required>
                     <option value="">Choose Course-Coordinator</option>
                     <option value="sami@gmail.com">Sami Azam</option>
                     <option value="bharani@gmail.com">Bharanidharan Shanmugam</option>
@@ -468,6 +475,13 @@
             <div class="form-group">
                 <label class="col-sm-5" for="FeedbackByCC">Feedback</label>
                 <textarea asp-for="FeedbackByCC" name="FeedbackByCC" class="form-control form-control-lg" id="txtFeedbackByCC"></textarea>
+            </div>
+
+            <h4>Admin</h4>
+            <hr />
+            <div class="form-group">
+                <label asp-for="Admin" class="col-sm-5 col-form-label">Admin</label>
+                <input asp-for="Admin" name="Admin" type="text" class="form-control" id="txtAdmin" required>
             </div>
 
             <h4>Reviewer</h4>

@@ -42,9 +42,18 @@
                                             <a asp-action="ViewUnitInformationByAdmin" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
                                                 <span class="text">View</span>
                                             </a>
-                                            <a asp-action="AssignToReviewer" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
-                                                <span class="text">Assign To Reviewer</span>
-                                            </a>
+                                            @if (String.IsNullOrEmpty(item.Reviewer1) || String.IsNullOrEmpty(item.Reviewer2))
+                                            {
+                                                <a asp-action="AssignToReviewer" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split disabled">
+                                                    <span class="text">Assign To Reviewer</span>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <a asp-action="AssignToReviewer" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
+                                                    <span class="text">Assign To Reviewer</span>
+                                                </a>
+                                            }
                                         </td>
                                     }
                                     else

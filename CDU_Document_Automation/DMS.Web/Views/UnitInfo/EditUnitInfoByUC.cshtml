@@ -86,7 +86,7 @@
             <div class="form-group">
                 <label class="col-sm-5 col-form-label" for="Learning method">Learning method</label>
                 @*<input asp-for="LearningMethod" type="text" class="form-control" id="txtLearningmethod">*@
-                
+
             </div>
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
@@ -453,11 +453,18 @@
                 </label>
             </div>
 
+            <h4>Unit Coordinator</h4>
+            <hr />
+            <div class="form-group">
+                <label asp-for="FeedbackByUC" class="col-sm-5 col-form-label">Feedback</label>
+                <textarea asp-for="FeedbackByUC" name="FeedbackByUC" class="form-control form-control-lg" id="txtFeedbackByUC"></textarea>
+            </div>
+
             <h4>Course Coordinator</h4>
             <hr />
             <div class="form-group">
                 <label asp-for="CourseCoordinator" class="col-sm-5 col-form-label">Course Coordinator</label>
-                <select asp-for="CourseCoordinator" class="custom-select">
+                <select asp-for="CourseCoordinator" class="custom-select" required>
                     <option value="">Choose Course-Coordinator</option>
                     <option value="sami@gmail.com">Sami Azam</option>
                     <option value="bharani@gmail.com">Bharanidharan Shanmugam</option>
@@ -467,7 +474,14 @@
                 <label class="col-sm-5" for="FeedbackByCC">Feedback</label>
                 <textarea readonly asp-for="FeedbackByCC" name="FeedbackByCC" class="form-control form-control-lg" id="txtFeedbackByCC"></textarea>
                 @*<textarea asp-for="FeedbackByCC" class="textarea" placeholder="Place some text here"
-                          style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>*@
+            style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>*@
+            </div>
+
+            <h4>Admin</h4>
+            <hr />
+            <div class="form-group">
+                <label asp-for="Admin" class="col-sm-5 col-form-label">Admin</label>
+                <input readonly asp-for="Admin" type="text" class="form-control" id="txtAdmin" required>
             </div>
 
             <h4>Reviewer</h4>

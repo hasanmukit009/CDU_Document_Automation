@@ -43,9 +43,18 @@
                                             <a asp-action="ViewUnitInformationByCC" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
                                                 <span class="text">View</span>
                                             </a>
-                                            <a asp-action="AssignToAdmin" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
-                                                <span class="text">Assign To Admin</span>
-                                            </a>
+                                            @if (!String.IsNullOrEmpty(item.Admin))
+                                            {
+                                                <a asp-action="AssignToAdmin" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
+                                                    <span class="text">Assign To Admin</span>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <a asp-action="AssignToAdmin" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split disabled">
+                                                    <span class="text">Assign To Admin</span>
+                                                </a>
+                                            }
                                             <a asp-action="ReturnCCToUC" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
                                                 <span class="text">Return To UC</span>
                                             </a>

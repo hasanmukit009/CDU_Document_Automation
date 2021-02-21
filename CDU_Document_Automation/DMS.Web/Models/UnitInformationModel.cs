@@ -23,7 +23,7 @@ namespace DMS.Web.Models
         public string Mode { get; set; }
         public string Location { get; set; }
         public string LearningMethod { get; set; }
-        public string UnitCoordinator { get; set; }
+        
         public string Phone { get; set; }
         public string Email { get; set; }
         public string UnitDescription { get; set; }
@@ -136,6 +136,8 @@ namespace DMS.Web.Models
         public string LearningSchedule_Tutorial_15 { get; set; }
         public string LearningSchedule_Assessments_15 { get; set; }
 
+        public string UnitCoordinator { get; set; }
+        public string FeedbackByUC { get; set; }
 
         public string CourseCoordinator { get; set; }
         public string AssignedCourseCoordinator { get; set; }
@@ -176,5 +178,7 @@ namespace DMS.Web.Models
 
 
         public string CurrentPosition { get; set; }
+
+        public DateTime OrderByDate { get; set; }
     }
 }
