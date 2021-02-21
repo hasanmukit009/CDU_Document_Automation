@@ -85,7 +85,8 @@
             </div>
             <div class="form-group">
                 <label class="col-sm-5 col-form-label" for="Learning method">Learning method</label>
-                <input asp-for="LearningMethod" type="text" class="form-control" id="txtLearningmethod">
+                @*<input asp-for="LearningMethod" type="text" class="form-control" id="txtLearningmethod">*@
+                
             </div>
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
@@ -465,6 +466,8 @@
             <div class="form-group">
                 <label class="col-sm-5" for="FeedbackByCC">Feedback</label>
                 <textarea readonly asp-for="FeedbackByCC" name="FeedbackByCC" class="form-control form-control-lg" id="txtFeedbackByCC"></textarea>
+                @*<textarea asp-for="FeedbackByCC" class="textarea" placeholder="Place some text here"
+                          style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>*@
             </div>
 
             <h4>Reviewer</h4>

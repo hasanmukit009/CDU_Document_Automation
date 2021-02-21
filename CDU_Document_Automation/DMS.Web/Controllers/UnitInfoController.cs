@@ -398,7 +398,7 @@ namespace DMS.Web.Controllers
             var objUnitInformation = await _context.UnitInformationList.FindAsync(id);
             return View(objUnitInformation);
         }
-        
+
 
         /// <summary>
         /// Course Coordinator
@@ -440,7 +440,7 @@ namespace DMS.Web.Controllers
             objUnitInformation.AssignedDate = DateTime.Now;
             objUnitInformation.CurrentPosition = "UC";
             objUnitInformation.Remarks = "CC- " + GetNameByEmail(objUnitInformation.AssignedCourseCoordinator) + " has returned the Unit- " + objUnitInformation.UnitCode + " " + objUnitInformation.UnitTitle + " to " + GetNameByEmail(objUnitInformation.UnitCoordinator);
-            objUnitInformation.AssignedCourseCoordinator = "";
+            objUnitInformation.AssignedCourseCoordinator = null;
             _context.Update(objUnitInformation);
             await _context.SaveChangesAsync();
             return RedirectToAction("UnitInfoListCC");

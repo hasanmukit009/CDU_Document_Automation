@@ -32,11 +32,13 @@ namespace DMS.Web.Controllers
             return View();
         }
         [HttpGet]
+      
         public IActionResult Login()
         {
             return View();
         }
         [HttpPost]
+      
         public async Task<IActionResult> LoginAsync(UserViewModel model)
         {
             var obj = _context.UserList.Where(a => a.Email == model.Email && a.Password == model.Password).ToList().FirstOrDefault();
@@ -52,6 +54,7 @@ namespace DMS.Web.Controllers
             }
             return View(model);
         }
+       
         public IActionResult Registration()
         {
             return View();
@@ -126,6 +129,7 @@ namespace DMS.Web.Controllers
         {
             return View();
         }
+       
         [HttpGet]
         public async Task<IActionResult> FailedRegistration(int id)
         {
@@ -145,21 +149,19 @@ namespace DMS.Web.Controllers
             return RedirectToAction("Login", "Home");
         }
 
-
-
-
         public IActionResult Privacy()
         {
             return View();
         }
+      
         public IActionResult DashBoard()
         {
-            var unitInformationList = _context.UnitInformationList;
+            var unitInformationList = _context.UnitInformationList.OrderByDescending(a => a.CreatedDate).ToList();
             List<UnitInformationModel> lstUnitInfoList = UploadToNewList(unitInformationList);
             return View(lstUnitInfoList);
         }
 
-        private List<UnitInformationModel> UploadToNewList(IQueryable<UnitInformationModel> unitInformationList)
+        private List<UnitInformationModel> UploadToNewList(List<UnitInformationModel> unitInformationList)
         {
             List<UnitInformationModel> lstUnitInfoList = new List<UnitInformationModel>();
             foreach (var obj in unitInformationList)
@@ -197,7 +199,9 @@ namespace DMS.Web.Controllers
                 objnew.Status = obj.Status;
                 objnew.Remarks = obj.Remarks;
                 objnew.FeedbackByCC = obj.FeedbackByCC;
+                objnew.IsReviewedByReviewer1 = obj.IsReviewedByReviewer1;
                 objnew.FeedbackByReviewer1 = obj.FeedbackByReviewer1;
+                objnew.IsReviewedByReviewer2 = obj.IsReviewedByReviewer2;
                 objnew.FeedbackByReviewer2 = obj.FeedbackByReviewer2;
                 objnew.FeedbackByApprover = obj.FeedbackByApprover;
                 objnew.CourseCoordinator = GetNameByEmail(obj.CourseCoordinator);

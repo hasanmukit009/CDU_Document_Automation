@@ -33,11 +33,11 @@ namespace DMS.Web
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.ConfigureApplicationCookie(options =>
+            services.AddSession(options =>
             {
-                options.ExpireTimeSpan = TimeSpan.FromSeconds(5);
-                options.LoginPath = "/Home/Logout";
-                options.SlidingExpiration = true;
+                options.Cookie.Name = "_aspnetCoreSession";
+                options.IdleTimeout = TimeSpan.FromDays(1);
+                options.Cookie.IsEssential = true;
             });
 
             services.AddControllersWithViews();

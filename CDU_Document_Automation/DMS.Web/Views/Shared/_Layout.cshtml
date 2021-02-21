@@ -38,22 +38,18 @@
             $('#loginForm').validate({
                 rules: {
                     email: {
-                        required: true,
-                        email: true,
+                        required: true
                     },
                     password: {
-                        required: true,
-                        minlength: 6
+                        required: true
                     },
                 },
                 messages: {
                     email: {
-                        required: "Please enter a email address",
-                        email: "Please enter a vaild email address"
+                        required: "Please enter a email address"
                     },
                     password: {
-                        required: "Please provide a password",
-                        minlength: "Your password must be at least 6 characters long"
+                        required: "Please enter a password"
                     }
                 },
                 errorElement: 'span',
