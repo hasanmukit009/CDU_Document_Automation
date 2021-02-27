@@ -1,6 +1,6 @@
-﻿@model IEnumerable<DMS.Web.Models.UnitInformationModel>
+﻿@model IEnumerable<DMS.Web.Models.UnitDescriptionModel>
 @{
-    ViewData["Title"] = "UnitInfoListUC";
+    ViewData["Title"] = "UnitDescriptionListUC";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
@@ -12,7 +12,7 @@
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Dashboard">Home</a></li>
-                <li class="breadcrumb-item active">Unit Information</li>
+                <li class="breadcrumb-item active">Unit Description</li>
             </ol>
         </div>
     </div>
@@ -22,13 +22,13 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <a asp-controller="UnitInfo" asp-action="AddNewUnitInfo" class="btn btn-success btn-sm">
+                    <a asp-controller="UnitDescription" asp-action="AddNewUnitDescription" class="btn btn-success btn-sm">
                         <i class="fas fa-plus-circle"></i> Add New
                     </a>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <table id="tblUnitListUC" class="table table-bordered table-striped">
+                    <table id="tblUnitDescriptiontUC" class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>Activity Log</th>
@@ -40,7 +40,7 @@
                             {
                                 <tr id="row_@item.Id">
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Remarks)
+                                        @Html.DisplayFor(modelItem => item.ActivityLog)
                                     </td>
 
                                     @if (item.UnitCoordinator == User.Identity.Name)
@@ -48,10 +48,10 @@
                                         @if (item.Status == "Approved")
                                         {
                                             <td>
-                                                <a asp-action="ViewUnitInfo" asp-route-id="@item.Id" class="btn btn-primary btn-sm">
+                                                <a asp-action="ViewUnitDesc" asp-route-id="@item.Id" class="btn btn-primary btn-sm">
                                                     <i class="fas fa-eye"></i>View
                                                 </a>
-                                                <a asp-action="DownloadUnitInfo" asp-route-id="@item.Id" class="btn btn-primary btn-sm">
+                                                <a asp-action="DownloadUnitDesc" asp-route-id="@item.Id" class="btn btn-primary btn-sm">
                                                     <i class="fas fa-download"></i>Download
                                                 </a>
                                             </td>
@@ -59,13 +59,13 @@
                                         else if (item.Status == "Reject(Minor)")
                                         {
                                             <td>
-                                                <a asp-action="EditUnitInfoByUC" asp-route-id="@item.Id" class="btn btn-primary btn-sm btn-icon-split">
+                                                <a asp-action="EditUnitDescByUC" asp-route-id="@item.Id" class="btn btn-primary btn-sm btn-icon-split">
                                                     <i class="fas fa-edit"></i>Edit
                                                 </a>
-                                                <a asp-action="ApproveUnitInfoByUC" asp-route-id="@item.Id" class="btn btn-primary btn-sm btn-icon-split">
+                                                <a asp-action="ApproveUnitDescByUC" asp-route-id="@item.Id" class="btn btn-primary btn-sm btn-icon-split">
                                                     <i class="fas fa-check-circle"></i>Approve
                                                 </a>
-                                                <a asp-action="RemoveUnitInfoByUC" asp-route-id="@item.Id" class="btn btn-primary btn-sm btn-icon-split">
+                                                <a asp-action="RemoveUnitDescByUC" asp-route-id="@item.Id" class="btn btn-primary btn-sm btn-icon-split">
                                                     <span style="font-size: 1em; color: white;">
                                                         <i class="fas fa-minus-circle"></i>
                                                         Remove
@@ -76,10 +76,10 @@
                                         else
                                         {
                                             <td>
-                                                <a asp-action="EditUnitInfoByUC" asp-route-id="@item.Id" class="btn btn-primary btn-sm">
+                                                <a asp-action="EditUnitDescByUC" asp-route-id="@item.Id" class="btn btn-primary btn-sm">
                                                     <i class="fas fa-edit"></i>Edit
                                                 </a>
-                                                <a onclick="ConfirmDelete(@item.Id)" class="btn btn-danger btn-sm">
+                                                <a onclick="ConfirmDeleteUnitDesc(@item.Id)" class="btn btn-danger btn-sm">
                                                     <span style="font-size: 1em; color: white;">
                                                         <i class="fas fa-minus-circle"></i>
                                                         Remove
@@ -128,7 +128,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Remove Unit Information</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Remove Unit Description</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -137,10 +137,11 @@
                 Are you sure you want to remove this unit?
             </div>
             <div class="modal-footer">
+                <button type="button" onclick="RemoveUnitDesc()" class="btn btn-primary">Confirm</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" onclick="RemoveUnitInfo()" class="btn btn-primary">Confirm</button>
             </div>
         </div>
     </div>
 </div>
-<input type="hidden" id="hdnUnitInfoID" />
+<input type="hidden" id="hdnUnitDescID" />
+

@@ -46,7 +46,7 @@
                     <a asp-controller="Home" asp-action="DashBoard" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a asp-controller="Home" asp-action="DashBoard" class="nav-link">Contact</a>
+                    <a asp-controller="Home" asp-action="Contact" class="nav-link">Contact</a>
                 </li>
             </ul>
             <!-- Right navbar links -->
@@ -104,7 +104,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a asp-area="" asp-controller="UnitDescription" asp-action="UnitDescListUC" class="nav-link">
+                                    <a asp-area="" asp-controller="UnitDescription" asp-action="UnitDescriptionListUC" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Unit Description</p>
                                     </a>
@@ -408,6 +408,45 @@
             });
 
         });
+
+        var ConfirmDelete = function (UnitInfoID) {
+
+            $("#hdnUnitInfoID").val(UnitInfoID);
+            $("#myModal").modal('show');
+
+        }
+        var RemoveUnitInfo = function () {
+            var unitinfoid = $("#hdnUnitInfoID").val();
+            $.ajax({
+                type: "POST",
+                url: "/UnitInfo/RemoveUnitInfoByUC",
+                data: { Id: unitinfoid },
+                success: function (result) {
+                    $("#myModal").modal("hide");
+                    $("#row_" + unitinfoid).remove();
+                }
+            })
+        }
+
+
+        var ConfirmDeleteUnitDesc = function (UnitInfoID) {
+            $("#hdnUnitDescID").val(UnitDescID);
+            $("#myModal").modal('show');
+        }
+        var RemoveUnitDesc = function () {
+            var unitdescid = $("#hdnUnitDescID").val();
+            $.ajax({
+                type: "POST",
+                url: "/UnitDescription/RemoveUnitDescByUC",
+                data: { Id: unitdescid },
+                success: function (result) {
+                    $("#myModal").modal("hide");
+                    $("#row_" + unitdescid).remove();
+                }
+            })
+        }
+
+
     </script>
 </body>
 </html>

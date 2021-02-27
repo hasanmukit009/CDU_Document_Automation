@@ -7,7 +7,6 @@ namespace DMS.Web.ViewModel
 {
     public class UnitInformationViewModel
     {
-       
         public string UnitCode { get; set; }
         public string UnitTitle { get; set; }
         public string CreditPoints { get; set; }

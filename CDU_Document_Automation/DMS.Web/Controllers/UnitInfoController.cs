@@ -376,7 +376,7 @@ namespace DMS.Web.Controllers
                 _context.Update(objUnitInformation);
                 await _context.SaveChangesAsync();
             }
-            return RedirectToAction("DashBoard","Home");
+            return RedirectToAction("DashBoard", "Home");
         }
 
         public async Task<IActionResult> ApproveUnitInfoByUC(int id)
@@ -403,6 +403,13 @@ namespace DMS.Web.Controllers
             return View(objUnitInformation);
         }
 
+        public JsonResult RemoveUnitInfoByUC(int id)
+        {
+            var objUnitInformation = _context.UnitInformationList.Find(id);
+            _context.Remove(objUnitInformation);
+            _context.SaveChanges();
+            return Json(new { status = "Success" });
+        }
 
         /// <summary>
         /// Course Coordinator

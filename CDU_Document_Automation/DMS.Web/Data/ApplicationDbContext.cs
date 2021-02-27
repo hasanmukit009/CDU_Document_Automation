@@ -15,5 +15,6 @@ namespace DMS.Web.Data
         }
         public DbSet<UserModel> UserList { get; set; }
         public DbSet<UnitInformationModel> UnitInformationList { get; set; }
+        public DbSet<UnitDescriptionModel> UnitDescriptionList { get; set; }
     }
 }

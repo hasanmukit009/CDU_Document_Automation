@@ -2,14 +2,10 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DMS.Web.Models
+namespace DMS.Web.ViewModel
 {
-    [Table("DMS_UNIT_DESC")]
-    public class UnitDescriptionModel
+    public class UnitDescriptionViewModel
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
         public string ChangeRequest { get; set; }
         public string UnitCode { get; set; }
         public string UnitTitle { get; set; }

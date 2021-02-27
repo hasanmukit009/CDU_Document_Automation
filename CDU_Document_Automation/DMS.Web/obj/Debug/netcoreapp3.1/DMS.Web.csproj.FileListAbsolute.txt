@@ -361,3 +361,6 @@ E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\DMS.Web.pdb
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\DMS.Web.genruntimeconfig.cache
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\DMS.Web.csprojAssemblyReference.cache
+E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Contact.cshtml.g.cs
+E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\UnitDescription\UnitDescriptionListUC.cshtml.g.cs
+E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\UnitDescription\AddNewUnitDescription.cshtml.g.cs

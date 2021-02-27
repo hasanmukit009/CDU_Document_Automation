@@ -32,13 +32,13 @@ namespace DMS.Web.Controllers
             return View();
         }
         [HttpGet]
-      
+
         public IActionResult Login()
         {
             return View();
         }
         [HttpPost]
-      
+
         public async Task<IActionResult> LoginAsync(UserViewModel model)
         {
             var obj = _context.UserList.Where(a => a.Email == model.Email && a.Password == model.Password).ToList().FirstOrDefault();
@@ -54,7 +54,7 @@ namespace DMS.Web.Controllers
             }
             return View(model);
         }
-       
+
         public IActionResult Registration()
         {
             return View();
@@ -129,7 +129,7 @@ namespace DMS.Web.Controllers
         {
             return View();
         }
-       
+
         [HttpGet]
         public async Task<IActionResult> FailedRegistration(int id)
         {
@@ -153,7 +153,7 @@ namespace DMS.Web.Controllers
         {
             return View();
         }
-      
+
         public IActionResult DashBoard()
         {
             var unitInformationList = _context.UnitInformationList.OrderByDescending(a => a.OrderByDate).ToList();
@@ -292,8 +292,8 @@ namespace DMS.Web.Controllers
                 objnew.AssignedReviewer1 = GetNameByEmail(obj.AssignedReviewer1);
                 objnew.AssignedReviewer2 = GetNameByEmail(obj.AssignedReviewer2);
                 objnew.AssignedApprover = GetNameByEmail(obj.AssignedApprover);
-                
-                
+
+
                 objnew.OrderByDate = obj.OrderByDate;
 
 
@@ -315,6 +315,12 @@ namespace DMS.Web.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+
+        public IActionResult Contact()
+        {
+            return View();
         }
     }
 }
