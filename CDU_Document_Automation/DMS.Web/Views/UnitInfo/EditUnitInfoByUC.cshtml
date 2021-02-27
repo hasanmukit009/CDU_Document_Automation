@@ -3,14 +3,22 @@
     ViewData["Title"] = "EditUnitInfoByUC";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-<div class="col-lg-12">
-    <div class="text-center">
-        <h4>View Unit Information</h4>
+<div class="container-fluid">
+    <div class="row mb-2">
+        <div class="col-sm-6">
+            @*<h1>New Unit</h1>*@
+        </div>
+        <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Dashboard">Home</a></li>
+                <li class="breadcrumb-item active">Unit Coordinator</li>
+            </ol>
+        </div>
     </div>
 </div>
-<div class="col-lg-12">
-    <div class="p-5">
-        <form class="user" method="post">
+<div class="container-fluid">
+    <div class="row">
+        <form method="post" id="editUnit">
             <input type="hidden" asp-for="ChangeRequest" />
             <input type="hidden" asp-for="CurrentPosition" />
             <input type="hidden" asp-for="Remarks" />
@@ -41,489 +49,530 @@
 
             <input type="hidden" asp-for="Approver" />
             <input type="hidden" asp-for="AssignedApprover" />
+            <div class="col-md-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h4 class="card-title">New Unit</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="UnitCode">Unit Code</label>
+                                    <input asp-for="UnitCode" type="text" class="form-control" id="txtUnitCode">
+                                </div>
+                                <div class="form-group">
+                                    <label for="CreditPoints">CreditPoints</label>
+                                    <input asp-for="CreditPoints" type="text" class="form-control" id="txtCreditPoints">
+                                </div>
+                                <div class="form-group">
+                                    <label for="Semester">Semester</label>
+                                    <input asp-for="Semester" type="text" class="form-control" id="txtSemester">
+                                </div>
+                                <div class="form-group">
+                                    <label for="Prerequisites">Prerequisites</label>
+                                    <input asp-for="Prerequisites" type="text" class="form-control" id="txtPrerequisites">
+                                </div>
+                                <div class="form-group">
+                                    <label for="Phone">Phone</label>
+                                    <input asp-for="Phone" type="text" class="form-control" id="txtPhone">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="UnitTitle">Unit Title</label>
+                                    <input asp-for="UnitTitle" type="text" class="form-control" id="txtUnitTitle">
+                                </div>
 
-            <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                    <label class="col-sm-5 col-form-label" for="UnitCode">Unit Code</label>
-                    <input asp-for="UnitCode" type="text" class="form-control" id="txtUnitCode">
-                </div>
-
-                <div class="col-sm-6">
-                    <label class="col-sm-5 col-form-label" for="UnitTitle">Unit Title</label>
-                    <input asp-for="UnitTitle" type="text" class="form-control" id="txtUnitTitle">
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                    <label class="col-sm-2 col-form-label" for="CreditPoints">CreditPoints</label>
-                    <input asp-for="CreditPoints" type="text" class="form-control" id="txtCreditPoints">
-                </div>
-                <div class="col-sm-6">
-                    <label class="col-sm-2 col-form-label" for="Prerequisites">Prerequisites</label>
-                    <input asp-for="Prerequisites" type="text" class="form-control" id="txtPrerequisites">
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                    <label class="col-sm-2 col-form-label" for="Semester">Semester</label>
-                    <input asp-for="Semester" type="text" class="form-control" id="txtSemester">
-                </div>
-                <div class="col-sm-6">
-                    <label class="col-sm-2 col-form-label" for="Year">Year</label>
-                    <input asp-for="Year" type="text" class="form-control" id="txtYear">
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                    <label class="col-sm-2 col-form-label" for="Mode">Mode</label>
-                    <input asp-for="Mode" type="text" class="form-control" id="txtMode">
-                </div>
-                <div class="col-sm-6">
-                    <label class="col-sm-2 col-form-label" for="Location">Location</label>
-                    <input asp-for="Location" type="text" class="form-control" id="txtLocation">
+                                <div class="form-group">
+                                    <label for="Mode">Mode</label>
+                                    <input asp-for="Mode" type="text" class="form-control" id="txtMode">
+                                </div>
+                                <div class="form-group">
+                                    <label for="Year">Year</label>
+                                    <input asp-for="Year" type="text" class="form-control" id="txtYear">
+                                </div>
+                                <div class="form-group">
+                                    <label for="Location">Location</label>
+                                    <input asp-for="Location" type="text" class="form-control" id="txtLocation">
+                                </div>
+                                <div class="form-group">
+                                    <label for="Email">Email</label>
+                                    <input asp-for="Email" type="email" class="form-control" id="txtEmail">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="LearningMethod">Learning method</label>
+                                    <input asp-for="LearningMethod" type="text" class="form-control" id="txtLearningMethod">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="UnitDescription">Unit Description</label>
+                                    <textarea asp-for="UnitDescription" type="text" class="form-control" id="txtUnitDescription"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="LearningOutComes">Learning Outcomes</label>
+                                    <textarea asp-for="LearningOutComes" type="text" class="form-control" id="txtLearningOutcomes"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="col-sm-5 col-form-label" for="Learning method">Learning method</label>
-                @*<input asp-for="LearningMethod" type="text" class="form-control" id="txtLearningmethod">*@
-
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                    <label class="col-sm-2 col-form-label" for="Phone">Phone</label>
-                    <input asp-for="Phone" type="text" class="form-control" id="txtPhone">
+            <div class="col-md-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h4 class="card-title">Assessment Overview</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Item</th>
+                                            <th>Description/Focus</th>
+                                            <th>Value (%)</th>
+                                            <th>Relates to learning outcomes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <input asp-for="Assessment_Overview_Item_1" type="text" class="form-control" id="txtAssessment_Overview_Item_1">
+                                            </td>
+                                            <td>
+                                                <input asp-for="Assessment_Overview_Description_1" type="text" class="form-control" id="txtAssessment_Overview_Description_1">
+                                            </td>
+                                            <td>
+                                                <input asp-for="Assessment_Overview_Value_1" type="text" class="form-control" id="txtAssessment_Overview_Value_1">
+                                            </td>
+                                            <td>
+                                                <input asp-for="Assessment_Overview_Learning_Outcome_1" type="text" class="form-control" id="txtAssessment_Overview_Learning_Outcome_1">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input asp-for="Assessment_Overview_Item_2" type="text" class="form-control" id="txtAssessment_Overview_Item_2">
+                                            </td>
+                                            <td>
+                                                <input asp-for="Assessment_Overview_Description_2" type="text" class="form-control" id="txtAssessment_Overview_Description_2">
+                                            </td>
+                                            <td>
+                                                <input asp-for="Assessment_Overview_Value_2" type="text" class="form-control" id="txtAssessment_Overview_Value_2">
+                                            </td>
+                                            <td>
+                                                <input asp-for="Assessment_Overview_Learning_Outcome_2" type="text" class="form-control" id="txtAssessment_Overview_Learning_Outcome_2">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input asp-for="Assessment_Overview_Item_3" type="text" class="form-control" id="txtAssessment_Overview_Item_3">
+                                            </td>
+                                            <td>
+                                                <input asp-for="Assessment_Overview_Description_3" type="text" class="form-control" id="txtAssessment_Overview_Description_3">
+                                            </td>
+                                            <td>
+                                                <input asp-for="Assessment_Overview_Value_3" type="text" class="form-control" id="txtAssessment_Overview_Value_3">
+                                            </td>
+                                            <td>
+                                                <input asp-for="Assessment_Overview_Learning_Outcome_3" type="text" class="form-control" id="txtAssessment_Overview_Learning_Outcome_3">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input asp-for="Assessment_Overview_Item_4" type="text" class="form-control" id="txtAssessment_Overview_Item_4">
+                                            </td>
+                                            <td>
+                                                <input asp-for="Assessment_Overview_Description_4" type="text" class="form-control" id="txtAssessment_Overview_Description_4">
+                                            </td>
+                                            <td>
+                                                <input asp-for="Assessment_Overview_Value_4" type="text" class="form-control" id="txtAssessment_Overview_Value_4">
+                                            </td>
+                                            <td>
+                                                <input asp-for="Assessment_Overview_Learning_Outcome_4" type="text" class="form-control" id="txtAssessment_Overview_Learning_Outcome_4">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-6">
-                    <label class="col-sm-2 col-form-label" for="Email">Email</label>
-                    <input asp-for="Email" type="email" class="form-control" id="txtEmail">
+            </div>
+            <div class="col-md-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h4 class="card-title">Teaching and Learning Approach</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="TeachingAndLearningApproach">Teaching and Learning Approach</label>
+                            <textarea asp-for="TeachingAndLearningApproach" type="text" class="form-control" id="txtTeachingAndLearningApproach"></textarea>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="TeachingAndLearningApproach_HowUnitRun">How the unit will run</label>
+                                    <textarea asp-for="TeachingAndLearningApproach_HowUnitRun" type="text" class="form-control" id="txtTeachingAndLearningApproach_HowUnitRun"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="TeachingAndLearningApproach_LecturerRole">The lecturer’s role</label>
+                                    <textarea asp-for="TeachingAndLearningApproach_LecturerRole" type="text" class="form-control" id="txtTeachingAndLearningApproach_LecturerRole"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="TeachingAndLearningApproach_StudentParticipation">Student’s participation</label>
+                            <textarea asp-for="TeachingAndLearningApproach_StudentParticipation" type="text" class="form-control" id="txtTeachingAndLearningApproach_StudentParticipation"></textarea>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="col-sm-5 col-form-label" for="UnitDescription">Unit Description</label>
-                <textarea asp-for="UnitDescription" class="form-control" id="txtUnitDescription"></textarea>
+            <div class="col-md-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h4 class="card-title">Resources</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="Resources_RequiredTextbooks">Required textbook(s)</label>
+                            <textarea asp-for="Resources_RequiredTextbooks" class="form-control" id="txtResources_RequiredTextbooks"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="Resources_Learnline">Learnline</label>
+                            <textarea asp-for="Resources_Learnline" class="form-control" id="txtResources_Learnline"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="Resources_eReserveCourseReadings">eReserve Course Readings</label>
+                            <textarea asp-for="Resources_eReserveCourseReadings" class="form-control" id="txtResources_eReserveCourseReadings"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="Resources_AdditionalResources">Additional Resources</label>
+                            <textarea asp-for="Resources_AdditionalResources" class="form-control" id="txtResources_AdditionalResources"></textarea>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label class="col-sm-5 col-form-label" for="LearningOutComes">Learning Outcomes</label>
-                <textarea asp-for="LearningOutComes" class="form-control" id="txtLearningOutcomes"></textarea>
+            <div class="col-md-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h4 class="card-title">Learning Schedule</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Weeks</th>
+                                            <th>Topic/Lecture</th>
+                                            <th>Tutorial/Laboratory Activities</th>
+                                            <th>Assessments Submission</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Week_1" type="text" value="1" class="form-control" id="txtLearningSchedule_Week_1" placeholder="1">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Topic_1" type="text" class="form-control" id="txtLearningSchedule_Topic_1">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Tutorial_1" type="text" class="form-control" id="txtLearningSchedule_Tutorial_1">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Assessments_1" type="text" class="form-control" id="txtLearningSchedule_Assessments_1">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Week_2" type="text" value="2" class="form-control" id="txtLearningSchedule_Week_2" placeholder="2">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Topic_2" type="text" class="form-control" id="txtLearningSchedule_Topic_2">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Tutorial_2" type="text" class="form-control" id="txtLearningSchedule_Tutorial_2">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Assessments_2" type="text" class="form-control" id="txtLearningSchedule_Assessments_2">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Week_3" type="text" value="3" class="form-control" id="txtLearningSchedule_Week_3" placeholder="3">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Topic_3" type="text" class="form-control" id="txtLearningSchedule_Topic_3">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Tutorial_3" type="text" class="form-control" id="txtLearningSchedule_Tutorial_3">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Assessments_3" type="text" class="form-control" id="txtLearningSchedule_Assessments_3">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Week_4" type="text" value="4" class="form-control" id="txtLearningSchedule_Week_4" placeholder="4">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Topic_4" type="text" class="form-control" id="txtLearningSchedule_Topic_4">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Tutorial_4" type="text" class="form-control" id="txtLearningSchedule_Tutorial_4">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Assessments_4" type="text" class="form-control" id="txtLearningSchedule_Assessments_4">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Week_5" type="text" value="5" class="form-control" id="txtLearningSchedule_Week_5" placeholder="5">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Topic_5" type="text" class="form-control" id="txtLearningSchedule_Topic_5">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Tutorial_5" type="text" class="form-control" id="txtLearningSchedule_Tutorial_5">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Assessments_5" type="text" class="form-control" id="txtLearningSchedule_Assessments_5">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Week_6" type="text" value="6" class="form-control" id="txtLearningSchedule_Week_6" placeholder="6">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Topic_6" type="text" class="form-control" id="txtLearningSchedule_Topic_6">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Tutorial_6" type="text" class="form-control" id="txtLearningSchedule_Tutorial_6">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Assessments_6" type="text" class="form-control" id="txtLearningSchedule_Assessments_6">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Week_7" type="text" value="7" class="form-control" id="txtLearningSchedule_Week_7" placeholder="7">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Topic_7" type="text" class="form-control" id="txtLearningSchedule_Topic_7">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Tutorial_7" type="text" class="form-control" id="txtLearningSchedule_Tutorial_7">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Assessments_7" type="text" class="form-control" id="txtLearningSchedule_Assessments_7">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Week_8" type="text" value="8" class="form-control" id="txtLearningSchedule_Week_8" placeholder="8">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Topic_8" type="text" class="form-control" id="txtLearningSchedule_Topic_8">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Tutorial_8" type="text" class="form-control" id="txtLearningSchedule_Tutorial_8">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Assessments_8" type="text" class="form-control" id="txtLearningSchedule_Assessments_8">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Week_9" type="text" value="9" class="form-control" id="txtLearningSchedule_Week_9" placeholder="9">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Topic_9" type="text" class="form-control" id="txtLearningSchedule_Topic_9">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Tutorial_9" type="text" class="form-control" id="txtLearningSchedule_Tutorial_9">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Assessments_9" type="text" class="form-control" id="txtLearningSchedule_Assessments_9">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Week_10" type="text" value="10" class="form-control" id="txtLearningSchedule_Week_10" placeholder="10">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Topic_10" type="text" class="form-control" id="txtLearningSchedule_Topic_10">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Tutorial_10" type="text" class="form-control" id="txtLearningSchedule_Tutorial_10">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Assessments_10" type="text" class="form-control" id="txtLearningSchedule_Assessments_10">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Week_11" type="text" value="11" class="form-control" id="txtLearningSchedule_Week_11" placeholder="11">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Topic_11" type="text" class="form-control" id="txtLearningSchedule_Topic_11">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Tutorial_11" type="text" class="form-control" id="txtLearningSchedule_Tutorial_11">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Assessments_11" type="text" class="form-control" id="txtLearningSchedule_Assessments_11">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Week_12" type="text" value="12" class="form-control" id="txtLearningSchedule_Week_12" placeholder="12">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Topic_12" type="text" class="form-control" id="txtLearningSchedule_Topic_12">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Tutorial_12" type="text" class="form-control" id="txtLearningSchedule_Tutorial_12">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Assessments_12" type="text" class="form-control" id="txtLearningSchedule_Assessments_12">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Week_13" type="text" value="13" class="form-control" id="txtLearningSchedule_Week_13" placeholder="13">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Topic_13" type="text" class="form-control" id="txtLearningSchedule_Topic_13">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Tutorial_13" type="text" class="form-control" id="txtLearningSchedule_Tutorial_13">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Assessments_13" type="text" class="form-control" id="txtLearningSchedule_Assessments_13">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Week_14" type="text" value="14" class="form-control" id="txtLearningSchedule_Week_14" placeholder="14">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Topic_14" type="text" class="form-control" id="txtLearningSchedule_Topic_14">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Tutorial_14" type="text" class="form-control" id="txtLearningSchedule_Tutorial_14">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Assessments_14" type="text" class="form-control" id="txtLearningSchedule_Assessments_14">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Week_15" type="text" value="15" class="form-control" id="txtLearningSchedule_Week_15" placeholder="15">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Topic_15" type="text" class="form-control" id="txtLearningSchedule_Topic_15">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Tutorial_15" type="text" class="form-control" id="txtLearningSchedule_Tutorial_15">
+                                            </td>
+                                            <td>
+                                                <input asp-for="LearningSchedule_Assessments_15" type="text" class="form-control" id="txtLearningSchedule_Assessments_15">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <label class="col-lg-12 col-form-label-sm">
+                                **Note this proposed class schedule may change during the semester
+                                and it is the responsibility of the student to check the accuracy
+                                of important information (e.g. quizzes, submission dates, etc).
+                                Any changes will be announced on Learnline and during lectures.
+                            </label>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <h4>Assessment Overview</h4>
+            <div class="col-md-12">
+                <h4>Unit Coordinator</h4>
                 <hr />
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>Item</th>
-                                <th>Description/Focus</th>
-                                <th>Value</th>
-                                <th>Relates to learning outcomes</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <input asp-for="Assessment_Overview_Item_1" type="text" class="form-control" id="txtAssessment_Overview_Item_1">
-                                </td>
-                                <td>
-                                    <input asp-for="Assessment_Overview_Description_1" type="text" class="form-control" id="txtAssessment_Overview_Description_1">
-                                </td>
-                                <td>
-                                    <input asp-for="Assessment_Overview_Value_1" type="text" class="form-control" id="txtAssessment_Overview_Value_1">
-                                </td>
-                                <td>
-                                    <input asp-for="Assessment_Overview_Learning_Outcome_1" type="text" class="form-control" id="txtAssessment_Overview_Learning_Outcome_1">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input asp-for="Assessment_Overview_Item_2" type="text" class="form-control" id="txtAssessment_Overview_Item_2">
-                                </td>
-                                <td>
-                                    <input asp-for="Assessment_Overview_Description_2" type="text" class="form-control" id="txtAssessment_Overview_Description_2">
-                                </td>
-                                <td>
-                                    <input asp-for="Assessment_Overview_Value_2" type="text" class="form-control" id="txtAssessment_Overview_Value_2">
-                                </td>
-                                <td>
-                                    <input asp-for="Assessment_Overview_Learning_Outcome_2" type="text" class="form-control" id="txtAssessment_Overview_Learning_Outcome_2">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input asp-for="Assessment_Overview_Item_3" type="text" class="form-control" id="txtAssessment_Overview_Item_3">
-                                </td>
-                                <td>
-                                    <input asp-for="Assessment_Overview_Description_3" type="text" class="form-control" id="txtAssessment_Overview_Description_3">
-                                </td>
-                                <td>
-                                    <input asp-for="Assessment_Overview_Value_3" type="text" class="form-control" id="txtAssessment_Overview_Value_3">
-                                </td>
-                                <td>
-                                    <input asp-for="Assessment_Overview_Learning_Outcome_3" type="text" class="form-control" id="txtAssessment_Overview_Learning_Outcome_3">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input asp-for="Assessment_Overview_Item_4" type="text" class="form-control" id="txtAssessment_Overview_Item_4">
-                                </td>
-                                <td>
-                                    <input asp-for="Assessment_Overview_Description_4" type="text" class="form-control" id="txtAssessment_Overview_Description_4">
-                                </td>
-                                <td>
-                                    <input asp-for="Assessment_Overview_Value_4" type="text" class="form-control" id="txtAssessment_Overview_Value_4">
-                                </td>
-                                <td>
-                                    <input asp-for="Assessment_Overview_Learning_Outcome_4" type="text" class="form-control" id="txtAssessment_Overview_Learning_Outcome_4">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="form-group">
+                    <label asp-for="FeedbackByUC" class="col-sm-5 col-form-label">Feedback</label>
+                    <textarea asp-for="FeedbackByUC" name="FeedbackByUC" class="form-control form-control-lg" id="txtFeedbackByUC"></textarea>
                 </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-5 col-form-label" for="TeachingAndLearningApproach">Teaching and Learning approach</label>
-                <textarea asp-for="TeachingAndLearningApproach" class="form-control" id="txtTeachingAndLearningApproach"></textarea>
-            </div>
-            <div class="form-group row">
-                <div class="col-md-6">
-                    <label class="col-sm-6" for="TeachingAndLearningApproach_HowUnitRun">How the unit will run</label>
-                    <textarea asp-for="TeachingAndLearningApproach_HowUnitRun" class="form-control" id="txtTeachingAndLearningApproach_HowUnitRun"></textarea>
-                </div>
-                <div class="col-sm-6">
-                    <label class="col-sm-6" for="TeachingAndLearningApproach_LecturerRole">The lecturer’s role</label>
-                    <textarea asp-for="TeachingAndLearningApproach_LecturerRole" class="form-control" id="txtTeachingAndLearningApproach_LecturerRole"></textarea>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-6 mb-3 mb-sm-0" for="TeachingAndLearningApproach_StudentParticipation">Student’s participation</label>
-                <textarea asp-for="TeachingAndLearningApproach_StudentParticipation" class="form-control" id="txtTeachingAndLearningApproach_StudentParticipation"></textarea>
-            </div>
-            <div class="form-group">
-                <h4>Resources</h4>
+
+                <h4>Course Coordinator</h4>
                 <hr />
-            </div>
-            <div class="form-group">
-                <label class="col-sm-6 mb-3 mb-sm-0" for="Resources_RequiredTextbooks">Required textbook(s)</label>
-                <textarea asp-for="Resources_RequiredTextbooks" class="form-control" id="txtResources_RequiredTextbooks"></textarea>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-6 mb-3 mb-sm-0" for="Resources_Learnline">Learnline</label>
-                <textarea asp-for="Resources_Learnline" class="form-control" id="txtResources_Learnline"></textarea>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-6 mb-3 mb-sm-0" for="Resources_eReserveCourseReadings">eReserve Course Readings</label>
-                <textarea asp-for="Resources_eReserveCourseReadings" class="form-control" id="txtResources_eReserveCourseReadings"></textarea>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-6 mb-3 mb-sm-0" for="Resources_AdditionalResources">Additional Resources</label>
-                <textarea asp-for="Resources_AdditionalResources" class="form-control" id="txtResources_AdditionalResources"></textarea>
-            </div>
-            <div class="form-group">
-                <h4>Learning Schedule</h4>
+                <div class="form-group">
+                    <label asp-for="CourseCoordinator" class="col-sm-5 col-form-label">Course Coordinator</label>
+                    <select asp-for="CourseCoordinator" class="custom-select" required>
+                        <option value="">Choose Course-Coordinator</option>
+                        <option value="sami@gmail.com">Sami Azam</option>
+                        <option value="bharani@gmail.com">Bharanidharan Shanmugam</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-5" for="FeedbackByCC">Feedback</label>
+                    <textarea readonly asp-for="FeedbackByCC" name="FeedbackByCC" class="form-control form-control-lg" id="txtFeedbackByCC"></textarea>
+                    @*<textarea asp-for="FeedbackByCC" class="textarea" placeholder="Place some text here"
+                        style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>*@
+                </div>
+
+                <h4>Admin</h4>
                 <hr />
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>Weeks</th>
-                                <th>Topic/Lecture</th>
-                                <th>Tutorial/Laboratory Activities</th>
-                                <th>Assessments Submission</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <input asp-for="LearningSchedule_Week_1" type="text" value="1" class="form-control" id="txtLearningSchedule_Week_1" placeholder="1">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Topic_1" type="text" class="form-control" id="txtLearningSchedule_Topic_1">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Tutorial_1" type="text" class="form-control" id="txtLearningSchedule_Tutorial_1">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Assessments_1" type="text" class="form-control" id="txtLearningSchedule_Assessments_1">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input asp-for="LearningSchedule_Week_2" type="text" value="2" class="form-control" id="txtLearningSchedule_Week_2" placeholder="2">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Topic_2" type="text" class="form-control" id="txtLearningSchedule_Topic_2">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Tutorial_2" type="text" class="form-control" id="txtLearningSchedule_Tutorial_2">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Assessments_2" type="text" class="form-control" id="txtLearningSchedule_Assessments_2">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input asp-for="LearningSchedule_Week_3" type="text" value="3" class="form-control" id="txtLearningSchedule_Week_3" placeholder="3">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Topic_3" type="text" class="form-control" id="txtLearningSchedule_Topic_3">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Tutorial_3" type="text" class="form-control" id="txtLearningSchedule_Tutorial_3">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Assessments_3" type="text" class="form-control" id="txtLearningSchedule_Assessments_3">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input asp-for="LearningSchedule_Week_4" type="text" value="4" class="form-control" id="txtLearningSchedule_Week_4" placeholder="4">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Topic_4" type="text" class="form-control" id="txtLearningSchedule_Topic_4">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Tutorial_4" type="text" class="form-control" id="txtLearningSchedule_Tutorial_4">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Assessments_4" type="text" class="form-control" id="txtLearningSchedule_Assessments_4">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input asp-for="LearningSchedule_Week_5" type="text" value="5" class="form-control" id="txtLearningSchedule_Week_5" placeholder="5">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Topic_5" type="text" class="form-control" id="txtLearningSchedule_Topic_5">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Tutorial_5" type="text" class="form-control" id="txtLearningSchedule_Tutorial_5">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Assessments_5" type="text" class="form-control" id="txtLearningSchedule_Assessments_5">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input asp-for="LearningSchedule_Week_6" type="text" value="6" class="form-control" id="txtLearningSchedule_Week_6" placeholder="6">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Topic_6" type="text" class="form-control" id="txtLearningSchedule_Topic_6">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Tutorial_6" type="text" class="form-control" id="txtLearningSchedule_Tutorial_6">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Assessments_6" type="text" class="form-control" id="txtLearningSchedule_Assessments_6">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input asp-for="LearningSchedule_Week_7" type="text" value="7" class="form-control" id="txtLearningSchedule_Week_7" placeholder="7">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Topic_7" type="text" class="form-control" id="txtLearningSchedule_Topic_7">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Tutorial_7" type="text" class="form-control" id="txtLearningSchedule_Tutorial_7">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Assessments_7" type="text" class="form-control" id="txtLearningSchedule_Assessments_7">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input asp-for="LearningSchedule_Week_8" type="text" value="8" class="form-control" id="txtLearningSchedule_Week_8" placeholder="8">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Topic_8" type="text" class="form-control" id="txtLearningSchedule_Topic_8">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Tutorial_8" type="text" class="form-control" id="txtLearningSchedule_Tutorial_8">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Assessments_8" type="text" class="form-control" id="txtLearningSchedule_Assessments_8">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input asp-for="LearningSchedule_Week_9" type="text" value="9" class="form-control" id="txtLearningSchedule_Week_9" placeholder="9">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Topic_9" type="text" class="form-control" id="txtLearningSchedule_Topic_9">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Tutorial_9" type="text" class="form-control" id="txtLearningSchedule_Tutorial_9">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Assessments_9" type="text" class="form-control" id="txtLearningSchedule_Assessments_9">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input asp-for="LearningSchedule_Week_10" type="text" value="10" class="form-control" id="txtLearningSchedule_Week_10" placeholder="10">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Topic_10" type="text" class="form-control" id="txtLearningSchedule_Topic_10">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Tutorial_10" type="text" class="form-control" id="txtLearningSchedule_Tutorial_10">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Assessments_10" type="text" class="form-control" id="txtLearningSchedule_Assessments_10">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input asp-for="LearningSchedule_Week_11" type="text" value="11" class="form-control" id="txtLearningSchedule_Week_11" placeholder="11">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Topic_11" type="text" class="form-control" id="txtLearningSchedule_Topic_11">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Tutorial_11" type="text" class="form-control" id="txtLearningSchedule_Tutorial_11">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Assessments_11" type="text" class="form-control" id="txtLearningSchedule_Assessments_11">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input asp-for="LearningSchedule_Week_12" type="text" value="12" class="form-control" id="txtLearningSchedule_Week_12" placeholder="12">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Topic_12" type="text" class="form-control" id="txtLearningSchedule_Topic_12">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Tutorial_12" type="text" class="form-control" id="txtLearningSchedule_Tutorial_12">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Assessments_12" type="text" class="form-control" id="txtLearningSchedule_Assessments_12">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input asp-for="LearningSchedule_Week_13" type="text" value="13" class="form-control" id="txtLearningSchedule_Week_13" placeholder="13">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Topic_13" type="text" class="form-control" id="txtLearningSchedule_Topic_13">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Tutorial_13" type="text" class="form-control" id="txtLearningSchedule_Tutorial_13">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Assessments_13" type="text" class="form-control" id="txtLearningSchedule_Assessments_13">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input asp-for="LearningSchedule_Week_14" type="text" value="14" class="form-control" id="txtLearningSchedule_Week_14" placeholder="14">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Topic_14" type="text" class="form-control" id="txtLearningSchedule_Topic_14">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Tutorial_14" type="text" class="form-control" id="txtLearningSchedule_Tutorial_14">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Assessments_14" type="text" class="form-control" id="txtLearningSchedule_Assessments_14">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input asp-for="LearningSchedule_Week_15" type="text" value="15" class="form-control" id="txtLearningSchedule_Week_15" placeholder="15">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Topic_15" type="text" class="form-control" id="txtLearningSchedule_Topic_15">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Tutorial_15" type="text" class="form-control" id="txtLearningSchedule_Tutorial_15">
-                                </td>
-                                <td>
-                                    <input asp-for="LearningSchedule_Assessments_15" type="text" class="form-control" id="txtLearningSchedule_Assessments_15">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="form-group">
+                    <label asp-for="Admin" class="col-sm-5 col-form-label">Admin</label>
+                    <input readonly asp-for="Admin" type="text" class="form-control" id="txtAdmin" required>
                 </div>
-                <label class="col-lg-12 col-form-label-sm">
-                    **Note this proposed class schedule may change during the semester
-                    and it is the responsibility of the student to check the accuracy
-                    of important information (e.g. quizzes, submission dates, etc).
-                    Any changes will be announced on Learnline and during lectures.
-                </label>
-            </div>
 
-            <h4>Unit Coordinator</h4>
-            <hr />
-            <div class="form-group">
-                <label asp-for="FeedbackByUC" class="col-sm-5 col-form-label">Feedback</label>
-                <textarea asp-for="FeedbackByUC" name="FeedbackByUC" class="form-control form-control-lg" id="txtFeedbackByUC"></textarea>
-            </div>
-
-            <h4>Course Coordinator</h4>
-            <hr />
-            <div class="form-group">
-                <label asp-for="CourseCoordinator" class="col-sm-5 col-form-label">Course Coordinator</label>
-                <select asp-for="CourseCoordinator" class="custom-select" required>
-                    <option value="">Choose Course-Coordinator</option>
-                    <option value="sami@gmail.com">Sami Azam</option>
-                    <option value="bharani@gmail.com">Bharanidharan Shanmugam</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-5" for="FeedbackByCC">Feedback</label>
-                <textarea readonly asp-for="FeedbackByCC" name="FeedbackByCC" class="form-control form-control-lg" id="txtFeedbackByCC"></textarea>
-                @*<textarea asp-for="FeedbackByCC" class="textarea" placeholder="Place some text here"
-            style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>*@
-            </div>
-
-            <h4>Admin</h4>
-            <hr />
-            <div class="form-group">
-                <label asp-for="Admin" class="col-sm-5 col-form-label">Admin</label>
-                <input readonly asp-for="Admin" type="text" class="form-control" id="txtAdmin" required>
-            </div>
-
-            <h4>Reviewer</h4>
-            <hr />
-            <div class="form-group row">
-                <div class="col-md-6">
-                    <label class="col-sm-6" for="Reviewer1">Reviewer1</label>
-                    <input readonly asp-for="Reviewer1" type="text" class="form-control" id="txtReviewer1">
+                <h4>Reviewer</h4>
+                <hr />
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <label class="col-sm-6" for="Reviewer1">Reviewer1</label>
+                        <input readonly asp-for="Reviewer1" type="text" class="form-control" id="txtReviewer1">
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="col-sm-6" for="Reviewer2">Reviewer2</label>
+                        <input readonly asp-for="Reviewer2" type="text" class="form-control" id="txtReviewer2">
+                    </div>
                 </div>
-                <div class="col-sm-6">
-                    <label class="col-sm-6" for="Reviewer2">Reviewer2</label>
-                    <input readonly asp-for="Reviewer2" type="text" class="form-control" id="txtReviewer2">
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <label class="col-sm-6" for="FeedbackByReviewer1">Reviewer1's Feedback</label>
+                        <textarea asp-for="FeedbackByReviewer1" readonly name="FeedbackByReviewer1" class="form-control form-control-lg" id="txtFeedbackByReviewer1"></textarea>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="col-sm-6" for="FeedbackByReviewer2">Reviewer2's Feedback</label>
+                        <textarea asp-for="FeedbackByReviewer2" readonly name="FeedbackByReviewer2" class="form-control form-control-lg" id="txtFeedbackByReviewer2"></textarea>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-md-6">
-                    <label class="col-sm-6" for="FeedbackByReviewer1">Reviewer1's Feedback</label>
-                    <textarea asp-for="FeedbackByReviewer1" readonly name="FeedbackByReviewer1" class="form-control form-control-lg" id="txtFeedbackByReviewer1"></textarea>
+                <h4>Approver</h4>
+                <hr />
+                <div class="form-group">
+                    <label class="col-sm-5" for="Admin">Approver</label>
+                    <select disabled asp-for="Approver" class="custom-select">
+                        <option value="">Choose Approver</option>
+                        <option value="stefanija@gmail.com">Stefanija klaric</option>
+                    </select>
                 </div>
-                <div class="col-sm-6">
-                    <label class="col-sm-6" for="FeedbackByReviewer2">Reviewer2's Feedback</label>
-                    <textarea asp-for="FeedbackByReviewer2" readonly name="FeedbackByReviewer2" class="form-control form-control-lg" id="txtFeedbackByReviewer2"></textarea>
+                <div class="form-group">
+                    <label class="col-sm-5" for="FeedbackByApprover">Approver's Feedback</label>
+                    <textarea asp-for="FeedbackByApprover" readonly name="FeedbackByApprover" class="form-control form-control-lg" id="txtFeedbackByApprover"></textarea>
                 </div>
-            </div>
-            <h4>Approver</h4>
-            <hr />
-            <div class="form-group">
-                <label class="col-sm-5" for="Admin">Approver</label>
-                <select disabled asp-for="Approver" class="custom-select">
-                    <option value="">Choose Approver</option>
-                    <option value="stefanija@gmail.com">Stefanija klaric</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-5" for="FeedbackByApprover">Approver's Feedback</label>
-                <textarea asp-for="FeedbackByApprover" readonly name="FeedbackByApprover" class="form-control form-control-lg" id="txtFeedbackByApprover"></textarea>
-            </div>
-            <hr />
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-block">Save</button>
+                <hr />
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Save</button>
+                </div>
             </div>
         </form>
     </div>
 </div>
-

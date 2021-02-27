@@ -18,6 +18,7 @@
     </div>
 </div>
 
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
@@ -32,7 +33,7 @@
                     <table id="tblUnitListUC" class="table table-bordered table-striped overflow-auto">
                         <thead>
                             <tr>
-                                <th>Remarks</th>
+                                <th>Activity Log</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -49,41 +50,47 @@
                                         @if (item.Status == "Approved")
                                         {
                                             <td>
-                                                <a asp-action="ViewUnitInfo" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
-                                                    <span class="text">View</span>
+                                                <a asp-action="ViewUnitInfo" asp-route-id="@item.Id" class="btn btn-primary btn-sm">
+                                                    <i class="fas fa-eye"></i>View
                                                 </a>
-                                                <a asp-action="DownloadUnitInfo" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
-                                                    <span class="text">Download</span>
+                                                <a asp-action="DownloadUnitInfo" asp-route-id="@item.Id" class="btn btn-primary btn-sm">
+                                                    <i class="fas fa-download"></i>Download
                                                 </a>
                                             </td>
                                         }
                                         else if (item.Status == "Reject(Minor)")
                                         {
                                             <td>
-                                                <a asp-action="EditUnitInfoByUC" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
-                                                    <span class="text">Edit</span>
+                                                <a asp-action="EditUnitInfoByUC" asp-route-id="@item.Id" class="btn btn-primary btn-sm btn-icon-split">
+                                                    <i class="fas fa-edit"></i>Edit
                                                 </a>
-                                                <a asp-action="ApproveUnitInfoByUC" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
-                                                    <span class="text">Approve</span>
+                                                <a asp-action="ApproveUnitInfoByUC" asp-route-id="@item.Id" class="btn btn-primary btn-sm btn-icon-split">
+                                                    <i class="fas fa-check-circle"></i>Approve
+                                                </a>
+                                                <a asp-action="RemoveUnitInfoByUC" asp-route-id="@item.Id" class="btn btn-primary btn-sm btn-icon-split">
+                                                    <i class="fas fa-minus-circle"></i>Remove
                                                 </a>
                                             </td>
                                         }
                                         else
                                         {
                                             <td>
-                                                <a asp-action="EditUnitInfoByUC" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
-                                                    <span class="text">Edit</span>
+                                                <a asp-action="EditUnitInfoByUC" asp-route-id="@item.Id" class="btn btn-primary btn-sm">
+                                                    <i class="fas fa-edit"></i>Edit
+                                                </a>
+                                                <a asp-action="RemoveUnitInfoByUC" asp-route-id="@item.Id" class="btn btn-danger btn-sm">
+                                                    <i class="fas fa-minus-circle"></i>Remove
                                                 </a>
                                                 @if (!String.IsNullOrEmpty(item.CourseCoordinator))
                                                 {
-                                                    <a asp-action="AssignToCourseCoordinator" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
-                                                        <span class="text">Assign To CC</span>
+                                                    <a asp-action="AssignToCourseCoordinator" asp-route-id="@item.Id" class="btn btn-primary btn-sm">
+                                                        <i class="fas fa-share-square"></i>Assign To CC
                                                     </a>
                                                 }
                                                 else
                                                 {
-                                                    <a asp-action="AssignToCourseCoordinator" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split disabled">
-                                                        <span class="text">Assign To CC</span>
+                                                    <a asp-action="AssignToCourseCoordinator" asp-route-id="@item.Id" class="btn btn-primary btn-sm disabled">
+                                                        <i class="fas fa-share-square"></i>Assign To CC
                                                     </a>
                                                 }
                                             </td>
@@ -92,11 +99,11 @@
                                     else
                                     {
                                         <td>
-                                            <a asp-action="ViewUnitInfo" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
-                                                <span class="text">View</span>
+                                            <a asp-action="ViewUnitInfo" asp-route-id="@item.Id" class="btn btn-primary btn-sm">
+                                                <i class="fas fa-eye"></i>View
                                             </a>
-                                            <a asp-action="DownloadUnitInfo" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
-                                                <span class="text">Download</span>
+                                            <a asp-action="DownloadUnitInfo" asp-route-id="@item.Id" class="btn btn-primary btn-sm">
+                                                <i class="fas fa-download"></i>Download
                                             </a>
                                         </td>
                                     }
