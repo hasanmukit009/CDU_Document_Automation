@@ -323,6 +323,7 @@ E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
+E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Contact.cshtml.g.cs
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\DashBoard.cshtml.g.cs
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\FailedRegistration.cshtml.g.cs
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
@@ -336,6 +337,8 @@ E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutAdmin.cshtml.g.cs
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\UnitDescription\AddNewUnitDescription.cshtml.g.cs
+E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\UnitDescription\UnitDescriptionListUC.cshtml.g.cs
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\UnitInfo\AddNewUnitInfo.cshtml.g.cs
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\UnitInfo\EditUnitInfoByUC.cshtml.g.cs
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\UnitInfo\UnitInfoListAdmin.cshtml.g.cs
@@ -361,6 +364,3 @@ E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\DMS.Web.pdb
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\DMS.Web.genruntimeconfig.cache
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\DMS.Web.csprojAssemblyReference.cache
-E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Contact.cshtml.g.cs
-E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\UnitDescription\UnitDescriptionListUC.cshtml.g.cs
-E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\UnitDescription\AddNewUnitDescription.cshtml.g.cs

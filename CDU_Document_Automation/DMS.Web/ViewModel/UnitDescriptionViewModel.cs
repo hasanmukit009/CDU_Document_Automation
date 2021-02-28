@@ -9,7 +9,7 @@ namespace DMS.Web.ViewModel
         public string ChangeRequest { get; set; }
         public string UnitCode { get; set; }
         public string UnitTitle { get; set; }
-        public string UnitNumber { get; set; }
+        public string UnitLevel { get; set; }
         public string OwningCollege { get; set; }
         public string OwningDiscipline { get; set; }
         public string CoreCourseCode { get; set; }

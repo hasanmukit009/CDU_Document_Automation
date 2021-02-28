@@ -41,7 +41,7 @@ namespace DMS.Web.Controllers
                 objnew.Id = obj.Id;
                 objnew.UnitCode = obj.UnitCode;
                 objnew.UnitTitle = obj.UnitTitle;
-                objnew.UnitNumber = obj.UnitNumber;
+                objnew.UnitLevel = obj.UnitLevel;
                 objnew.OwningCollege = obj.OwningCollege;
                 objnew.OwningDiscipline = obj.OwningDiscipline;
                 objnew.CoreCourseCode = obj.CoreCourseCode;
