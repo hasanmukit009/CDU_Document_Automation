@@ -5,14 +5,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DMS.Web.Models
+namespace DMS.Web.ViewModel
 {
-    [Table("DMS_UNIT_LO")]
-    public class UnitLearningOutcomeModel
+    public class UnitLearningOutcomeViewModel
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
         public string ChangeRequest { get; set; }
         public string UnitCode { get; set; }
         public string UnitTitle { get; set; }
@@ -20,6 +16,7 @@ namespace DMS.Web.Models
         public string OwningCollege { get; set; }
         public string OwningDiscipline { get; set; }
         public string Semester_Year_of_Implementation { get; set; }
+
 
         public string Order_1 { get; set; }
         public string Order_2 { get; set; }

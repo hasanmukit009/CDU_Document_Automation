@@ -12,11 +12,11 @@ namespace DMS.Web.Controllers
 {
     public class UnitDescriptionController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<UnitDescriptionController> _logger;
         private readonly UserManager<IdentityUser> userManager;
         private readonly SignInManager<IdentityUser> signInManager;
         private readonly ApplicationDbContext _context;
-        public UnitDescriptionController(ILogger<HomeController> logger, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, ApplicationDbContext context)
+        public UnitDescriptionController(ILogger<UnitDescriptionController> logger, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, ApplicationDbContext context)
         {
             _logger = logger;
             this.userManager = userManager;
