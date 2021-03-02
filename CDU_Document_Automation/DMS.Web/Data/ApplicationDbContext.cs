@@ -17,5 +17,6 @@ namespace DMS.Web.Data
         public DbSet<UnitInformationModel> UnitInformationList { get; set; }
         public DbSet<UnitDescriptionModel> UnitDescriptionList { get; set; }
         public DbSet<UnitLearningOutcomeModel> UnitLearningOutcomeList { get; set; }
+        public DbSet<UnitAssessmentItemModel> UnitAssessmentItemList { get; set; }
     }
 }

@@ -1,0 +1,414 @@
+﻿@model DMS.Web.ViewModel.UnitAssessmentItemViewModel
+@{
+    ViewData["Title"] = "AddNewUnitLearningOutcome";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="container-fluid">
+    <div class="row mb-2">
+        <div class="col-sm-6">
+            @*<h1>New Unit</h1>*@
+        </div>
+        <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a asp-controller="UnitDescription" asp-action="AssessmentItemListUC">Unit Assessment Item</a></li>
+                <li class="breadcrumb-item active">Add New Unit</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <form method="post" id="addNewUnitDescription">
+        <div class="col-md-12">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h4 class="card-title">Unit Information</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="UnitCode">Unit Code</label>
+                                <input asp-for="UnitCode" type="text" class="form-control" id="txtUnitCode">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="UnitLevel">Unit Level</label>
+                                <input asp-for="UnitLevel" type="text" class="form-control" id="txtUnitLevel">
+                            </div>
+                            <div class="form-group">
+                                <label for="OwningCollege">Owning College</label>
+                                <input asp-for="OwningCollege" type="text" class="form-control" id="txtOwningCollege">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="UnitTitle">Unit Title</label>
+                                <input asp-for="UnitTitle" type="text" class="form-control" id="txtUnitTitle">
+                            </div>
+                            <div class="form-group">
+                                <label for="OwningDiscipline">Owning Discipline</label>
+                                <input asp-for="OwningDiscipline" type="text" class="form-control" id="txtOwningDiscipline">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="Semester_Year_of_Implementation">Semester/Year of Implementation for proposed change</label>
+                                <input asp-for="Semester_Year_of_Implementation" type="text" class="form-control" id="txtSemester_Year_of_Implementation">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h4 class="card-title">Assessment Items Changes</h4><br />
+
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <p style="font-size:15px;font-weight:700">
+                                    •	Minor change<br />
+                                    o	Changes that readjust the weighting of currently accredited assessment items.<br />
+                                    •	Major Change: Major change requires HELTC review and approval <br />
+                                    o	Changes that affect the number of assessments<br />
+                                    o	Changes that affect the type of assessment (incl. replacing one assessment type for another)<br />
+                                    o	Changes to final centrally organized exams<br />
+
+                                    Note: Ensure to indicate<br />
+                                    •	The volume – for example: 2 pages, 1500 words, 1 hour<br />
+                                    •	Whether the item is/has a hurdle requirement (a condition of passing a unit other than the overall grade)
+                                </p>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Order</th>
+                                                <th>Current Accredited Assessment Item</th>
+                                                <th>%</th>
+                                                <th>ULO</th>
+                                                <th>Proposed Assessment Items</th>
+                                                <th>%</th>
+                                                <th>ULO</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <input asp-for="Order_1" type="text" class="form-control" id="txtOrder_1">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Current_Accredited_Assessment_Item_Description_1" type="text" class="form-control" id="txtCurrent_Accredited_Assessment_Item_Description_1">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Current_Accredited_Assessment_Percentage_1" type="text" class="form-control" id="txtCurrent_Accredited_Assessment_Percentage_1">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Current_Accredited_Assessment_ULO_1" type="text" class="form-control" id="txtCurrent_Accredited_Assessment_ULO_1">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Proposed_Assessment_Items_Description_1" type="text" class="form-control" id="txtProposed_Assessment_Items_Description_1">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Proposed_Assessment_Items_Percentage_1" type="text" class="form-control" id="txtProposed_Assessment_Items_Percentage_1">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Proposed_Assessment_Items_ULO_1" type="text" class="form-control" id="txtProposed_Assessment_Items_ULO_1">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input asp-for="Order_2" type="text" class="form-control" id="txtOrder_2">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Current_Accredited_Assessment_Item_Description_2" type="text" class="form-control" id="txtCurrent_Accredited_Assessment_Item_Description_2">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Current_Accredited_Assessment_Percentage_2" type="text" class="form-control" id="txtCurrent_Accredited_Assessment_Percentage_2">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Current_Accredited_Assessment_ULO_2" type="text" class="form-control" id="txtCurrent_Accredited_Assessment_ULO_2">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Proposed_Assessment_Items_Description_2" type="text" class="form-control" id="txtProposed_Assessment_Items_Description_2">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Proposed_Assessment_Items_Percentage_2" type="text" class="form-control" id="txtProposed_Assessment_Items_Percentage_2">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Proposed_Assessment_Items_ULO_2" type="text" class="form-control" id="txtProposed_Assessment_Items_ULO_2">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input asp-for="Order_3" type="text" class="form-control" id="txtOrder_3">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Current_Accredited_Assessment_Item_Description_3" type="text" class="form-control" id="txtCurrent_Accredited_Assessment_Item_Description_3">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Current_Accredited_Assessment_Percentage_3" type="text" class="form-control" id="txtCurrent_Accredited_Assessment_Percentage_3">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Current_Accredited_Assessment_ULO_3" type="text" class="form-control" id="txtCurrent_Accredited_Assessment_ULO_3">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Proposed_Assessment_Items_Description_3" type="text" class="form-control" id="txtProposed_Assessment_Items_Description_3">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Proposed_Assessment_Items_Percentage_3" type="text" class="form-control" id="txtProposed_Assessment_Items_Percentage_3">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Proposed_Assessment_Items_ULO_3" type="text" class="form-control" id="txtProposed_Assessment_Items_ULO_3">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input asp-for="Order_4" type="text" class="form-control" id="txtOrder_4">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Current_Accredited_Assessment_Item_Description_4" type="text" class="form-control" id="txtCurrent_Accredited_Assessment_Item_Description_4">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Current_Accredited_Assessment_Percentage_4" type="text" class="form-control" id="txtCurrent_Accredited_Assessment_Percentage_4">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Current_Accredited_Assessment_ULO_4" type="text" class="form-control" id="txtCurrent_Accredited_Assessment_ULO_4">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Proposed_Assessment_Items_Description_4" type="text" class="form-control" id="txtProposed_Assessment_Items_Description_4">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Proposed_Assessment_Items_Percentage_4" type="text" class="form-control" id="txtProposed_Assessment_Items_Percentage_4">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Proposed_Assessment_Items_ULO_4" type="text" class="form-control" id="txtProposed_Assessment_Items_ULO_4">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input asp-for="Order_5" type="text" class="form-control" id="txtOrder_5">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Current_Accredited_Assessment_Item_Description_5" type="text" class="form-control" id="txtCurrent_Accredited_Assessment_Item_Description_5">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Current_Accredited_Assessment_Percentage_5" type="text" class="form-control" id="txtCurrent_Accredited_Assessment_Percentage_5">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Current_Accredited_Assessment_ULO_5" type="text" class="form-control" id="txtCurrent_Accredited_Assessment_ULO_5">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Proposed_Assessment_Items_Description_5" type="text" class="form-control" id="txtProposed_Assessment_Items_Description_5">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Proposed_Assessment_Items_Percentage_5" type="text" class="form-control" id="txtProposed_Assessment_Items_Percentage_5">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Proposed_Assessment_Items_ULO_5" type="text" class="form-control" id="txtProposed_Assessment_Items_ULO_5">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input asp-for="Order_6" type="text" class="form-control" id="txtOrder_6">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Current_Accredited_Assessment_Item_Description_6" type="text" class="form-control" id="txtCurrent_Accredited_Assessment_Item_Description_6">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Current_Accredited_Assessment_Percentage_6" type="text" class="form-control" id="txtCurrent_Accredited_Assessment_Percentage_6">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Current_Accredited_Assessment_ULO_6" type="text" class="form-control" id="txtCurrent_Accredited_Assessment_ULO_6">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Proposed_Assessment_Items_Description_6" type="text" class="form-control" id="txtProposed_Assessment_Items_Description_6">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Proposed_Assessment_Items_Percentage_6" type="text" class="form-control" id="txtProposed_Assessment_Items_Percentage_6">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Proposed_Assessment_Items_ULO_6" type="text" class="form-control" id="txtProposed_Assessment_Items_ULO_6">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input asp-for="Order_7" type="text" class="form-control" id="txtOrder_7">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Current_Accredited_Assessment_Item_Description_7" type="text" class="form-control" id="txtCurrent_Accredited_Assessment_Item_Description_7">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Current_Accredited_Assessment_Percentage_7" type="text" class="form-control" id="txtCurrent_Accredited_Assessment_Percentage_7">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Current_Accredited_Assessment_ULO_7" type="text" class="form-control" id="txtCurrent_Accredited_Assessment_ULO_7">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Proposed_Assessment_Items_Description_7" type="text" class="form-control" id="txtProposed_Assessment_Items_Description_7">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Proposed_Assessment_Items_Percentage_7" type="text" class="form-control" id="txtProposed_Assessment_Items_Percentage_7">
+                                                </td>
+                                                <td>
+                                                    <input asp-for="Proposed_Assessment_Items_ULO_7" type="text" class="form-control" id="txtProposed_Assessment_Items_ULO_7">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="Is_This_Unit_Currently_Accredited">Is this unit currently accredited with a centrally time tabled end of semester exam?</label>
+                                <input asp-for="Is_This_Unit_Currently_Accredited" type="text" class="form-control" id="txtIs_This_Unit_Currently_Accredited">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="Is_This_Unit_Required">Does this unit now require a centrally time tabled end of semester exam?</label>
+                                <input asp-for="Is_This_Unit_Required" type="text" class="form-control" id="txtIs_This_Unit_Required">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h4 class="card-title">Justification</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <textarea asp-for="JustificatioRequestOutline" type="text" class="form-control" id="txtJustificatioRequestOutline"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h4 class="card-title">Evaluation of Student Impact</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <p style="font-size:15px;font-weight:700">
+                                    Number of enrolled students for the year/semester of implementation
+                                </p>
+                                <label for="InternationalStudentNumber">International Student Number</label>
+                                <input asp-for="InternationalStudentNumber" type="text" class="form-control" id="txtInternationalStudentNumber">
+                            </div>
+                            <div class="form-group">
+                                <label for="DomesticStudentNumber">Domestic Student Number</label>
+                                <input asp-for="DomesticStudentNumber" type="text" class="form-control" id="txtDomesticStudentNumber">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                Identify the courses for which the unit appears as either a core or specialist elective<br />
+                                Note: courses across all Colleges should be reviewed<br />
+                                <label for="ReviewedCoreCourseList">Core</label>
+                                <textarea asp-for="ReviewedCoreCourseList" type="text" class="form-control" id="txtReviewedCoreCourseList"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="ReviewedSpecialistElectiveCourseList">Specialist Elective</label>
+                                <textarea asp-for="ReviewedSpecialistElectiveCourseList" type="text" class="form-control" id="txtReviewedSpecialistElectiveCourseList"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="Provide_Summary_If_Student_Consultation_Was_Undertaken">Provide summary if student consultation was undertaken</label>
+                                <textarea asp-for="Provide_Summary_If_Student_Consultation_Was_Undertaken" type="text" class="form-control" id="txtProvide_Summary_If_Student_Consultation_Was_Undertaken"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="Provide_Summary_If_The_Proposed_Change_Response_To_Student">Provide summary if the proposed change is in response to student or industry feedback</label>
+                                <textarea asp-for="Provide_Summary_If_The_Proposed_Change_Response_To_Student" type="text" class="form-control" id="txtProvide_Summary_If_The_Proposed_Change_Response_To_Student"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h4 class="card-title">Impact on Other Colleges</h4>
+                    <br />
+                    <p>Note: If the unit proposal includes the removal of an offering, and the unit exists in courses offered by other Colleges, evidence of consultation with the relevant course coordinator/College Dean will need to be provided.</p>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="Summary_Of_Consultation_With_Impacted_College">Summary of consultation with impacted College</label>
+                                <textarea asp-for="Summary_Of_Consultation_With_Impacted_College" type="text" class="form-control" id="txtSummary_Of_Consultation_With_Impacted_College"></textarea>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h4 class="card-title">Course Coordinator</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <select asp-for="CourseCoordinator" class="custom-select" required>
+                                    <option value="">Choose Course-Coordinator</option>
+                                    <option value="sami@gmail.com">Sami Azam</option>
+                                    <option value="bharani@gmail.com">Bharanidharan Shanmugam</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Save</button>
+        </div>
+    </form>
+</div>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Unit Code</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
