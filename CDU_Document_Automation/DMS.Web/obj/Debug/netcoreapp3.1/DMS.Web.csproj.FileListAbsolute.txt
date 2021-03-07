@@ -323,6 +323,8 @@ E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
+E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\AssessmentItem\AddNewAssessmentItem.cshtml.g.cs
+E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\AssessmentItem\UnitAssessmentItemListUC.cshtml.g.cs
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Contact.cshtml.g.cs
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\DashBoard.cshtml.g.cs
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\FailedRegistration.cshtml.g.cs
@@ -352,6 +354,8 @@ E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\UnitInfo\ViewUnitInformationByApprover.cshtml.g.cs
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\UnitInfo\ViewUnitInformationByCC.cshtml.g.cs
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\UnitInfo\ViewUnitInformationByReviewer.cshtml.g.cs
+E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\UnitLearningOutcome\AddNewUnitLearningOutcome.cshtml.g.cs
+E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\UnitLearningOutcome\UnitLearningOutcomeListUC.cshtml.g.cs
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\DMS.Web.RazorTargetAssemblyInfo.cache
@@ -363,8 +367,3 @@ E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\DMS.Web.dll
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\DMS.Web.pdb
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\DMS.Web.genruntimeconfig.cache
-E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\DMS.Web.csprojAssemblyReference.cache
-E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\UnitLearningOutcome\AddNewUnitLearningOutcome.cshtml.g.cs
-E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\UnitLearningOutcome\UnitLearningOutcomeListUC.cshtml.g.cs
-E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\AssessmentItem\AddNewAssessmentItem.cshtml.g.cs
-E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\AssessmentItem\UnitAssessmentItemListUC.cshtml.g.cs

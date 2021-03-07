@@ -11,6 +11,7 @@ using DMS.Web.Data;
 using DMS.Web.ViewModel;
 using DMS.Web.Utils;
 
+
 namespace DMS.Web.Controllers
 {
     public class HomeController : Controller
@@ -158,7 +159,7 @@ namespace DMS.Web.Controllers
         {
             var unitInformationList = _context.UnitInformationList.OrderByDescending(a => a.OrderByDate).ToList();
             List<UnitInformationModel> lstUnitInfoList = UploadToNewList(unitInformationList);
-            return View(lstUnitInfoList);
+            return  View(lstUnitInfoList);
         }
 
         private List<UnitInformationModel> UploadToNewList(List<UnitInformationModel> unitInformationList)

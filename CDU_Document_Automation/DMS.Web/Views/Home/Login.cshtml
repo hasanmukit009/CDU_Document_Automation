@@ -2,47 +2,47 @@
 @{
     ViewData["Title"] = "LOG IN";
 }
-<div class="login-box">
-    <div class="login-logo">
-        <img class="profile-user-img img-responsive" style="border:none" src="~/img/cdu-logo.png" />
-        <a href="#"><b>CIETE</b>-DMS</a>
-    </div>
-    <!-- /.login-logo -->
-    <div class="card">
-        <div class="card-body login-card-body">
-            <p class="login-box-msg">Sign in to start your session</p>
-            <form role="form" method="post" id="loginForm">
-                <div class="card-body">
-                    <div class="form-group">
-                        @*<label for="exampleInputEmail1">Email address</label>*@
-                        <input type="email" asp-for="Email" name="email" class="form-control" id="txtEmail" placeholder="Enter email">
-                    </div>
-                    <div class="form-group">
-                        @*<label for="exampleInputPassword1">Password</label>*@
-                        <input type="password" asp-for="Password" name="password" class="form-control" id="txtPassword" placeholder="Password">
-                    </div>
-                    <div class="form-group mb-0">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" name="terms" class="custom-control-input" id="exampleCheck1">
-                            <label class="custom-control-label" for="exampleCheck1">I agree to the <a href="#">terms of service</a>.</label>
+    <div class="login-box">
+        <div class="login-logo">
+            <img class="profile-user-img img-responsive" style="border:none" src="~/img/cdu-logo.png" />
+            <a href="#"><b>CIETE</b>-DMS</a>
+        </div>
+
+        
+        <!-- /.login-logo -->
+        <div class="card">
+            <div class="card-body login-card-body">
+                <p class="login-box-msg">Sign in to start your session</p>
+                <form role="form" method="post" id="loginForm">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <input type="email" asp-for="Email" name="email" class="form-control" id="txtEmail" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" asp-for="Password" name="password" class="form-control" id="txtPassword" placeholder="Password">
+                        </div>
+                        <div class="form-group mb-0">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" name="terms" class="custom-control-input" id="exampleCheck1">
+                                <label class="custom-control-label" for="exampleCheck1">I agree to the <a href="#">terms of service</a>.</label>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-                </div>
-            </form>
-            <p login-box-msg>
-                <a href="forgot-password.html">I forgot my password</a>
-            </p>
-            <p login-box-msg>
-                <a asp-controller="Home" asp-action="Registration" class="text-center">Register a new membership</a>
-            </p>
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                    </div>
+                </form>
+                <p login-box-msg>
+                    <a href="forgot-password.html">I forgot my password</a>
+                </p>
+                <p login-box-msg>
+                    <a asp-controller="Home" asp-action="Registration" class="text-center">Register a new membership</a>
+                </p>
+            </div>
+            <!-- /.login-card-body -->
         </div>
-        <!-- /.login-card-body -->
     </div>
-</div>
 
 
 

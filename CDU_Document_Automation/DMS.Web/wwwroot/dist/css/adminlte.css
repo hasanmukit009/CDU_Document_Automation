@@ -11498,6 +11498,7 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::bef
   border-top: 1px solid #dee2e6;
   color: #869099;
   padding: 1rem;
+  text-align:center;
 }
 
 .text-sm .main-footer, .main-footer.text-sm {
