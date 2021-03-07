@@ -24,9 +24,9 @@
                 <h3 class="card-title p-3">@*Tabs*@</h3>
                 <ul class="nav nav-pills ml-auto p-2 align-content-lg-start">
                     <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Unit Information</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Unit Description</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Unit Description</a></li>
                     <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">Unit Learning Outcomes</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Assesment Items</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tab_4" data-toggle="tab">Assesment Items</a></li>
                 </ul>
             </div><!-- /.card-header -->
             <div class="card-body">
@@ -54,166 +54,176 @@
                                                 <tbody>
                                                     @foreach (var item in Model)
                                                     {
-                                                        <tr>
-                                                            <td>
-                                                                @Html.DisplayFor(modelItem => item.ChangeRequest)
-                                                            </td>
-                                                            <td>
-                                                                @Html.DisplayFor(modelItem => item.UnitCode)
-                                                            </td>
-                                                            <td>
-                                                                @if (item.CurrentPosition == "UC")
-                                                                {
-                                                                    <span class="badge bg-danger">
-                                                                        @Html.DisplayFor(modelItem => item.UnitCoordinator)
-                                                                    </span>
-                                                                }
-                                                                else
-                                                                {
-
-                                                                    <span class="badge bg-yellow">
-                                                                        @Html.DisplayFor(modelItem => item.UnitCoordinator)
-                                                                    </span>
-                                                                }
-                                                            </td>
-                                                            <td>
-                                                                @if (item.CurrentPosition == "CC")
-                                                                {
-                                                                    <span class="badge bg-danger">
-                                                                        @Html.DisplayFor(modelItem => item.AssignedCourseCoordinator)
-                                                                    </span>
-                                                                }
-                                                                else
-                                                                {
-                                                                    if (!String.IsNullOrEmpty(item.AssignedCourseCoordinator))
+                                                        @if (item.ChangeRequest == "Unit Info.")
+                                                        {
+                                                            <tr>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.ChangeRequest)
+                                                                </td>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.UnitCode)
+                                                                </td>
+                                                                <td>
+                                                                    @if (item.CurrentPosition == "UC")
                                                                     {
+                                                                        <span class="badge bg-danger">
+                                                                            @Html.DisplayFor(modelItem => item.UnitCoordinator)
+                                                                        </span>
+                                                                    }
+                                                                    else
+                                                                    {
+
                                                                         <span class="badge bg-yellow">
+                                                                            @Html.DisplayFor(modelItem => item.UnitCoordinator)
+                                                                        </span>
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (item.CurrentPosition == "CC")
+                                                                    {
+                                                                        <span class="badge bg-danger">
                                                                             @Html.DisplayFor(modelItem => item.AssignedCourseCoordinator)
                                                                         </span>
                                                                     }
                                                                     else
                                                                     {
-                                                                        @Html.DisplayFor(modelItem => item.AssignedCourseCoordinator)
+                                                                        if (!String.IsNullOrEmpty(item.AssignedCourseCoordinator))
+                                                                        {
+                                                                            <span class="badge bg-yellow">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedCourseCoordinator)
+                                                                            </span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.AssignedCourseCoordinator)
+                                                                        }
                                                                     }
-                                                                }
-                                                            </td>
-                                                            <td>
-                                                                @if (item.CurrentPosition == "Admin")
-                                                                {
-                                                                    <span class="badge bg-danger">
-                                                                        @Html.DisplayFor(modelItem => item.AssignedAdmin)
-                                                                    </span>
-                                                                }
-                                                                else
-                                                                {
-                                                                    if (item.AssignedAdmin != null)
+                                                                </td>
+                                                                <td>
+                                                                    @if (item.CurrentPosition == "Admin")
                                                                     {
-                                                                        <span class="badge bg-yellow">
+                                                                        <span class="badge bg-danger">
                                                                             @Html.DisplayFor(modelItem => item.AssignedAdmin)
                                                                         </span>
                                                                     }
                                                                     else
                                                                     {
-                                                                        @Html.DisplayFor(modelItem => item.AssignedAdmin)
+                                                                        if (item.AssignedAdmin != null)
+                                                                        {
+                                                                            <span class="badge bg-yellow">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedAdmin)
+                                                                            </span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.AssignedAdmin)
+                                                                        }
                                                                     }
-                                                                }
-                                                            </td>
-                                                            <td>
-                                                                @if (item.CurrentPosition == "Reviewer")
-                                                                {
-                                                                    if (item.IsReviewedByReviewer1)
+                                                                </td>
+                                                                <td>
+                                                                    @if (item.CurrentPosition == "Reviewer")
                                                                     {
-                                                                        <span class="badge bg-yellow">
-                                                                            @Html.DisplayFor(modelItem => item.AssignedReviewer1)
-                                                                        </span>
+                                                                        if (item.IsReviewedByReviewer1)
+                                                                        {
+                                                                            <span class="badge bg-yellow">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedReviewer1)
+                                                                            </span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <span class="badge bg-danger">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedReviewer1)
+                                                                            </span>
+                                                                        }
                                                                     }
                                                                     else
+                                                                    {
+                                                                        if (item.AssignedReviewer1 != null && item.IsReviewedByReviewer1)
+                                                                        {
+                                                                            <span class="badge bg-yellow">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedReviewer1)
+                                                                            </span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.AssignedReviewer1)
+                                                                        }
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (item.CurrentPosition == "Reviewer")
+                                                                    {
+                                                                        if (item.IsReviewedByReviewer2)
+                                                                        {
+                                                                            <span class="badge bg-yellow">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedReviewer2)
+                                                                            </span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <span class="badge bg-danger">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedReviewer2)
+                                                                            </span>
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        if (item.AssignedReviewer2 != null && item.IsReviewedByReviewer2)
+                                                                        {
+                                                                            <span class="badge bg-yellow">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedReviewer2)
+                                                                            </span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.AssignedReviewer2)
+                                                                        }
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (item.CurrentPosition == "Approver")
                                                                     {
                                                                         <span class="badge bg-danger">
-                                                                            @Html.DisplayFor(modelItem => item.AssignedReviewer1)
-                                                                        </span>
-                                                                    }
-                                                                }
-                                                                else
-                                                                {
-                                                                    if (item.AssignedReviewer1 != null && item.IsReviewedByReviewer1)
-                                                                    {
-                                                                        <span class="badge bg-yellow">
-                                                                            @Html.DisplayFor(modelItem => item.AssignedReviewer1)
-                                                                        </span>
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        @Html.DisplayFor(modelItem => item.AssignedReviewer1)
-                                                                    }
-                                                                }
-                                                            </td>
-                                                            <td>
-                                                                @if (item.CurrentPosition == "Reviewer")
-                                                                {
-                                                                    if (item.IsReviewedByReviewer2)
-                                                                    {
-                                                                        <span class="badge bg-yellow">
-                                                                            @Html.DisplayFor(modelItem => item.AssignedReviewer2)
-                                                                        </span>
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        <span class="badge bg-danger">
-                                                                            @Html.DisplayFor(modelItem => item.AssignedReviewer2)
-                                                                        </span>
-                                                                    }
-                                                                }
-                                                                else
-                                                                {
-                                                                    if (item.AssignedReviewer2 != null && item.IsReviewedByReviewer2)
-                                                                    {
-                                                                        <span class="badge bg-yellow">
-                                                                            @Html.DisplayFor(modelItem => item.AssignedReviewer2)
-                                                                        </span>
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        @Html.DisplayFor(modelItem => item.AssignedReviewer2)
-                                                                    }
-                                                                }
-                                                            </td>
-                                                            <td>
-                                                                @if (item.CurrentPosition == "Approver")
-                                                                {
-                                                                    <span class="badge bg-danger">
-                                                                        @Html.DisplayFor(modelItem => item.AssignedApprover)
-                                                                    </span>
-                                                                }
-                                                                else
-                                                                {
-                                                                    if (item.AssignedApprover != null)
-                                                                    {
-                                                                        <span class="badge bg-yellow">
                                                                             @Html.DisplayFor(modelItem => item.AssignedApprover)
                                                                         </span>
                                                                     }
                                                                     else
                                                                     {
-                                                                        @Html.DisplayFor(modelItem => item.AssignedApprover)
+                                                                        if (item.AssignedApprover != null)
+                                                                        {
+                                                                            <span class="badge bg-yellow">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedApprover)
+                                                                            </span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.AssignedApprover)
+                                                                        }
                                                                     }
-                                                                }
-                                                            </td>
-                                                            <td>
-                                                                @if (item.Status == "Approved")
-                                                                {
-                                                                    <span class="badge bg-success">
-                                                                        @Html.DisplayFor(modelItem => item.Status)
-                                                                    </span>
-                                                                }
-                                                                else
-                                                                {
-                                                                    <span class="badge bg-danger">
-                                                                        @Html.DisplayFor(modelItem => item.Status)
-                                                                    </span>
-                                                                }
-                                                            </td>
-                                                        </tr>
+                                                                </td>
+                                                                <td>
+                                                                    @if (item.Status == "Approved")
+                                                                    {
+                                                                        <span class="badge bg-success">
+                                                                            @Html.DisplayFor(modelItem => item.Status)
+                                                                        </span>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <span class="badge bg-danger">
+                                                                            @Html.DisplayFor(modelItem => item.Status)
+                                                                        </span>
+                                                                    }
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                        else
+                                                        {
+                                                            <tr>
+                                                                <td rowspan="9">
+                                                                </td>
+                                                            </tr>
+                                                        }
                                                     }
                                                 </tbody>
                                             </table>
@@ -229,11 +239,623 @@
                     </div>
                     <!-- /.tab-pane -->
                     <div class="tab-pane" id="tab_2">
-                        Not Available
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <table id="tblDashboard" class="table table-bordered table-striped overflow-auto">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Change Request</th>
+                                                        <th>Unit Code</th>
+                                                        <th>Unit Coordinator</th>
+                                                        <th>Course Coordinator</th>
+                                                        <th>Admin</th>
+                                                        <th>Reviewer1</th>
+                                                        <th>Reviewer2</th>
+                                                        <th>Approver</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model)
+                                                    {
+                                                        @if (item.ChangeRequest == "UD")
+                                                        {
+                                                            <tr>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.ChangeRequest)
+                                                                </td>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.UnitCode)
+                                                                </td>
+                                                                <td>
+                                                                    @if (item.CurrentPosition == "UC")
+                                                                    {
+                                                                        <span class="badge bg-danger">
+                                                                            @Html.DisplayFor(modelItem => item.UnitCoordinator)
+                                                                        </span>
+                                                                    }
+                                                                    else
+                                                                    {
+
+                                                                        <span class="badge bg-yellow">
+                                                                            @Html.DisplayFor(modelItem => item.UnitCoordinator)
+                                                                        </span>
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (item.CurrentPosition == "CC")
+                                                                    {
+                                                                        <span class="badge bg-danger">
+                                                                            @Html.DisplayFor(modelItem => item.AssignedCourseCoordinator)
+                                                                        </span>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        if (!String.IsNullOrEmpty(item.AssignedCourseCoordinator))
+                                                                        {
+                                                                            <span class="badge bg-yellow">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedCourseCoordinator)
+                                                                            </span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.AssignedCourseCoordinator)
+                                                                        }
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (item.CurrentPosition == "Admin")
+                                                                    {
+                                                                        <span class="badge bg-danger">
+                                                                            @Html.DisplayFor(modelItem => item.AssignedAdmin)
+                                                                        </span>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        if (item.AssignedAdmin != null)
+                                                                        {
+                                                                            <span class="badge bg-yellow">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedAdmin)
+                                                                            </span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.AssignedAdmin)
+                                                                        }
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (item.CurrentPosition == "Reviewer")
+                                                                    {
+                                                                        if (item.IsReviewedByReviewer1)
+                                                                        {
+                                                                            <span class="badge bg-yellow">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedReviewer1)
+                                                                            </span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <span class="badge bg-danger">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedReviewer1)
+                                                                            </span>
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        if (item.AssignedReviewer1 != null && item.IsReviewedByReviewer1)
+                                                                        {
+                                                                            <span class="badge bg-yellow">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedReviewer1)
+                                                                            </span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.AssignedReviewer1)
+                                                                        }
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (item.CurrentPosition == "Reviewer")
+                                                                    {
+                                                                        if (item.IsReviewedByReviewer2)
+                                                                        {
+                                                                            <span class="badge bg-yellow">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedReviewer2)
+                                                                            </span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <span class="badge bg-danger">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedReviewer2)
+                                                                            </span>
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        if (item.AssignedReviewer2 != null && item.IsReviewedByReviewer2)
+                                                                        {
+                                                                            <span class="badge bg-yellow">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedReviewer2)
+                                                                            </span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.AssignedReviewer2)
+                                                                        }
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (item.CurrentPosition == "Approver")
+                                                                    {
+                                                                        <span class="badge bg-danger">
+                                                                            @Html.DisplayFor(modelItem => item.AssignedApprover)
+                                                                        </span>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        if (item.AssignedApprover != null)
+                                                                        {
+                                                                            <span class="badge bg-yellow">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedApprover)
+                                                                            </span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.AssignedApprover)
+                                                                        }
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (item.Status == "Approved")
+                                                                    {
+                                                                        <span class="badge bg-success">
+                                                                            @Html.DisplayFor(modelItem => item.Status)
+                                                                        </span>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <span class="badge bg-danger">
+                                                                            @Html.DisplayFor(modelItem => item.Status)
+                                                                        </span>
+                                                                    }
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                        else
+                                                        {
+                                                            <tr>
+                                                                <td colspan="9">
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card -->
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
                     </div>
                     <!-- /.tab-pane -->
                     <div class="tab-pane" id="tab_3">
-                        Not Available
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <table id="tblDashboard" class="table table-bordered table-striped overflow-auto">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Change Request</th>
+                                                        <th>Unit Code</th>
+                                                        <th>Unit Coordinator</th>
+                                                        <th>Course Coordinator</th>
+                                                        <th>Admin</th>
+                                                        <th>Reviewer1</th>
+                                                        <th>Reviewer2</th>
+                                                        <th>Approver</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model)
+                                                    {
+                                                        @if (item.ChangeRequest == "ULO")
+                                                        {
+                                                            <tr>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.ChangeRequest)
+                                                                </td>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.UnitCode)
+                                                                </td>
+                                                                <td>
+                                                                    @if (item.CurrentPosition == "UC")
+                                                                    {
+                                                                        <span class="badge bg-danger">
+                                                                            @Html.DisplayFor(modelItem => item.UnitCoordinator)
+                                                                        </span>
+                                                                    }
+                                                                    else
+                                                                    {
+
+                                                                        <span class="badge bg-yellow">
+                                                                            @Html.DisplayFor(modelItem => item.UnitCoordinator)
+                                                                        </span>
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (item.CurrentPosition == "CC")
+                                                                    {
+                                                                        <span class="badge bg-danger">
+                                                                            @Html.DisplayFor(modelItem => item.AssignedCourseCoordinator)
+                                                                        </span>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        if (!String.IsNullOrEmpty(item.AssignedCourseCoordinator))
+                                                                        {
+                                                                            <span class="badge bg-yellow">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedCourseCoordinator)
+                                                                            </span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.AssignedCourseCoordinator)
+                                                                        }
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (item.CurrentPosition == "Admin")
+                                                                    {
+                                                                        <span class="badge bg-danger">
+                                                                            @Html.DisplayFor(modelItem => item.AssignedAdmin)
+                                                                        </span>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        if (item.AssignedAdmin != null)
+                                                                        {
+                                                                            <span class="badge bg-yellow">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedAdmin)
+                                                                            </span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.AssignedAdmin)
+                                                                        }
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (item.CurrentPosition == "Reviewer")
+                                                                    {
+                                                                        if (item.IsReviewedByReviewer1)
+                                                                        {
+                                                                            <span class="badge bg-yellow">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedReviewer1)
+                                                                            </span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <span class="badge bg-danger">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedReviewer1)
+                                                                            </span>
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        if (item.AssignedReviewer1 != null && item.IsReviewedByReviewer1)
+                                                                        {
+                                                                            <span class="badge bg-yellow">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedReviewer1)
+                                                                            </span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.AssignedReviewer1)
+                                                                        }
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (item.CurrentPosition == "Reviewer")
+                                                                    {
+                                                                        if (item.IsReviewedByReviewer2)
+                                                                        {
+                                                                            <span class="badge bg-yellow">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedReviewer2)
+                                                                            </span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <span class="badge bg-danger">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedReviewer2)
+                                                                            </span>
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        if (item.AssignedReviewer2 != null && item.IsReviewedByReviewer2)
+                                                                        {
+                                                                            <span class="badge bg-yellow">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedReviewer2)
+                                                                            </span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.AssignedReviewer2)
+                                                                        }
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (item.CurrentPosition == "Approver")
+                                                                    {
+                                                                        <span class="badge bg-danger">
+                                                                            @Html.DisplayFor(modelItem => item.AssignedApprover)
+                                                                        </span>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        if (item.AssignedApprover != null)
+                                                                        {
+                                                                            <span class="badge bg-yellow">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedApprover)
+                                                                            </span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.AssignedApprover)
+                                                                        }
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (item.Status == "Approved")
+                                                                    {
+                                                                        <span class="badge bg-success">
+                                                                            @Html.DisplayFor(modelItem => item.Status)
+                                                                        </span>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <span class="badge bg-danger">
+                                                                            @Html.DisplayFor(modelItem => item.Status)
+                                                                        </span>
+                                                                    }
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                        else
+                                                        {
+                                                            <tr>
+                                                                <td colspan="9">
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card -->
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab_4">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <table id="tblDashboard" class="table table-bordered table-striped overflow-auto">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Change Request</th>
+                                                        <th>Unit Code</th>
+                                                        <th>Unit Coordinator</th>
+                                                        <th>Course Coordinator</th>
+                                                        <th>Admin</th>
+                                                        <th>Reviewer1</th>
+                                                        <th>Reviewer2</th>
+                                                        <th>Approver</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model)
+                                                    {
+                                                        @if (item.ChangeRequest == "UAI")
+                                                        {
+                                                            <tr>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.ChangeRequest)
+                                                                </td>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.UnitCode)
+                                                                </td>
+                                                                <td>
+                                                                    @if (item.CurrentPosition == "UC")
+                                                                    {
+                                                                        <span class="badge bg-danger">
+                                                                            @Html.DisplayFor(modelItem => item.UnitCoordinator)
+                                                                        </span>
+                                                                    }
+                                                                    else
+                                                                    {
+
+                                                                        <span class="badge bg-yellow">
+                                                                            @Html.DisplayFor(modelItem => item.UnitCoordinator)
+                                                                        </span>
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (item.CurrentPosition == "CC")
+                                                                    {
+                                                                        <span class="badge bg-danger">
+                                                                            @Html.DisplayFor(modelItem => item.AssignedCourseCoordinator)
+                                                                        </span>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        if (!String.IsNullOrEmpty(item.AssignedCourseCoordinator))
+                                                                        {
+                                                                            <span class="badge bg-yellow">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedCourseCoordinator)
+                                                                            </span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.AssignedCourseCoordinator)
+                                                                        }
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (item.CurrentPosition == "Admin")
+                                                                    {
+                                                                        <span class="badge bg-danger">
+                                                                            @Html.DisplayFor(modelItem => item.AssignedAdmin)
+                                                                        </span>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        if (item.AssignedAdmin != null)
+                                                                        {
+                                                                            <span class="badge bg-yellow">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedAdmin)
+                                                                            </span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.AssignedAdmin)
+                                                                        }
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (item.CurrentPosition == "Reviewer")
+                                                                    {
+                                                                        if (item.IsReviewedByReviewer1)
+                                                                        {
+                                                                            <span class="badge bg-yellow">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedReviewer1)
+                                                                            </span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <span class="badge bg-danger">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedReviewer1)
+                                                                            </span>
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        if (item.AssignedReviewer1 != null && item.IsReviewedByReviewer1)
+                                                                        {
+                                                                            <span class="badge bg-yellow">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedReviewer1)
+                                                                            </span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.AssignedReviewer1)
+                                                                        }
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (item.CurrentPosition == "Reviewer")
+                                                                    {
+                                                                        if (item.IsReviewedByReviewer2)
+                                                                        {
+                                                                            <span class="badge bg-yellow">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedReviewer2)
+                                                                            </span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <span class="badge bg-danger">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedReviewer2)
+                                                                            </span>
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        if (item.AssignedReviewer2 != null && item.IsReviewedByReviewer2)
+                                                                        {
+                                                                            <span class="badge bg-yellow">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedReviewer2)
+                                                                            </span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.AssignedReviewer2)
+                                                                        }
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (item.CurrentPosition == "Approver")
+                                                                    {
+                                                                        <span class="badge bg-danger">
+                                                                            @Html.DisplayFor(modelItem => item.AssignedApprover)
+                                                                        </span>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        if (item.AssignedApprover != null)
+                                                                        {
+                                                                            <span class="badge bg-yellow">
+                                                                                @Html.DisplayFor(modelItem => item.AssignedApprover)
+                                                                            </span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.AssignedApprover)
+                                                                        }
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (item.Status == "Approved")
+                                                                    {
+                                                                        <span class="badge bg-success">
+                                                                            @Html.DisplayFor(modelItem => item.Status)
+                                                                        </span>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <span class="badge bg-danger">
+                                                                            @Html.DisplayFor(modelItem => item.Status)
+                                                                        </span>
+                                                                    }
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                        else
+                                                        {
+                                                            <tr>
+                                                                <td colspan="9">
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- /.card-body -->
+                                    </div>
+                                    <!-- /.card -->
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
                     </div>
                     <!-- /.tab-pane -->
                 </div>

@@ -30,7 +30,7 @@ namespace DMS.Web
 
             services.AddSession(options =>
             {
-                options.Cookie.Name = "_aspnetCoreSession";
+                options.Cookie.Name = "UserName";
                 options.IdleTimeout = TimeSpan.FromDays(1);
                 options.Cookie.IsEssential = true;
             });
@@ -58,10 +58,10 @@ namespace DMS.Web
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseSession();
             app.UseAuthentication();
             app.UseAuthorization();
-
+          
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
