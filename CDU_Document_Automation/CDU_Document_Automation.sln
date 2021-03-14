@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DMS.Web", "DMS.Web\DMS.Web.csproj", "{4BCD4522-E5A4-4435-AF93-B3E040C9D426}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMS.ReportHelper", "DMS.ReportHelper\DMS.ReportHelper.csproj", "{BB1E13DC-A47C-4F28-96A2-240924EA31BC}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{4BCD4522-E5A4-4435-AF93-B3E040C9D426}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BCD4522-E5A4-4435-AF93-B3E040C9D426}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BCD4522-E5A4-4435-AF93-B3E040C9D426}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BB1E13DC-A47C-4F28-96A2-240924EA31BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BB1E13DC-A47C-4F28-96A2-240924EA31BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BB1E13DC-A47C-4F28-96A2-240924EA31BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BB1E13DC-A47C-4F28-96A2-240924EA31BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
