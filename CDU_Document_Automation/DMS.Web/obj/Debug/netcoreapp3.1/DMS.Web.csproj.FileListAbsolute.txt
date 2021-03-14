@@ -138,9 +138,6 @@ E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\bin\Debug\
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\RdlCompile.cache
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\RdlCompile.compiled
-E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\DMS.Web.csproj.CoreCompileInputs.cache
-E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\DMS.Web.MvcApplicationPartsAssemblyInfo.cs
-E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\DMS.Web.MvcApplicationPartsAssemblyInfo.cache
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\DMS.Web.RazorAssemblyInfo.cache
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\DMS.Web.RazorAssemblyInfo.cs
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\DMS.Web.AssemblyInfoInputs.cache
@@ -204,6 +201,13 @@ E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\DMS.Web.dll
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\DMS.Web.pdb
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\DMS.Web.genruntimeconfig.cache
-E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\DMS.Web.csprojAssemblyReference.cache
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\Razor\Views\UnitInfo\ViewUnitInfoByUC.cshtml.g.cs
 E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\bin\Debug\netcoreapp3.1\Reports\report_UnitInformation.rdlc
+E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\DMS.Web.csproj.CoreCompileInputs.cache
+E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\DMS.Web.MvcApplicationPartsAssemblyInfo.cs
+E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.Web\obj\Debug\netcoreapp3.1\DMS.Web.MvcApplicationPartsAssemblyInfo.cache
