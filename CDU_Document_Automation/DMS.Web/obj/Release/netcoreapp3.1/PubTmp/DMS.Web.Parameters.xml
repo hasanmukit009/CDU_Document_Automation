@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<parameters>
-  <parameter name="IIS Web Application Name" description="" value="documentauto" tags="IisApp">
-    <parameterEntry kind="ProviderPath" scope="IisApp" match="^/Users/uvishere/Projects/CDU_Document_Automation/CDU_Document_Automation/DMS\.Web/obj/Release/netcoreapp3\.1/PubTmp/Out/$" />
-  </parameter>
-</parameters>
