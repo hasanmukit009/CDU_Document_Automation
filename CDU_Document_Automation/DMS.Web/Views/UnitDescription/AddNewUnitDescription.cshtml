@@ -107,15 +107,15 @@
                             <div class="form-group">
                                 <label for="SpecialistElectiveCourseCode">Indicate the type of change being requested:</label>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" checked="">
+                                    <input asp-for="IsChangeToCoreUnitDescriptionContentChecked" class="form-check-input">
                                     <label class="form-check-label">Change to core unit description content (major)</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" checked="">
+                                    <input asp-for="IsGrammarOrFormattingAmendmentChecked" class="form-check-input" >
                                     <label class="form-check-label">Grammar or formatting amendment (minor)</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" checked="">
+                                    <input asp-for="IsProvidingSpecificEnrolmentInformationChecked" class="form-check-input" >
                                     <label class="form-check-label">Providing specific enrolment information for students (minor)</label>
                                 </div>
                             </div>

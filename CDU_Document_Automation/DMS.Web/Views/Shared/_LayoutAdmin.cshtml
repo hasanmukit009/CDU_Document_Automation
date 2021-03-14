@@ -406,7 +406,17 @@
                 "scrollY": 200,
                 "scrollX": true
             });
-
+            $('#tblUnitDescriptiontUC').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": false,
+                "info": false,
+                "autoWidth": false,
+                "responsive": false,
+                "scrollY": 200,
+                "scrollX": true
+            });
         });
 
         var ConfirmDelete = function (UnitInfoID) {
@@ -429,15 +439,15 @@
         }
 
 
-        var ConfirmDeleteUnitDesc = function (UnitInfoID) {
+        var ConfirmDeleteUnitDesc = function (UnitDescID) {
             $("#hdnUnitDescID").val(UnitDescID);
             $("#myModal").modal('show');
         }
-        var RemoveUnitDesc = function () {
+        var RemoveUnitDescription = function () {
             var unitdescid = $("#hdnUnitDescID").val();
             $.ajax({
                 type: "POST",
-                url: "/UnitDescription/RemoveUnitDescByUC",
+                url: "/UnitDescription/RemoveUnitDescriptionByUC",
                 data: { Id: unitdescid },
                 success: function (result) {
                     $("#myModal").modal("hide");

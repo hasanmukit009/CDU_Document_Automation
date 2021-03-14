@@ -49,10 +49,10 @@
                                         @if (item.Status == "Approved")
                                         {
                                             <td>
-                                                <a asp-action="ViewUnitInfo" asp-route-id="@item.Id" class="btn btn-warning btn-sm green" data-toggle="tooltip" data-placement="top" title="View Unit Information">
+                                                <a asp-action="ViewUnitInfo" asp-route-id="@item.Id" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="View Unit Information">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
-                                                <a asp-action="DownloadUnitInfo" asp-route-id="@item.Id" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Download Unit Information">
+                                                <a asp-action="DownloadUnitInfo" asp-route-id="@item.Id" target="_blank" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Download Unit Information">
                                                     <i class="fas fa-download"></i>
                                                 </a>
                                             </td>
@@ -69,7 +69,6 @@
                                                 <a asp-action="RemoveUnitInfoByUC" asp-route-id="@item.Id" class="btn btn-danger btn-sm btn-icon-split" data-toggle="tooltip" data-placement="top" title="Remove Unit Information">
                                                     <span style="font-size: 1em; color: white;">
                                                         <i class="fas fa-minus-circle"></i>
-
                                                     </span>
                                                 </a>
                                             </td>
@@ -77,20 +76,20 @@
                                         else
                                         {
                                             <td>
-                                                <a asp-action="ViewUnitInfo" asp-route-id="@item.Id" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="View Unit Information">
+                                                <a asp-action="ViewUnitInfoByUC" asp-route-id="@item.Id" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="View Unit Information">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
                                                 <a asp-action="EditUnitInfoByUC" asp-route-id="@item.Id" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Edit Unit Information">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                <a onclick="ConfirmDelete(@item.Id)" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Delete Unit Information">
+                                                <a onclick="ConfirmDeleteByUC(@item.Id)" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Delete Unit Information">
                                                     <span style="font-size: 1em; color: white;">
                                                         <i class="fas fa-minus-circle"></i>
                                                     </span>
                                                 </a>
                                                 @if (!String.IsNullOrEmpty(item.CourseCoordinator))
                                                 {
-                                                    <a asp-action="AssignToCourseCoordinator" asp-route-id="@item.Id" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="Assign to Course Coordinator">
+                                                    <a asp-action="AssignToCourseCoordinator" asp-route-id="@item.Id" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Assign to Course Coordinator">
                                                         <i class="fas fa-share-square"></i>
                                                     </a>
                                                 }
@@ -106,10 +105,10 @@
                                     else
                                     {
                                         <td>
-                                            <a asp-action="ViewUnitInfo" asp-route-id="@item.Id" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="View Unit Information">
+                                            <a asp-action="ViewUnitInfoByUC" asp-route-id="@item.Id" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="View Unit Information">
                                                 <i class="fas fa-eye"></i>
                                             </a>
-                                            <a asp-action="DownloadUnitInfo" asp-route-id="@item.Id" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Download Unit Information">
+                                            <a asp-action="DownloadUnitInfoByUC" asp-route-id="@item.Id" class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="top" title="Download Unit Information">
                                                 <i class="fas fa-download"></i>
                                             </a>
                                         </td>

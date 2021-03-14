@@ -398,6 +398,15 @@ namespace DMS.Web.Data.Migrations
                     b.Property<string>("InternationalStudentNumber")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsChangeToCoreUnitDescriptionContentChecked")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsGrammarOrFormattingAmendmentChecked")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsProvidingSpecificEnrolmentInformationChecked")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("IsReviewedByReviewer1")
                         .HasColumnType("bit");
 

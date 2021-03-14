@@ -27,7 +27,7 @@ namespace DMS.Web
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-
+            services.AddMvc();
             services.AddSession(options =>
             {
                 options.Cookie.Name = "UserName";
@@ -37,7 +37,6 @@ namespace DMS.Web
 
             services.AddControllersWithViews();
             services.AddRazorPages();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

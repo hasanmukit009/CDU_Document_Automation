@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using AspNetCore.Reporting;
 using DMS.Web.Data;
 using DMS.Web.Models;
 using DMS.Web.ViewModel;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -13,16 +16,19 @@ namespace DMS.Web.Controllers
 {
     public class UnitInfoController : Controller
     {
+        private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly ILogger<HomeController> _logger;
         private readonly UserManager<IdentityUser> userManager;
         private readonly SignInManager<IdentityUser> signInManager;
         private readonly ApplicationDbContext _context;
-        public UnitInfoController(ILogger<HomeController> logger, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, ApplicationDbContext context)
+        public UnitInfoController(ILogger<HomeController> logger, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _logger = logger;
             this.userManager = userManager;
             this.signInManager = signInManager;
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
+            Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
         }
 
 
@@ -56,37 +62,12 @@ namespace DMS.Web.Controllers
                     objnew.Mode = obj.Mode;
                     objnew.Location = obj.Location;
                     objnew.LearningMethod = obj.LearningMethod;
-                    objnew.UnitCoordinator = obj.UnitCoordinator;
+
                     objnew.Phone = obj.Phone;
                     objnew.Email = obj.Email;
                     objnew.UnitDescription = obj.UnitDescription;
                     objnew.LearningOutComes = obj.LearningOutComes;
-                    objnew.TeachingAndLearningApproach_HowUnitRun = obj.TeachingAndLearningApproach_HowUnitRun;
-                    objnew.TeachingAndLearningApproach_LecturerRole = obj.TeachingAndLearningApproach_LecturerRole;
-                    objnew.TeachingAndLearningApproach_StudentParticipation = obj.TeachingAndLearningApproach_StudentParticipation;
-                    objnew.Resources_RequiredTextbooks = obj.Resources_RequiredTextbooks;
-                    objnew.Resources_Learnline = obj.Resources_Learnline;
-                    objnew.Resources_eReserveCourseReadings = obj.Resources_eReserveCourseReadings;
-                    objnew.Resources_AdditionalResources = obj.Resources_AdditionalResources;
-                    objnew.CreatedBy = obj.CreatedBy;
-                    objnew.CreatedDate = obj.CreatedDate;
-                    objnew.UpdatedDate = obj.UpdatedDate;
-                    objnew.UpdatedBy = obj.UpdatedBy;
-                    objnew.AssignedTo = obj.AssignedTo;
-                    objnew.AssignedBy = obj.AssignedBy;
-                    objnew.AssignedDate = obj.AssignedDate;
-                    objnew.Status = obj.Status;
-                    objnew.Remarks = obj.Remarks;
-                    objnew.FeedbackByCC = obj.FeedbackByCC;
-                    objnew.Reviewer1 = obj.Reviewer1;
-                    objnew.FeedbackByReviewer1 = obj.FeedbackByReviewer1;
-                    objnew.IsReviewedByReviewer1 = obj.IsReviewedByReviewer1;
-                    objnew.Reviewer2 = obj.Reviewer2;
-                    objnew.FeedbackByReviewer2 = obj.FeedbackByReviewer2;
-                    objnew.IsReviewedByReviewer2 = obj.IsReviewedByReviewer2;
-                    objnew.FeedbackByApprover = obj.FeedbackByApprover;
-                    objnew.CourseCoordinator = obj.CourseCoordinator;
-                    objnew.CurrentPosition = obj.CurrentPosition;
+
                     objnew.Assessment_Overview_Description_1 = obj.Assessment_Overview_Description_1;
                     objnew.Assessment_Overview_Description_2 = obj.Assessment_Overview_Description_2;
                     objnew.Assessment_Overview_Description_3 = obj.Assessment_Overview_Description_3;
@@ -103,6 +84,17 @@ namespace DMS.Web.Controllers
                     objnew.Assessment_Overview_Value_2 = obj.Assessment_Overview_Value_2;
                     objnew.Assessment_Overview_Value_3 = obj.Assessment_Overview_Value_3;
                     objnew.Assessment_Overview_Value_4 = obj.Assessment_Overview_Value_4;
+
+                    objnew.TeachingAndLearningApproach = obj.TeachingAndLearningApproach;
+                    objnew.TeachingAndLearningApproach_HowUnitRun = obj.TeachingAndLearningApproach_HowUnitRun;
+                    objnew.TeachingAndLearningApproach_LecturerRole = obj.TeachingAndLearningApproach_LecturerRole;
+                    objnew.TeachingAndLearningApproach_StudentParticipation = obj.TeachingAndLearningApproach_StudentParticipation;
+
+                    objnew.Resources_RequiredTextbooks = obj.Resources_RequiredTextbooks;
+                    objnew.Resources_Learnline = obj.Resources_Learnline;
+                    objnew.Resources_eReserveCourseReadings = obj.Resources_eReserveCourseReadings;
+                    objnew.Resources_AdditionalResources = obj.Resources_AdditionalResources;
+
                     objnew.LearningSchedule_Assessments_1 = obj.LearningSchedule_Assessments_1;
                     objnew.LearningSchedule_Assessments_2 = obj.LearningSchedule_Assessments_2;
                     objnew.LearningSchedule_Assessments_3 = obj.LearningSchedule_Assessments_3;
@@ -163,10 +155,46 @@ namespace DMS.Web.Controllers
                     objnew.LearningSchedule_Week_13 = obj.LearningSchedule_Week_13;
                     objnew.LearningSchedule_Week_14 = obj.LearningSchedule_Week_14;
                     objnew.LearningSchedule_Week_15 = obj.LearningSchedule_Week_15;
-                    objnew.TeachingAndLearningApproach = obj.TeachingAndLearningApproach;
-                    objnew.ChangeRequest = obj.ChangeRequest;
+
+                    objnew.UnitCoordinator = obj.UnitCoordinator;
+                    objnew.FeedbackByUC = obj.FeedbackByUC;
+
+                    objnew.CourseCoordinator = obj.CourseCoordinator;
                     objnew.AssignedCourseCoordinator = obj.AssignedCourseCoordinator;
+                    objnew.FeedbackByCC = obj.FeedbackByCC;
+
+                    objnew.Admin = obj.Admin;
+                    objnew.AssignedAdmin = obj.AssignedAdmin;
+
+                    objnew.Reviewer1 = obj.Reviewer1;
+                    objnew.AssignedReviewer1 = obj.AssignedReviewer1;
+                    objnew.FeedbackByReviewer1 = obj.FeedbackByReviewer1;
+                    objnew.IsReviewedByReviewer1 = obj.IsReviewedByReviewer1;
+
+                    objnew.Reviewer2 = obj.Reviewer2;
+                    objnew.AssignedReviewer2 = obj.AssignedReviewer2;
+                    objnew.FeedbackByReviewer2 = obj.FeedbackByReviewer2;
+                    objnew.IsReviewedByReviewer2 = obj.IsReviewedByReviewer2;
+                    objnew.FeedbackByApprover = obj.FeedbackByApprover;
+
+                    objnew.Approver = obj.Approver;
+                    objnew.AssignedApprover = obj.AssignedApprover;
+
+                    objnew.CurrentPosition = obj.CurrentPosition;
+                    objnew.ChangeRequest = obj.ChangeRequest;
+
+                    objnew.CreatedBy = obj.CreatedBy;
+                    objnew.CreatedDate = obj.CreatedDate;
+                    objnew.UpdatedDate = obj.UpdatedDate;
+                    objnew.UpdatedBy = obj.UpdatedBy;
+                    objnew.AssignedTo = obj.AssignedTo;
+                    objnew.AssignedBy = obj.AssignedBy;
+                    objnew.AssignedDate = obj.AssignedDate;
+
+                    objnew.Status = obj.Status;
+                    objnew.Remarks = obj.Remarks;
                     objnew.OrderByDate = obj.OrderByDate;
+
                     lstUnitInfoList.Add(objnew);
                 }
             }
@@ -414,16 +442,135 @@ namespace DMS.Web.Controllers
             return Json(new { status = "Success" });
         }
 
+        public IActionResult DownloadUnitInfo(int id)
+        {
+
+            string mimtype = "";
+            int extension = 1;
+            var path = $"{this._webHostEnvironment.WebRootPath}\\Reports\\report_UnitInformation.rdlc";
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            var objUnitInformation = _context.UnitInformationList.FindAsync(id);
+            parameters.Add("rp_unitcode", objUnitInformation.Result.UnitCode);
+            parameters.Add("rp_unitTitle", objUnitInformation.Result.UnitTitle);
+            parameters.Add("rp_creditPoints", objUnitInformation.Result.CreditPoints);
+            parameters.Add("rp_prerequisites", objUnitInformation.Result.Prerequisites);
+            parameters.Add("rp_semester", objUnitInformation.Result.Semester);
+            parameters.Add("rp_year", objUnitInformation.Result.Year);
+            parameters.Add("rp_Mode", objUnitInformation.Result.Mode);
+            parameters.Add("rp_Location", objUnitInformation.Result.Location);
+            parameters.Add("rp_LearningMethod", objUnitInformation.Result.LearningMethod);
+            parameters.Add("rp_unitCoordinator", objUnitInformation.Result.UnitCoordinator);
+            parameters.Add("rp_phone", objUnitInformation.Result.Phone);
+            parameters.Add("rp_Email", objUnitInformation.Result.Email);
+            parameters.Add("rp_UnitDescription", objUnitInformation.Result.UnitDescription);
+            parameters.Add("rp_LearningOutcomes", objUnitInformation.Result.LearningOutComes);
+            parameters.Add("rp_Assessment_Overview_Item_1", objUnitInformation.Result.Assessment_Overview_Item_1);
+            parameters.Add("rp_Assessment_Overview_Item_2", objUnitInformation.Result.Assessment_Overview_Item_2);
+            parameters.Add("rp_Assessment_Overview_Item_3", objUnitInformation.Result.Assessment_Overview_Item_3);
+            parameters.Add("rp_Assessment_Overview_Item_4", objUnitInformation.Result.Assessment_Overview_Item_4);
+            parameters.Add("rp_Assessment_Overview_Description_1", objUnitInformation.Result.Assessment_Overview_Description_1);
+            parameters.Add("rp_Assessment_Overview_Description_2", objUnitInformation.Result.Assessment_Overview_Description_2);
+            parameters.Add("rp_Assessment_Overview_Description_3", objUnitInformation.Result.Assessment_Overview_Description_3);
+            parameters.Add("rp_Assessment_Overview_Description_4", objUnitInformation.Result.Assessment_Overview_Description_4);
+            parameters.Add("rp_Assessment_Overview_Value_1", objUnitInformation.Result.Assessment_Overview_Value_1);
+            parameters.Add("rp_Assessment_Overview_Value_2", objUnitInformation.Result.Assessment_Overview_Value_2);
+            parameters.Add("rp_Assessment_Overview_Value_3", objUnitInformation.Result.Assessment_Overview_Value_3);
+            parameters.Add("rp_Assessment_Overview_Value_4", objUnitInformation.Result.Assessment_Overview_Value_4);
+            parameters.Add("rp_Assessment_Overview_Learning_Outcome_1", objUnitInformation.Result.Assessment_Overview_Learning_Outcome_1);
+            parameters.Add("rp_Assessment_Overview_Learning_Outcome_2", objUnitInformation.Result.Assessment_Overview_Learning_Outcome_2);
+            parameters.Add("rp_Assessment_Overview_Learning_Outcome_3", objUnitInformation.Result.Assessment_Overview_Learning_Outcome_3);
+            parameters.Add("rp_Assessment_Overview_Learning_Outcome_4", objUnitInformation.Result.Assessment_Overview_Learning_Outcome_4);
 
 
+            parameters.Add("rp_TeachingAndLearningApproach", objUnitInformation.Result.TeachingAndLearningApproach);
+            parameters.Add("rp_TeachingAndLearningApproach_HowUnitRun", objUnitInformation.Result.TeachingAndLearningApproach_HowUnitRun);
+            parameters.Add("rp_TeachingAndLearningApproach_LecturerRole", objUnitInformation.Result.TeachingAndLearningApproach_LecturerRole);
+            parameters.Add("rp_TeachingAndLearningApproach_StudentParticipation", objUnitInformation.Result.TeachingAndLearningApproach_StudentParticipation);
+
+            parameters.Add("rp_Resources_AdditionalResources", objUnitInformation.Result.Resources_AdditionalResources);
+            parameters.Add("rp_Resources_eReserveCourseReadings", objUnitInformation.Result.Resources_eReserveCourseReadings);
+            parameters.Add("rp_Resources_Learnline", objUnitInformation.Result.Resources_Learnline);
+            parameters.Add("rp_Resources_RequiredTextbooks", objUnitInformation.Result.Resources_RequiredTextbooks);
+
+            parameters.Add("rp_LearningSchedule_Week_1", objUnitInformation.Result.LearningSchedule_Week_1);
+            parameters.Add("rp_LearningSchedule_Week_2", objUnitInformation.Result.LearningSchedule_Week_2);
+            parameters.Add("rp_LearningSchedule_Week_3", objUnitInformation.Result.LearningSchedule_Week_3);
+            parameters.Add("rp_LearningSchedule_Week_4", objUnitInformation.Result.LearningSchedule_Week_4);
+            parameters.Add("rp_LearningSchedule_Week_5", objUnitInformation.Result.LearningSchedule_Week_5);
+            parameters.Add("rp_LearningSchedule_Week_6", objUnitInformation.Result.LearningSchedule_Week_6);
+            parameters.Add("rp_LearningSchedule_Week_7", objUnitInformation.Result.LearningSchedule_Week_7);
+            parameters.Add("rp_LearningSchedule_Week_8", objUnitInformation.Result.LearningSchedule_Week_8);
+            parameters.Add("rp_LearningSchedule_Week_9", objUnitInformation.Result.LearningSchedule_Week_9);
+            parameters.Add("rp_LearningSchedule_Week_10", objUnitInformation.Result.LearningSchedule_Week_10);
+            parameters.Add("rp_LearningSchedule_Week_11", objUnitInformation.Result.LearningSchedule_Week_11);
+            parameters.Add("rp_LearningSchedule_Week_12", objUnitInformation.Result.LearningSchedule_Week_12);
+            parameters.Add("rp_LearningSchedule_Week_13", objUnitInformation.Result.LearningSchedule_Week_13);
+            parameters.Add("rp_LearningSchedule_Week_14", objUnitInformation.Result.LearningSchedule_Week_14);
+            parameters.Add("rp_LearningSchedule_Week_15", objUnitInformation.Result.LearningSchedule_Week_15);
+
+            parameters.Add("rp_LearningSchedule_Topic_1", objUnitInformation.Result.LearningSchedule_Topic_1);
+            parameters.Add("rp_LearningSchedule_Topic_2", objUnitInformation.Result.LearningSchedule_Topic_2);
+            parameters.Add("rp_LearningSchedule_Topic_3", objUnitInformation.Result.LearningSchedule_Topic_3);
+            parameters.Add("rp_LearningSchedule_Topic_4", objUnitInformation.Result.LearningSchedule_Topic_4);
+            parameters.Add("rp_LearningSchedule_Topic_5", objUnitInformation.Result.LearningSchedule_Topic_5);
+            parameters.Add("rp_LearningSchedule_Topic_6", objUnitInformation.Result.LearningSchedule_Topic_6);
+            parameters.Add("rp_LearningSchedule_Topic_7", objUnitInformation.Result.LearningSchedule_Topic_7);
+            parameters.Add("rp_LearningSchedule_Topic_8", objUnitInformation.Result.LearningSchedule_Topic_8);
+            parameters.Add("rp_LearningSchedule_Topic_9", objUnitInformation.Result.LearningSchedule_Topic_9);
+            parameters.Add("rp_LearningSchedule_Topic_10", objUnitInformation.Result.LearningSchedule_Topic_10);
+            parameters.Add("rp_LearningSchedule_Topic_11", objUnitInformation.Result.LearningSchedule_Topic_11);
+            parameters.Add("rp_LearningSchedule_Topic_12", objUnitInformation.Result.LearningSchedule_Topic_12);
+            parameters.Add("rp_LearningSchedule_Topic_13", objUnitInformation.Result.LearningSchedule_Topic_13);
+            parameters.Add("rp_LearningSchedule_Topic_14", objUnitInformation.Result.LearningSchedule_Topic_14);
+            parameters.Add("rp_LearningSchedule_Topic_15", objUnitInformation.Result.LearningSchedule_Topic_15);
+
+            parameters.Add("rp_LearningSchedule_Tutorial_1", objUnitInformation.Result.LearningSchedule_Tutorial_1);
+            parameters.Add("rp_LearningSchedule_Tutorial_2", objUnitInformation.Result.LearningSchedule_Tutorial_2);
+            parameters.Add("rp_LearningSchedule_Tutorial_3", objUnitInformation.Result.LearningSchedule_Tutorial_3);
+            parameters.Add("rp_LearningSchedule_Tutorial_4", objUnitInformation.Result.LearningSchedule_Tutorial_4);
+            parameters.Add("rp_LearningSchedule_Tutorial_5", objUnitInformation.Result.LearningSchedule_Tutorial_5);
+            parameters.Add("rp_LearningSchedule_Tutorial_6", objUnitInformation.Result.LearningSchedule_Tutorial_6);
+            parameters.Add("rp_LearningSchedule_Tutorial_7", objUnitInformation.Result.LearningSchedule_Tutorial_7);
+            parameters.Add("rp_LearningSchedule_Tutorial_8", objUnitInformation.Result.LearningSchedule_Tutorial_8);
+            parameters.Add("rp_LearningSchedule_Tutorial_9", objUnitInformation.Result.LearningSchedule_Tutorial_9);
+            parameters.Add("rp_LearningSchedule_Tutorial_10", objUnitInformation.Result.LearningSchedule_Tutorial_10);
+            parameters.Add("rp_LearningSchedule_Tutorial_11", objUnitInformation.Result.LearningSchedule_Tutorial_11);
+            parameters.Add("rp_LearningSchedule_Tutorial_12", objUnitInformation.Result.LearningSchedule_Tutorial_12);
+            parameters.Add("rp_LearningSchedule_Tutorial_13", objUnitInformation.Result.LearningSchedule_Tutorial_13);
+            parameters.Add("rp_LearningSchedule_Tutorial_14", objUnitInformation.Result.LearningSchedule_Tutorial_14);
+            parameters.Add("rp_LearningSchedule_Tutorial_15", objUnitInformation.Result.LearningSchedule_Tutorial_15);
+
+
+            parameters.Add("rp_LearningSchedule_Assessments_1", objUnitInformation.Result.LearningSchedule_Assessments_1);
+            parameters.Add("rp_LearningSchedule_Assessments_2", objUnitInformation.Result.LearningSchedule_Assessments_2);
+            parameters.Add("rp_LearningSchedule_Assessments_3", objUnitInformation.Result.LearningSchedule_Assessments_3);
+            parameters.Add("rp_LearningSchedule_Assessments_4", objUnitInformation.Result.LearningSchedule_Assessments_4);
+            parameters.Add("rp_LearningSchedule_Assessments_5", objUnitInformation.Result.LearningSchedule_Assessments_5);
+            parameters.Add("rp_LearningSchedule_Assessments_6", objUnitInformation.Result.LearningSchedule_Assessments_6);
+            parameters.Add("rp_LearningSchedule_Assessments_7", objUnitInformation.Result.LearningSchedule_Assessments_7);
+            parameters.Add("rp_LearningSchedule_Assessments_8", objUnitInformation.Result.LearningSchedule_Assessments_8);
+            parameters.Add("rp_LearningSchedule_Assessments_9", objUnitInformation.Result.LearningSchedule_Assessments_9);
+            parameters.Add("rp_LearningSchedule_Assessments_10", objUnitInformation.Result.LearningSchedule_Assessments_10);
+            parameters.Add("rp_LearningSchedule_Assessments_11", objUnitInformation.Result.LearningSchedule_Assessments_11);
+            parameters.Add("rp_LearningSchedule_Assessments_12", objUnitInformation.Result.LearningSchedule_Assessments_12);
+            parameters.Add("rp_LearningSchedule_Assessments_13", objUnitInformation.Result.LearningSchedule_Assessments_13);
+            parameters.Add("rp_LearningSchedule_Assessments_14", objUnitInformation.Result.LearningSchedule_Assessments_14);
+            parameters.Add("rp_LearningSchedule_Assessments_15", objUnitInformation.Result.LearningSchedule_Assessments_15);
+
+
+            LocalReport localReport = new LocalReport(path);
+            var result = localReport.Execute(RenderType.Pdf, extension, parameters, mimtype);
+            return File(result.MainStream, "application/pdf");
+        }
         /// <summary>
         /// Course Coordinator
         /// </summary>
         /// <returns></returns>
         public IActionResult UnitInfoListCC()
         {
-            var unitInformationList = _context.UnitInformationList.OrderByDescending(a => a.OrderByDate).Where(a => a.Status == "Pending" && a.CurrentPosition == "CC").ToList();
-            return View(unitInformationList);
+            var unitInformationList = _context.UnitInformationList.OrderByDescending(a => a.OrderByDate).Where(a => a.Status == "Pending" && a.CurrentPosition == "CC").ToList().GroupBy(a => a.UnitCode);
+            List<UnitInformationModel> lstUnitInfoList = UploadToNewList(unitInformationList);
+            return View(lstUnitInfoList);
         }
 
         public async Task<IActionResult> ViewUnitInformationByCC(int id)
@@ -432,14 +579,21 @@ namespace DMS.Web.Controllers
             return View(objUnitInformation);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> EditUnitInformationByCC(int id)
+        {
+            var objUnitInformation = await _context.UnitInformationList.FindAsync(id);
+            return View(objUnitInformation);
+        }
+
         [HttpPost]
-        public async Task<IActionResult> ViewUnitInformationByCC(UnitInformationModel model)
+        public async Task<IActionResult> EditUnitInformationByCC(UnitInformationModel model)
         {
             if (ModelState.IsValid)
             {
                 model.UpdatedBy = User.Identity.Name;
                 model.UpdatedDate = DateTime.Now;
-                model.Remarks = model.UnitCode + " " + model.UnitTitle + " has been updated by CC- " + GetNameByEmail(model.AssignedCourseCoordinator);
+                model.Remarks = model.UnitCode + " - " + model.UnitTitle + " has been updated by CC- " + GetNameByEmail(model.AssignedCourseCoordinator);
                 model.OrderByDate = DateTime.Now;
                 _context.Update(model);
                 await _context.SaveChangesAsync();
@@ -472,12 +626,18 @@ namespace DMS.Web.Controllers
             objUnitInformation.CurrentPosition = "Admin";
             objUnitInformation.Status = "Pending";
             objUnitInformation.AssignedAdmin = objUnitInformation.Admin;
-            objUnitInformation.Remarks = objUnitInformation.UnitCode + objUnitInformation.UnitTitle + " has been assigned to Admin- " + GetNameByEmail(objUnitInformation.AssignedAdmin);
+            objUnitInformation.Remarks = objUnitInformation.UnitCode + " - " + objUnitInformation.UnitTitle + " has been assigned to Admin- " + GetNameByEmail(objUnitInformation.AssignedAdmin);
             objUnitInformation.OrderByDate = DateTime.Now;
             _context.Update(objUnitInformation);
             await _context.SaveChangesAsync();
             return RedirectToAction("DashBoard", "Home");
         }
+
+
+
+
+
+
 
         /// <summary>
         /// Admin
@@ -485,16 +645,20 @@ namespace DMS.Web.Controllers
         /// <returns></returns>
         public IActionResult UnitInfoListAdmin()
         {
-            var unitInformationList = _context.UnitInformationList.OrderByDescending(a => a.OrderByDate).Where(a => a.Status == "Pending" && a.CurrentPosition == "Admin").ToList();
-            return View(unitInformationList);
+            var unitInformationList = _context.UnitInformationList.OrderByDescending(a => a.OrderByDate).Where(a => a.Status == "Pending" && a.CurrentPosition == "Admin").ToList().GroupBy(a => a.UnitCode);
+            List<UnitInformationModel> lstUnitInfoList = UploadToNewList(unitInformationList);
+            return View(lstUnitInfoList);
         }
 
         public async Task<IActionResult> AssignToReviewer(int id)
         {
             var objUnitInformation = await _context.UnitInformationList.FindAsync(id);
             objUnitInformation.AssignedTo = objUnitInformation.Reviewer1;
-            objUnitInformation.AssignedBy = objUnitInformation.AssignedAdmin;
+            objUnitInformation.AssignedBy = User.Identity.Name;
             objUnitInformation.AssignedDate = DateTime.Now;
+
+            objUnitInformation.UpdatedDate = DateTime.Now;
+            objUnitInformation.UpdatedBy = User.Identity.Name;
 
             objUnitInformation.AssignedReviewer1 = objUnitInformation.Reviewer1;
             objUnitInformation.IsReviewedByReviewer1 = false;
@@ -502,7 +666,8 @@ namespace DMS.Web.Controllers
             objUnitInformation.IsReviewedByReviewer2 = false;
 
             objUnitInformation.CurrentPosition = "Reviewer";
-            objUnitInformation.Remarks = GetNameByEmail(objUnitInformation.AssignedAdmin) + " assigned " + objUnitInformation.UnitCode + objUnitInformation.UnitTitle + " to reviewer1- " + GetNameByEmail(objUnitInformation.AssignedReviewer1) + " and reviewer2- " + GetNameByEmail(objUnitInformation.AssignedReviewer2);
+            objUnitInformation.Remarks = objUnitInformation.UnitCode + " - " + objUnitInformation.UnitTitle + " has been assigned to Reviewer 1 - " + GetNameByEmail(objUnitInformation.AssignedReviewer1) + " and Reviewer2 - " + GetNameByEmail(objUnitInformation.AssignedReviewer2);
+
             objUnitInformation.OrderByDate = DateTime.Now;
             _context.Update(objUnitInformation);
             await _context.SaveChangesAsync();
@@ -531,6 +696,26 @@ namespace DMS.Web.Controllers
             return View(model);
         }
 
+        public async Task<IActionResult> EditUnitInformationByAdmin(int id)
+        {
+            var objUnitInformation = await _context.UnitInformationList.FindAsync(id);
+            return View(objUnitInformation);
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditUnitInformationByAdmin(UnitInformationModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                model.UpdatedBy = User.Identity.Name;
+                model.UpdatedDate = DateTime.Now;
+                model.Remarks = model.UnitCode + " - " + model.UnitTitle + " has been updated by Admin- " + GetNameByEmail(model.AssignedAdmin);
+                model.OrderByDate = DateTime.Now;
+                _context.Update(model);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("UnitInfoListAdmin");
+            }
+            return View(model);
+        }
 
         /// <summary>
         /// Reviewer
@@ -538,8 +723,9 @@ namespace DMS.Web.Controllers
         /// <returns></returns>
         public IActionResult UnitInfoListReviewer()
         {
-            var unitInformationList = _context.UnitInformationList.OrderByDescending(a => a.OrderByDate).Where(a => a.Status == "Pending" && a.CurrentPosition == "Reviewer").ToList();
-            return View(unitInformationList);
+            var unitInformationList = _context.UnitInformationList.OrderByDescending(a => a.OrderByDate).Where(a => a.Status == "Pending" && a.CurrentPosition == "Reviewer").ToList().GroupBy(a => a.UnitCode);
+            List<UnitInformationModel> lstUnitInfoList = UploadToNewList(unitInformationList);
+            return View(lstUnitInfoList);
         }
 
         public async Task<IActionResult> ViewUnitInformationByReviewer(int id)
@@ -586,15 +772,62 @@ namespace DMS.Web.Controllers
             return View(model);
         }
 
+        public async Task<IActionResult> EditUnitInformationByReviewer(int id)
+        {
+            var objUnitInformation = await _context.UnitInformationList.FindAsync(id);
+            return View(objUnitInformation);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditUnitInformationByReviewer(UnitInformationModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (User.Identity.Name == model.AssignedReviewer1)
+                {
+                    model.Approver = "stefanija@gmail.com";
+                    model.UpdatedBy = User.Identity.Name;
+                    model.UpdatedDate = DateTime.Now;
+                    model.Remarks = model.UnitCode + " - " + model.UnitTitle + " has been reviewed by Reviewer1 - " + GetNameByEmail(model.AssignedReviewer1);
+                    model.IsReviewedByReviewer1 = true;
+                    model.Status = "Pending";
+                    model.OrderByDate = DateTime.Now;
+                }
+                if (User.Identity.Name == model.AssignedReviewer2)
+                {
+                    model.Approver = "stefanija@gmail.com";
+                    model.UpdatedBy = User.Identity.Name;
+                    model.UpdatedDate = DateTime.Now;
+                    model.Remarks = model.UnitCode + " - " + model.UnitTitle + " has been reviewed by Reviewer2 - " + GetNameByEmail(model.AssignedReviewer2);
+                    model.IsReviewedByReviewer2 = true;
+                    model.Status = "Pending";
+                    model.OrderByDate = DateTime.Now;
+                }
+                if (model.IsReviewedByReviewer1 == true && model.IsReviewedByReviewer2 == true)
+                {
+                    model.Remarks = model.UnitCode + " - " + model.UnitTitle + " has been reviewed by Reviewer1 - " + GetNameByEmail(model.AssignedReviewer1) + " and Reviewer2 -" + GetNameByEmail(model.AssignedReviewer2);
+                    model.OrderByDate = DateTime.Now;
+                }
+
+                _context.Update(model);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("UnitInfoListReviewer");
+            }
+            return View(model);
+        }
+
+
         public async Task<IActionResult> AssignToApprover(int id)
         {
             var objUnitInformation = await _context.UnitInformationList.FindAsync(id);
             objUnitInformation.AssignedTo = objUnitInformation.Approver;
             objUnitInformation.AssignedBy = User.Identity.Name;
             objUnitInformation.AssignedDate = DateTime.Now;
+            objUnitInformation.UpdatedBy = User.Identity.Name;
+            objUnitInformation.UpdatedDate = DateTime.Now;
             objUnitInformation.CurrentPosition = "Approver";
             objUnitInformation.AssignedApprover = objUnitInformation.Approver;
-            objUnitInformation.Remarks = "Reviewer1  - " + GetNameByEmail(objUnitInformation.Reviewer1) + " and " + "Reviewer2 - " + GetNameByEmail(objUnitInformation.Reviewer2) + " has been reviewed and assigned " + objUnitInformation.UnitCode + objUnitInformation.UnitTitle + " to Approver -" + GetNameByEmail(objUnitInformation.AssignedApprover);
+            objUnitInformation.Remarks = objUnitInformation.UnitCode + " - " + objUnitInformation.UnitTitle + " has been assigned to Approver - " + GetNameByEmail(objUnitInformation.AssignedApprover);
             objUnitInformation.OrderByDate = DateTime.Now;
             _context.Update(objUnitInformation);
             await _context.SaveChangesAsync();
@@ -607,8 +840,9 @@ namespace DMS.Web.Controllers
         /// <returns></returns>
         public IActionResult UnitInfoListApprover()
         {
-            var unitInformationList = _context.UnitInformationList.OrderByDescending(a => a.OrderByDate).Where(a => a.Status == "Pending" && a.CurrentPosition == "Approver").ToList();
-            return View(unitInformationList);
+            var unitInformationList = _context.UnitInformationList.OrderByDescending(a => a.OrderByDate).Where(a => a.Status == "Pending" && a.CurrentPosition == "Approver").ToList().GroupBy(a => a.UnitCode);
+            List<UnitInformationModel> lstUnitInfoList = UploadToNewList(unitInformationList);
+            return View(lstUnitInfoList);
         }
 
         public async Task<IActionResult> RejectWithMinorChangeFromApprover(int id)

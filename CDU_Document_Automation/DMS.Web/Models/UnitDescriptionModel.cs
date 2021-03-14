@@ -20,6 +20,11 @@ namespace DMS.Web.Models
         public string SpecialistElectiveCourseCode { get; set; }
         public string CurrentUnitDescription { get; set; }
         public string TypeOfChangeRequest { get; set; }
+
+        public bool IsChangeToCoreUnitDescriptionContentChecked { get; set; }
+        public bool IsGrammarOrFormattingAmendmentChecked { get; set; }
+        public bool IsProvidingSpecificEnrolmentInformationChecked { get; set; }
+
         public string ProposedUnitDescription { get; set; }
         public string JustificatioRequestOutline { get; set; }
         public string DomesticStudentNumber { get; set; }

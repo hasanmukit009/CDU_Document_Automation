@@ -39,17 +39,17 @@
                                     @if (item.AssignedApprover == User.Identity.Name)
                                     {
                                         <td>
-                                            <a asp-action="ViewUnitInformationByApprover" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
-                                                <span class="text">View</span>
+                                            <a asp-action="ViewUnitInformationByApprover" asp-route-id="@item.Id" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="View Unit Information">
+                                                <i class="fas fa-eye"></i>
                                             </a>
-                                            <a asp-action="RejectWithMinorChangeFromApprover" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
-                                                <span class="text">Reject (minor)</span>
+                                            <a asp-action="RejectWithMinorChangeFromApprover" asp-route-id="@item.Id" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Reject with minro change">
+                                                <i class="fas fa-undo">Reject (minor)</i>
                                             </a>
-                                            <a asp-action="RejectWithMajorChangeFromApprover" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
-                                                <span class="text">Reject (major)</span>
+                                            <a asp-action="RejectWithMajorChangeFromApprover" asp-route-id="@item.Id" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Reject with major change">
+                                                <i class="fas fa-undo">Reject (major)</i>
                                             </a>
-                                            <a asp-action="Approve" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
-                                                <span class="text">Approve</span>
+                                            <a asp-action="Approve" asp-route-id="@item.Id" class="btn btn-success btn-sm btn-icon-split" data-toggle="tooltip" data-placement="top" title="Approve Unit Information">
+                                                <i class="fas fa-check-circle"></i>
                                             </a>
                                         </td>
                                     }
@@ -57,7 +57,7 @@
                                     {
                                         <td>
                                             <a asp-action="ViewUnitInformationByApprover" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split disabled">
-                                                <span class="text">View</span>
+                                                <i class="fas fa-eye"></i>
                                             </a>
                                             <a asp-action="ReturnToUCFromApprover" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split disabled">
                                                 <span class="text">Reject (minor)</span>
@@ -65,7 +65,7 @@
                                             <a asp-action="ReturnToUCFromApprover" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split disabled">
                                                 <span class="text">Reject (major)</span>
                                             </a>
-                                            <a asp-action="Approve" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split disabled">
+                                            <a asp-action="Approve" asp-route-id="@item.Id" class="btn btn-success btn-sm btn-icon-split disabled" data-toggle="tooltip" data-placement="top" title="Approve Unit Information">
                                                 <span class="text">Approve</span>
                                             </a>
                                         </td>

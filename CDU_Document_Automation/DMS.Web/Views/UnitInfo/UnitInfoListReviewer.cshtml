@@ -40,19 +40,22 @@
                                     @if (item.AssignedReviewer1 == User.Identity.Name || item.AssignedReviewer2 == User.Identity.Name)
                                     {
                                         <td>
-                                            <a asp-action="ViewUnitInformationByReviewer" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
-                                                <span class="text">View</span>
+                                            <a asp-action="ViewUnitInformationByReviewer" asp-route-id="@item.Id" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="View Unit Information">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                            <a asp-action="EditUnitInformationByReviewer" asp-route-id="@item.Id" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Edit Unit Information">
+                                                <i class="fas fa-edit"></i>
                                             </a>
                                             @if (item.IsReviewedByReviewer1 == true && item.IsReviewedByReviewer2 == true)
                                             {
-                                                <a asp-action="AssignToApprover" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split">
-                                                    <span class="text">Assign To Approver</span>
+                                                <a asp-action="AssignToApprover" asp-route-id="@item.Id" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Assign To Approver">
+                                                    <i class="fas fa-share-square"></i>
                                                 </a>
                                             }
                                             else
                                             {
-                                                <a asp-action="AssignToApprover" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split disabled">
-                                                    <span class="text">Assign To Approver</span>
+                                                <a asp-action="AssignToApprover" asp-route-id="@item.Id" class="btn btn-primary btn-sm disabled" data-toggle="tooltip" data-placement="top" title="Assign To Approver">
+                                                    <i class="fas fa-share-square"></i>
                                                 </a>
                                             }
                                         </td>
@@ -60,11 +63,14 @@
                                     else
                                     {
                                         <td>
-                                            <a asp-action="ViewUnitInformationByReviewer" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split disabled">
-                                                <span class="text">View</span>
+                                            <a asp-action="ViewUnitInformationByReviewer" asp-route-id="@item.Id" class="btn btn-warning btn-sm disabled" data-toggle="tooltip" data-placement="top" title="View Unit Information">
+                                                <i class="fas fa-eye"></i>
                                             </a>
-                                            <a asp-action="AssignToApprover" asp-route-id="@item.Id" class="btn btn-primary btn-icon-split disabled">
-                                                <span class="text">Assign To Approver</span>
+                                            <a asp-action="EditUnitInformationByReviewer" asp-route-id="@item.Id" class="btn btn-info btn-sm disabled" data-toggle="tooltip" data-placement="top" title="Edit Unit Information">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a asp-action="AssignToApprover" asp-route-id="@item.Id" class="btn btn-primary btn-sm disabled" data-toggle="tooltip" data-placement="top" title="View Unit Information">
+                                                <i class="fas fa-share-square"></i>
                                             </a>
                                         </td>
                                     }
