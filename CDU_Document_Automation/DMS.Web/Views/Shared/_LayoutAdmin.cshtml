@@ -419,13 +419,13 @@
             });
         });
 
-        var ConfirmDelete = function (UnitInfoID) {
+        var ConfirmDeleteByUC = function (UnitInfoID) {
 
             $("#hdnUnitInfoID").val(UnitInfoID);
             $("#myModal").modal('show');
 
         }
-        var RemoveUnitInfo = function () {
+        var RemoveUnitInfoByUC = function () {
             var unitinfoid = $("#hdnUnitInfoID").val();
             $.ajax({
                 type: "POST",

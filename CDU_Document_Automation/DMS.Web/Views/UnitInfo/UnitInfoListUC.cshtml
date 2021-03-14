@@ -51,7 +51,7 @@
                                                 <a asp-action="ViewUnitInfoByUC" asp-route-id="@item.Id" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="View Unit Information">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
-                                                <a asp-action="DownloadUnitInfo" asp-route-id="@item.Id" target="_blank" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Download Unit Information">
+                                                <a asp-action="DownloadUnitInfo" asp-route-id="@item.Id" target="_blank" class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="top" title="Download Unit Information">
                                                     <i class="fas fa-download"></i>
                                                 </a>
                                             </td>
@@ -98,6 +98,9 @@
                                                         <i class="fas fa-share-square"></i>
                                                     </a>
                                                 }
+                                                <a asp-action="DownloadUnitInfo" asp-route-id="@item.Id" target="_blank" class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="top" title="Download Unit Information">
+                                                    <i class="fas fa-download"></i>
+                                                </a>
                                             </td>
                                         }
                                     }
@@ -107,7 +110,7 @@
                                             <a asp-action="ViewUnitInfoByUC" asp-route-id="@item.Id" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="View Unit Information">
                                                 <i class="fas fa-eye"></i>
                                             </a>
-                                            <a asp-action="DownloadUnitInfo" asp-route-id="@item.Id" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Download Unit Information">
+                                            <a asp-action="DownloadUnitInfo" asp-route-id="@item.Id" class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="top" title="Download Unit Information">
                                                 <i class="fas fa-download"></i>
                                             </a>
                                         </td>
@@ -139,7 +142,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" onclick="RemoveUnitInfo()" class="btn btn-primary">Confirm</button>
+                <button type="button" onclick="RemoveUnitInfoByUC()" class="btn btn-primary">Confirm</button>
             </div>
         </div>
     </div>
