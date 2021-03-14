@@ -1,0 +1,11 @@
+E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.ReportHelper\bin\Debug\DMS.ReportHelper.exe.config
+E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.ReportHelper\bin\Debug\DMS.ReportHelper.exe
+E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.ReportHelper\bin\Debug\DMS.ReportHelper.pdb
+E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.ReportHelper\obj\Debug\DMS.ReportHelper.csprojAssemblyReference.cache
+E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.ReportHelper\obj\Debug\DMS.ReportHelper.Properties.Resources.resources
+E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.ReportHelper\obj\Debug\DMS.ReportHelper.csproj.GenerateResource.cache
+E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.ReportHelper\obj\Debug\RdlCompile.cache
+E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.ReportHelper\obj\Debug\RdlCompile.compiled
+E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.ReportHelper\obj\Debug\DMS.ReportHelper.csproj.CoreCompileInputs.cache
+E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.ReportHelper\obj\Debug\DMS.ReportHelper.exe
+E:\Repository\CDU Document Automation\CDU_Document_Automation\DMS.ReportHelper\obj\Debug\DMS.ReportHelper.pdb
