@@ -10,6 +10,7 @@ using DMS.Web.ViewModel;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 namespace DMS.Web.Controllers
@@ -17,17 +18,19 @@ namespace DMS.Web.Controllers
     public class UnitInfoController : Controller
     {
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly Microsoft.Extensions.Hosting.IHostingEnvironment _hostingEnvironment;
         private readonly ILogger<HomeController> _logger;
         private readonly UserManager<IdentityUser> userManager;
         private readonly SignInManager<IdentityUser> signInManager;
         private readonly ApplicationDbContext _context;
-        public UnitInfoController(ILogger<HomeController> logger, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
+        public UnitInfoController(Microsoft.Extensions.Hosting.IHostingEnvironment hostingEnvironment,ILogger<HomeController> logger, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _logger = logger;
             this.userManager = userManager;
             this.signInManager = signInManager;
             _context = context;
             _webHostEnvironment = webHostEnvironment;
+            _hostingEnvironment = hostingEnvironment;
             Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
         }
 
@@ -444,10 +447,10 @@ namespace DMS.Web.Controllers
 
         public IActionResult DownloadUnitInfo(int id)
         {
-
+           string p= _hostingEnvironment.ContentRootPath;
             string mimtype = "";
             int extension = 1;
-            var path = $"{this._webHostEnvironment.WebRootPath}\\Reports\\report_UnitInformation.rdlc";
+            var path = $"{_hostingEnvironment.ContentRootPath}\\Reports\\report_UnitInformation.rdlc";
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             var objUnitInformation = _context.UnitInformationList.FindAsync(id);
             parameters.Add("rp_unitcode", objUnitInformation.Result.UnitCode);
