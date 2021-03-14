@@ -11,15 +11,15 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "environmentVariables": {
+      "env": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "DMS.Web": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:5001;http://localhost:5000",
-      "environmentVariables": {
+      "applicationUrl": "https://documentauto.azurewebsites.net/",
+      "env": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     }
