@@ -428,7 +428,7 @@ namespace DMS.Web.Controllers
             return RedirectToAction("UnitInfoListUC");
         }
 
-        public async Task<IActionResult> ViewUnitInfo(int id)
+        public async Task<IActionResult> ViewUnitInfoByUC(int id)
         {
             var objUnitInformation = await _context.UnitInformationList.FindAsync(id);
             return View(objUnitInformation);
@@ -562,6 +562,9 @@ namespace DMS.Web.Controllers
             var result = localReport.Execute(RenderType.Pdf, extension, parameters, mimtype);
             return File(result.MainStream, "application/pdf");
         }
+
+
+
         /// <summary>
         /// Course Coordinator
         /// </summary>
