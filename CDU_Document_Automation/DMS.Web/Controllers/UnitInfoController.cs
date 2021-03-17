@@ -1,37 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using AspNetCore.Reporting;
 using DMS.Web.Data;
 using DMS.Web.Models;
 using DMS.Web.ViewModel;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 namespace DMS.Web.Controllers
 {
     public class UnitInfoController : Controller
     {
-        private readonly IWebHostEnvironment _webHostEnvironment;
-        private readonly Microsoft.Extensions.Hosting.IHostingEnvironment _hostingEnvironment;
         private readonly ILogger<HomeController> _logger;
         private readonly UserManager<IdentityUser> userManager;
         private readonly SignInManager<IdentityUser> signInManager;
         private readonly ApplicationDbContext _context;
-        public UnitInfoController(Microsoft.Extensions.Hosting.IHostingEnvironment hostingEnvironment,ILogger<HomeController> logger, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
+        public UnitInfoController(ILogger<HomeController> logger, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _logger = logger;
             this.userManager = userManager;
             this.signInManager = signInManager;
             _context = context;
-            _webHostEnvironment = webHostEnvironment;
-            _hostingEnvironment = hostingEnvironment;
-            Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
         }
 
 
@@ -445,128 +437,6 @@ namespace DMS.Web.Controllers
             return Json(new { status = "Success" });
         }
 
-        public IActionResult DownloadUnitInfo(int id)
-        {
-           string p= _hostingEnvironment.ContentRootPath;
-            string mimtype = "";
-            int extension = 1;
-            var path = $"{_hostingEnvironment.ContentRootPath}\\Reports\\report_UnitInformation.rdlc";
-            Dictionary<string, string> parameters = new Dictionary<string, string>();
-            var objUnitInformation = _context.UnitInformationList.FindAsync(id);
-            parameters.Add("rp_unitcode", objUnitInformation.Result.UnitCode);
-            parameters.Add("rp_unitTitle", objUnitInformation.Result.UnitTitle);
-            parameters.Add("rp_creditPoints", objUnitInformation.Result.CreditPoints);
-            parameters.Add("rp_prerequisites", objUnitInformation.Result.Prerequisites);
-            parameters.Add("rp_semester", objUnitInformation.Result.Semester);
-            parameters.Add("rp_year", objUnitInformation.Result.Year);
-            parameters.Add("rp_Mode", objUnitInformation.Result.Mode);
-            parameters.Add("rp_Location", objUnitInformation.Result.Location);
-            parameters.Add("rp_LearningMethod", objUnitInformation.Result.LearningMethod);
-            parameters.Add("rp_unitCoordinator", objUnitInformation.Result.UnitCoordinator);
-            parameters.Add("rp_phone", objUnitInformation.Result.Phone);
-            parameters.Add("rp_Email", objUnitInformation.Result.Email);
-            parameters.Add("rp_UnitDescription", objUnitInformation.Result.UnitDescription);
-            parameters.Add("rp_LearningOutcomes", objUnitInformation.Result.LearningOutComes);
-            parameters.Add("rp_Assessment_Overview_Item_1", objUnitInformation.Result.Assessment_Overview_Item_1);
-            parameters.Add("rp_Assessment_Overview_Item_2", objUnitInformation.Result.Assessment_Overview_Item_2);
-            parameters.Add("rp_Assessment_Overview_Item_3", objUnitInformation.Result.Assessment_Overview_Item_3);
-            parameters.Add("rp_Assessment_Overview_Item_4", objUnitInformation.Result.Assessment_Overview_Item_4);
-            parameters.Add("rp_Assessment_Overview_Description_1", objUnitInformation.Result.Assessment_Overview_Description_1);
-            parameters.Add("rp_Assessment_Overview_Description_2", objUnitInformation.Result.Assessment_Overview_Description_2);
-            parameters.Add("rp_Assessment_Overview_Description_3", objUnitInformation.Result.Assessment_Overview_Description_3);
-            parameters.Add("rp_Assessment_Overview_Description_4", objUnitInformation.Result.Assessment_Overview_Description_4);
-            parameters.Add("rp_Assessment_Overview_Value_1", objUnitInformation.Result.Assessment_Overview_Value_1);
-            parameters.Add("rp_Assessment_Overview_Value_2", objUnitInformation.Result.Assessment_Overview_Value_2);
-            parameters.Add("rp_Assessment_Overview_Value_3", objUnitInformation.Result.Assessment_Overview_Value_3);
-            parameters.Add("rp_Assessment_Overview_Value_4", objUnitInformation.Result.Assessment_Overview_Value_4);
-            parameters.Add("rp_Assessment_Overview_Learning_Outcome_1", objUnitInformation.Result.Assessment_Overview_Learning_Outcome_1);
-            parameters.Add("rp_Assessment_Overview_Learning_Outcome_2", objUnitInformation.Result.Assessment_Overview_Learning_Outcome_2);
-            parameters.Add("rp_Assessment_Overview_Learning_Outcome_3", objUnitInformation.Result.Assessment_Overview_Learning_Outcome_3);
-            parameters.Add("rp_Assessment_Overview_Learning_Outcome_4", objUnitInformation.Result.Assessment_Overview_Learning_Outcome_4);
-
-
-            parameters.Add("rp_TeachingAndLearningApproach", objUnitInformation.Result.TeachingAndLearningApproach);
-            parameters.Add("rp_TeachingAndLearningApproach_HowUnitRun", objUnitInformation.Result.TeachingAndLearningApproach_HowUnitRun);
-            parameters.Add("rp_TeachingAndLearningApproach_LecturerRole", objUnitInformation.Result.TeachingAndLearningApproach_LecturerRole);
-            parameters.Add("rp_TeachingAndLearningApproach_StudentParticipation", objUnitInformation.Result.TeachingAndLearningApproach_StudentParticipation);
-
-            parameters.Add("rp_Resources_AdditionalResources", objUnitInformation.Result.Resources_AdditionalResources);
-            parameters.Add("rp_Resources_eReserveCourseReadings", objUnitInformation.Result.Resources_eReserveCourseReadings);
-            parameters.Add("rp_Resources_Learnline", objUnitInformation.Result.Resources_Learnline);
-            parameters.Add("rp_Resources_RequiredTextbooks", objUnitInformation.Result.Resources_RequiredTextbooks);
-
-            parameters.Add("rp_LearningSchedule_Week_1", objUnitInformation.Result.LearningSchedule_Week_1);
-            parameters.Add("rp_LearningSchedule_Week_2", objUnitInformation.Result.LearningSchedule_Week_2);
-            parameters.Add("rp_LearningSchedule_Week_3", objUnitInformation.Result.LearningSchedule_Week_3);
-            parameters.Add("rp_LearningSchedule_Week_4", objUnitInformation.Result.LearningSchedule_Week_4);
-            parameters.Add("rp_LearningSchedule_Week_5", objUnitInformation.Result.LearningSchedule_Week_5);
-            parameters.Add("rp_LearningSchedule_Week_6", objUnitInformation.Result.LearningSchedule_Week_6);
-            parameters.Add("rp_LearningSchedule_Week_7", objUnitInformation.Result.LearningSchedule_Week_7);
-            parameters.Add("rp_LearningSchedule_Week_8", objUnitInformation.Result.LearningSchedule_Week_8);
-            parameters.Add("rp_LearningSchedule_Week_9", objUnitInformation.Result.LearningSchedule_Week_9);
-            parameters.Add("rp_LearningSchedule_Week_10", objUnitInformation.Result.LearningSchedule_Week_10);
-            parameters.Add("rp_LearningSchedule_Week_11", objUnitInformation.Result.LearningSchedule_Week_11);
-            parameters.Add("rp_LearningSchedule_Week_12", objUnitInformation.Result.LearningSchedule_Week_12);
-            parameters.Add("rp_LearningSchedule_Week_13", objUnitInformation.Result.LearningSchedule_Week_13);
-            parameters.Add("rp_LearningSchedule_Week_14", objUnitInformation.Result.LearningSchedule_Week_14);
-            parameters.Add("rp_LearningSchedule_Week_15", objUnitInformation.Result.LearningSchedule_Week_15);
-
-            parameters.Add("rp_LearningSchedule_Topic_1", objUnitInformation.Result.LearningSchedule_Topic_1);
-            parameters.Add("rp_LearningSchedule_Topic_2", objUnitInformation.Result.LearningSchedule_Topic_2);
-            parameters.Add("rp_LearningSchedule_Topic_3", objUnitInformation.Result.LearningSchedule_Topic_3);
-            parameters.Add("rp_LearningSchedule_Topic_4", objUnitInformation.Result.LearningSchedule_Topic_4);
-            parameters.Add("rp_LearningSchedule_Topic_5", objUnitInformation.Result.LearningSchedule_Topic_5);
-            parameters.Add("rp_LearningSchedule_Topic_6", objUnitInformation.Result.LearningSchedule_Topic_6);
-            parameters.Add("rp_LearningSchedule_Topic_7", objUnitInformation.Result.LearningSchedule_Topic_7);
-            parameters.Add("rp_LearningSchedule_Topic_8", objUnitInformation.Result.LearningSchedule_Topic_8);
-            parameters.Add("rp_LearningSchedule_Topic_9", objUnitInformation.Result.LearningSchedule_Topic_9);
-            parameters.Add("rp_LearningSchedule_Topic_10", objUnitInformation.Result.LearningSchedule_Topic_10);
-            parameters.Add("rp_LearningSchedule_Topic_11", objUnitInformation.Result.LearningSchedule_Topic_11);
-            parameters.Add("rp_LearningSchedule_Topic_12", objUnitInformation.Result.LearningSchedule_Topic_12);
-            parameters.Add("rp_LearningSchedule_Topic_13", objUnitInformation.Result.LearningSchedule_Topic_13);
-            parameters.Add("rp_LearningSchedule_Topic_14", objUnitInformation.Result.LearningSchedule_Topic_14);
-            parameters.Add("rp_LearningSchedule_Topic_15", objUnitInformation.Result.LearningSchedule_Topic_15);
-
-            parameters.Add("rp_LearningSchedule_Tutorial_1", objUnitInformation.Result.LearningSchedule_Tutorial_1);
-            parameters.Add("rp_LearningSchedule_Tutorial_2", objUnitInformation.Result.LearningSchedule_Tutorial_2);
-            parameters.Add("rp_LearningSchedule_Tutorial_3", objUnitInformation.Result.LearningSchedule_Tutorial_3);
-            parameters.Add("rp_LearningSchedule_Tutorial_4", objUnitInformation.Result.LearningSchedule_Tutorial_4);
-            parameters.Add("rp_LearningSchedule_Tutorial_5", objUnitInformation.Result.LearningSchedule_Tutorial_5);
-            parameters.Add("rp_LearningSchedule_Tutorial_6", objUnitInformation.Result.LearningSchedule_Tutorial_6);
-            parameters.Add("rp_LearningSchedule_Tutorial_7", objUnitInformation.Result.LearningSchedule_Tutorial_7);
-            parameters.Add("rp_LearningSchedule_Tutorial_8", objUnitInformation.Result.LearningSchedule_Tutorial_8);
-            parameters.Add("rp_LearningSchedule_Tutorial_9", objUnitInformation.Result.LearningSchedule_Tutorial_9);
-            parameters.Add("rp_LearningSchedule_Tutorial_10", objUnitInformation.Result.LearningSchedule_Tutorial_10);
-            parameters.Add("rp_LearningSchedule_Tutorial_11", objUnitInformation.Result.LearningSchedule_Tutorial_11);
-            parameters.Add("rp_LearningSchedule_Tutorial_12", objUnitInformation.Result.LearningSchedule_Tutorial_12);
-            parameters.Add("rp_LearningSchedule_Tutorial_13", objUnitInformation.Result.LearningSchedule_Tutorial_13);
-            parameters.Add("rp_LearningSchedule_Tutorial_14", objUnitInformation.Result.LearningSchedule_Tutorial_14);
-            parameters.Add("rp_LearningSchedule_Tutorial_15", objUnitInformation.Result.LearningSchedule_Tutorial_15);
-
-
-            parameters.Add("rp_LearningSchedule_Assessments_1", objUnitInformation.Result.LearningSchedule_Assessments_1);
-            parameters.Add("rp_LearningSchedule_Assessments_2", objUnitInformation.Result.LearningSchedule_Assessments_2);
-            parameters.Add("rp_LearningSchedule_Assessments_3", objUnitInformation.Result.LearningSchedule_Assessments_3);
-            parameters.Add("rp_LearningSchedule_Assessments_4", objUnitInformation.Result.LearningSchedule_Assessments_4);
-            parameters.Add("rp_LearningSchedule_Assessments_5", objUnitInformation.Result.LearningSchedule_Assessments_5);
-            parameters.Add("rp_LearningSchedule_Assessments_6", objUnitInformation.Result.LearningSchedule_Assessments_6);
-            parameters.Add("rp_LearningSchedule_Assessments_7", objUnitInformation.Result.LearningSchedule_Assessments_7);
-            parameters.Add("rp_LearningSchedule_Assessments_8", objUnitInformation.Result.LearningSchedule_Assessments_8);
-            parameters.Add("rp_LearningSchedule_Assessments_9", objUnitInformation.Result.LearningSchedule_Assessments_9);
-            parameters.Add("rp_LearningSchedule_Assessments_10", objUnitInformation.Result.LearningSchedule_Assessments_10);
-            parameters.Add("rp_LearningSchedule_Assessments_11", objUnitInformation.Result.LearningSchedule_Assessments_11);
-            parameters.Add("rp_LearningSchedule_Assessments_12", objUnitInformation.Result.LearningSchedule_Assessments_12);
-            parameters.Add("rp_LearningSchedule_Assessments_13", objUnitInformation.Result.LearningSchedule_Assessments_13);
-            parameters.Add("rp_LearningSchedule_Assessments_14", objUnitInformation.Result.LearningSchedule_Assessments_14);
-            parameters.Add("rp_LearningSchedule_Assessments_15", objUnitInformation.Result.LearningSchedule_Assessments_15);
-
-
-            LocalReport localReport = new LocalReport(path);
-            var result = localReport.Execute(RenderType.Pdf, extension, parameters, mimtype);
-            return File(result.MainStream, "application/pdf");
-        }
-
-
 
         /// <summary>
         /// Course Coordinator
@@ -638,8 +508,6 @@ namespace DMS.Web.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction("DashBoard", "Home");
         }
-
-
 
 
 
